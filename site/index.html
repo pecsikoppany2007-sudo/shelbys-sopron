@@ -14,11 +14,11 @@
 <link rel="icon" href="img/favicon-96.png" sizes="96x96" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="preload" href="fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/familjen-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/cinzel-decorative-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/spectral-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="img/hero3-1600.webp?v=6" imagesrcset="img/hero3-900.webp?v=6 900w, img/hero3-1600.webp?v=6 1600w, img/hero3-2400.webp?v=6 2400w" imagesizes="100vw" media="(min-width: 641px)">
 <link rel="preload" as="image" href="img/hero3m-800.webp?v=6" imagesrcset="img/hero3m-800.webp?v=6 800w, img/hero3m-1200.webp?v=6 1200w" imagesizes="100vw" media="(max-width: 640px)">
-<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/style.css?v=7">
 <script>
 (function(){var h=document.documentElement;try{if(sessionStorage.getItem('sg-intro'))h.classList.remove('intro-on')}catch(e){}
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.remove('intro-on');
@@ -33,15 +33,17 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
 <body>
 <a class="skip" href="#pince" data-i18n="skip">Ugrás a tartalomra</a>
 
-<!-- nyitás: a logó kerete, a felirat fénycsíkkal, aztán átrepülünk a kereten -->
+<!-- nyitás: sötétben 17:59, átfordul 18:00-ra, és kigyullad a logó felirata -->
 <div class="intro" id="intro" aria-hidden="true">
   <div class="intro__in">
+    <p class="intro__clk"><span class="rl"><span>17</span><span>18</span></span>:<span class="rl"><span>59</span><span>00</span></span></p>
     <div class="intro__word"><img src="img/logo-word.svg?v=2" alt=""></div>
   </div>
   <p class="intro__skip" data-i18n="introSkip">Kattintson a továbblépéshez</p>
 </div>
 
 <header class="hd" id="hd">
+  <div class="hd__row">
   <a class="hd__logo" href="#top" aria-label="Shelby's Gin Bar, vissza az oldal tetejére"><img src="img/logo-word.svg?v=2" alt=""></a>
   <nav class="hd__nav" aria-label="Fő menü">
     <a href="#pince" data-i18n="navPince">A pince</a>
@@ -56,16 +58,38 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
     </div>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="sheet"><span></span><span></span><span></span><b class="sr" data-i18n="menuBtn">Menü</b></button>
   </div>
+  </div>
+  <nav class="nt" id="nt" aria-label="Az este órái" data-i18n-aria="ntLbl">
+    <i class="nt__ln"></i><i class="nt__fill" id="ntFill"></i>
+    <i class="nt__tk" style="left:0%"></i>
+    <i class="nt__tk" style="left:12.5%"></i>
+    <i class="nt__tk" style="left:25%"></i>
+    <i class="nt__tk" style="left:37.5%"></i>
+    <i class="nt__tk" style="left:50%"></i>
+    <i class="nt__tk" style="left:62.5%"></i>
+    <i class="nt__tk" style="left:75%"></i>
+    <i class="nt__tk" style="left:87.5%"></i>
+    <i class="nt__tk" style="left:100%"></i>
+    <a class="nt__h" href="#top" style="left:0%" data-h="0" data-k="hTop">18<span class="nt__m">:00</span></a>
+    <a class="nt__h" href="#pince" style="left:12.5%" data-h="1" data-k="navPince">19<span class="nt__m">:00</span></a>
+    <a class="nt__h" href="#ginek" style="left:25%" data-h="2" data-k="navGin">20<span class="nt__m">:00</span></a>
+    <a class="nt__h" href="#pult" style="left:37.5%" data-h="3" data-k="navPult">21<span class="nt__m">:00</span></a>
+    <a class="nt__h" href="#itallap" style="left:50%" data-h="4" data-k="navMenu">22<span class="nt__m">:00</span></a>
+    <a class="nt__h" href="#velemenyek" style="left:62.5%" data-h="5" data-k="navRev">23<span class="nt__m">:00</span></a>
+    <a class="nt__h" href="#nyitva" style="left:75%" data-h="6" data-k="navHours">00<span class="nt__m">:00</span></a>
+    <a class="nt__h" href="#ft" style="left:100%" data-h="8" data-k="navEnd">02<span class="nt__m">:00</span></a>
+    <i class="nt__now" id="ntNow" hidden></i><i class="nt__dot" id="ntDot"></i>
+  </nav>
 </header>
 
 <!-- mobil és tablet menü: úgy néz ki, mint az ajtó melletti nyitvatartás-tábla -->
 <div class="sheet" id="sheet" hidden>
   <div class="sheet__panel">
     <nav aria-label="Menü">
-      <a href="#pince" data-i18n="navPince">A pince</a>
-      <a href="#ginek" data-i18n="navGin">Ginek</a>
-      <a href="#itallap" data-i18n="navMenu">Itallap</a>
-      <a href="#nyitva" data-i18n="navHours">Nyitvatartás</a>
+      <a href="#pince"><span data-i18n="navPince">A pince</span><small>19:00</small></a>
+      <a href="#ginek"><span data-i18n="navGin">Ginek</span><small>20:00</small></a>
+      <a href="#itallap"><span data-i18n="navMenu">Itallap</span><small>22:00</small></a>
+      <a href="#nyitva"><span data-i18n="navHours">Nyitvatartás</span><small>00:00</small></a>
     </nav>
     <a class="sheet__tel" href="tel:+36709053604">+36 70 905 3604</a>
   </div>
@@ -81,8 +105,8 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
     <h1 class="h1 bl" id="heroTitle" data-i18n="heroTitle">Gin bár Sopronban, a Várkerület 22. pincéjében</h1>
     <p class="hero__lead" data-i18n="heroLead">Több mint 50 féle gin, hozzá tonikok és koktélok. Kedden, szerdán és csütörtökön éjfélig, pénteken és szombaton hajnali 2-ig vagyunk nyitva.</p>
     <div class="hero__btns">
-      <a class="btn btn--gold" href="tel:+36709053604"><span class="btn__f" aria-hidden="true"></span><span class="btn__t" data-i18n="book">Asztalfoglalás</span><span class="btn__d" aria-hidden="true"></span></a>
-      <a class="btn" href="#itallap"><span class="btn__f" aria-hidden="true"></span><span class="btn__t" data-i18n="seeMenu">Itallap</span><span class="btn__d" aria-hidden="true"></span></a>
+      <a class="btn btn--gold" href="tel:+36709053604"><span data-i18n="book">Asztalfoglalás</span></a>
+      <a class="btn" href="#itallap"><span data-i18n="seeMenu">Itallap</span></a>
     </div>
     <p class="hero__tel"><span data-i18n="byPhone">Foglalás telefonon:</span> <a href="tel:+36709053604">+36 70 905 3604</a></p>
   </div>
@@ -176,7 +200,7 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
     <p class="panel__note" data-i18n="doorNote">Az ajtó a Várkerületről nyílik, a bár a lépcső alján van.</p>
   </div>
   <div class="map" id="map">
-    <button class="btn" type="button" id="mapBtn"><span class="btn__f" aria-hidden="true"></span><span class="btn__t" data-i18n="mapBtn">Térkép betöltése</span><span class="btn__d" aria-hidden="true"></span></button>
+    <button class="btn" type="button" id="mapBtn"><span data-i18n="mapBtn">Térkép betöltése</span></button>
     <p data-i18n="mapNote">A térkép a Google szolgáltatása, és csak kattintásra töltődik be.</p>
   </div>
 </section>
@@ -184,6 +208,7 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
 
 <footer class="ft" id="ft">
   <div class="ft__in">
+    <p class="ft__last" data-i18n="lastCall">Pénteken és szombaton 02:00-kor zárunk</p>
     <img class="ft__logo" src="img/logo-full.svg?v=2" alt="Shelby's Gin Bar">
     <p class="ft__addr">9400 Sopron, Várkerület 22. · <a href="tel:+36709053604">+36 70 905 3604</a></p>
     <p class="ft__small">© 2026 Shelby's Gin Bar · <a href="jogi.html" data-i18n="legal">Impresszum és adatkezelés</a></p>
@@ -191,11 +216,11 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
   </div>
 </footer>
 
-<div class="cur" id="cur" aria-hidden="true"><i class="cur__d"></i><i class="cur__r"></i></div>
+<div class="cur" id="cur" aria-hidden="true"><i class="cur__d"></i></div>
 
 <script src="js/gsap.min.js?v=2" defer></script>
 <script src="js/ScrollTrigger.min.js?v=2" defer></script>
 <script src="js/lenis.min.js?v=2" defer></script>
-<script src="js/main.js?v=6" defer></script>
+<script src="js/main.js?v=7" defer></script>
 </body>
 </html>

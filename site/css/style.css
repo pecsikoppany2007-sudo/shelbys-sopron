@@ -1,33 +1,42 @@
-/* Shelby's Gin Bar v4 – lent a pincében egy fény ég. Meleg fekete, egyetlen szín (a pult vöröse), keretek nélkül.
-   Címek: Gloock (éles, nagy kontrasztú talpas), szöveg és feliratok: Familjen Grotesk. */
-@font-face{font-family:'Gloock';src:url(../fonts/gloock-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Gloock';src:url(../fonts/gloock-latin-ext-400-normal.woff2) format('woff2');font-weight:400;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Familjen Grotesk';src:url(../fonts/familjen-grotesk-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Familjen Grotesk';src:url(../fonts/familjen-grotesk-latin-ext-400-normal.woff2) format('woff2');font-weight:400;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Familjen Grotesk';src:url(../fonts/familjen-grotesk-latin-500-normal.woff2) format('woff2');font-weight:500;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Familjen Grotesk';src:url(../fonts/familjen-grotesk-latin-ext-500-normal.woff2) format('woff2');font-weight:500;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+/* Shelby's Gin Bar v5 – egy éjszaka 18:00-tól 02:00-ig. Az oldal egy este a pincében: a fejléc csíkján halad az idő,
+   ahogy lefelé görget, a szakaszok óráról órára sötétebbek, a címek betűnként gyúlnak ki, mint a palacklámpák.
+   Címek: Cinzel Decorative. Szöveg: Spectral. Egyetlen kiemelő szín: a logó sárgaréz-aranya. */
+@font-face{font-family:'Cinzel Decorative';src:url(../fonts/cinzel-decorative-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Cinzel Decorative';src:url(../fonts/cinzel-decorative-latin-ext-400-normal.woff2) format('woff2');font-weight:400;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Cinzel Decorative';src:url(../fonts/cinzel-decorative-latin-700-normal.woff2) format('woff2');font-weight:700;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Cinzel Decorative';src:url(../fonts/cinzel-decorative-latin-ext-700-normal.woff2) format('woff2');font-weight:700;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Spectral';src:url(../fonts/spectral-latin-300-normal.woff2) format('woff2');font-weight:300;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Spectral';src:url(../fonts/spectral-latin-ext-300-normal.woff2) format('woff2');font-weight:300;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Spectral';src:url(../fonts/spectral-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Spectral';src:url(../fonts/spectral-latin-ext-400-normal.woff2) format('woff2');font-weight:400;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Spectral';src:url(../fonts/spectral-latin-500-normal.woff2) format('woff2');font-weight:500;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Spectral';src:url(../fonts/spectral-latin-ext-500-normal.woff2) format('woff2');font-weight:500;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Spectral';src:url(../fonts/spectral-latin-300-italic.woff2) format('woff2');font-weight:300;font-style:italic;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Spectral';src:url(../fonts/spectral-latin-ext-300-italic.woff2) format('woff2');font-weight:300;font-style:italic;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 
 :root{
   --ink:#0b0907; --ink2:#0f0c0a; --ink3:#16120e;
-  --paper:#eee5d5; --mute:#b4a791; --dim:#8b8070;
-  --gold:#d3c19e; --gold2:#eee2c6; --goldA:rgba(211,193,158,.22);
+  --paper:#eee5d5; --mute:#b9ac96; --dim:#8b8070;
+  --gold:#d3c19e; --gold2:#eee2c6; --goldA:rgba(211,193,158,.24); --glow:rgba(255,214,150,.38);
   --red:#cf3a2f; --line:rgba(238,229,213,.13);
-  --disp:'Gloock',Georgia,serif; --sans:'Familjen Grotesk',system-ui,sans-serif;
-  --pad:clamp(20px,6vw,104px); --ease:cubic-bezier(.16,1,.3,1);
-  --hd:76px;
+  /* az éjszaka színei: 19 órakor még meleg barna, hajnali 2-re szinte fekete */
+  --n19:#17110c; --n20:#130f0b; --n21:#100d0a; --n22:#0e0b09; --n23:#0c0a08; --n00:#090807; --n02:#070606;
+  --disp:'Cinzel Decorative',Georgia,serif; --sans:'Spectral',Georgia,serif;
+  --pad:clamp(20px,6vw,104px); --ease:cubic-bezier(.16,1,.3,1); --wipe:cubic-bezier(.7,0,.2,1);
+  --hd:96px;
 }
 [hidden]{display:none!important}
 *,*::before,*::after{box-sizing:border-box}
 html{background:var(--ink);color:var(--paper);-webkit-text-size-adjust:100%;scroll-padding-top:var(--hd)}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
-body{margin:0;font:400 18px/1.6 var(--sans);font-feature-settings:"kern";-webkit-font-smoothing:antialiased;overflow-x:clip;-webkit-tap-highlight-color:transparent}
+body{margin:0;font:300 19px/1.62 var(--sans);font-feature-settings:"kern";-webkit-font-smoothing:antialiased;overflow-x:clip;-webkit-tap-highlight-color:transparent}
 img{display:block;max-width:100%}
 a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
 :focus{outline:none}
 :focus-visible{outline:1px solid var(--gold2);outline-offset:4px}
-::selection{background:var(--red);color:var(--paper)}
+::selection{background:var(--gold);color:var(--ink)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:fixed;left:12px;top:-60px;z-index:300;background:var(--paper);color:var(--ink);padding:10px 16px;text-decoration:none;font-weight:500}
 .skip:focus{top:12px}
@@ -35,50 +44,51 @@ html.lang-pending body{opacity:0}
 body{transition:opacity .4s}
 
 /* ------------------------------------------------ betű */
-.h1,.h2{font-family:var(--disp);font-weight:400;letter-spacing:-.012em;line-height:1.02;margin:0;color:var(--paper)}
-.h1{font-size:clamp(2.5rem,5.3vw,5.1rem);max-width:13.5ch}
-.h2{font-size:clamp(2.3rem,4.6vw,4.6rem)}
-.txt{color:var(--mute);max-width:31em;margin:0;font-size:clamp(17px,1.2vw,19px)}
+.h1,.h2{font-family:var(--disp);font-weight:400;letter-spacing:.01em;line-height:1.1;margin:0;color:var(--paper);text-wrap:balance}
+.h1{font-size:clamp(2.1rem,4.3vw,4.3rem);max-width:17ch}
+.h2{font-size:clamp(2.1rem,4.1vw,4.1rem)}
+.txt{color:var(--mute);max-width:31em;margin:0;font-size:clamp(18px,1.25vw,20px)}
 .txt,.hero__lead{text-wrap:pretty}
-.lbl{font:500 12.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.lbl{font:500 12.5px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase}
 
-/* sorvégi maszkos címfelfedés */
-.bl .ln{display:block;overflow:visible clip;padding-bottom:.08em;margin-bottom:-.08em}
-.bl .ln__i{display:block;transform:translateY(108%);transition:transform 1.3s var(--ease);transition-delay:calc(var(--l)*.11s)}
-.bl.is-in .ln__i,.no-anim .bl .ln__i{transform:none}
+/* címek: a betűk össze-vissza sorrendben gyúlnak ki, mint a palacklámpák (felvillan, visszaesik, aztán ég) */
+.bl .wd{display:inline-block;white-space:nowrap}
+.bl .ch{display:inline-block;opacity:.1}
+.bl.is-in .ch{animation:chOn .62s linear forwards;animation-delay:var(--d,0s)}
+.no-anim .bl .ch,.bl.lit .ch{opacity:1;animation:none}
+@keyframes chOn{0%{opacity:.1;text-shadow:none}12%{opacity:1;text-shadow:0 0 18px var(--glow)}26%{opacity:.22;text-shadow:none}40%{opacity:.9;text-shadow:0 0 18px var(--glow)}52%{opacity:.5}100%{opacity:1;text-shadow:0 0 14px rgba(255,214,150,.12)}}
 
-/* ------------------------------------------------ gombok: szögletesek; hoverre a pult vöröse balról végigfut rajtuk, a nyíl előrébb lép */
-.btn{position:relative;display:inline-flex;align-items:center;gap:18px;height:56px;padding:0 24px 0 26px;font:500 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--paper);border:1px solid rgba(238,229,213,.38);overflow:hidden;isolation:isolate;transition:color .25s,border-color .25s}
-.btn__f{position:absolute;inset:-1px;z-index:-1;background:var(--red);transform:scaleX(0);transform-origin:0 50%;transition:transform .5s var(--ease)}
-.btn__t{padding-top:1px}
-.btn__d{position:relative;width:18px;height:1px;background:currentColor;transition:transform .45s var(--ease)}
-.btn__d::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border:solid currentColor;border-width:1px 1px 0 0;transform:rotate(45deg)}
-.btn:hover,.btn:focus-visible{border-color:var(--red)}
-.btn:hover .btn__f,.btn:focus-visible .btn__f{transform:none}
-.btn:hover .btn__d,.btn:focus-visible .btn__d{transform:translateX(5px)}
-.btn--gold{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.btn--gold:hover,.btn--gold:focus-visible{color:var(--paper)}
+/* ------------------------------------------------ gombok: szögletes zárójel fogja közre a szöveget; hoverre a zárójel összehúzódik */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 34px;font:500 13.5px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--paper);transition:color .3s}
+.btn::before,.btn::after{content:"";position:absolute;top:8px;bottom:8px;width:9px;border:1px solid var(--gold);transition:transform .5s var(--wipe),border-color .3s}
+.btn::before{left:0;border-right:0}
+.btn::after{right:0;border-left:0}
+.btn:hover::before,.btn:focus-visible::before{transform:translateX(12px)}
+.btn:hover::after,.btn:focus-visible::after{transform:translateX(-12px)}
+.btn:hover,.btn:focus-visible{color:var(--gold2)}
+.btn--gold{color:var(--gold2)}
+.btn--gold::before,.btn--gold::after{border-color:var(--gold2)}
 
-/* ------------------------------------------------ fejléc */
-.hd{position:fixed;inset:0 0 auto;z-index:50;height:var(--hd);display:flex;align-items:center;gap:40px;padding:0 var(--pad);transition:background .5s,transform .6s var(--ease)}
+/* ------------------------------------------------ fejléc: fölül a logó és a menü, alatta az éjszaka csíkja 18-tól 02-ig */
+.hd{position:fixed;inset:0 0 auto;z-index:50;height:var(--hd);display:grid;grid-template-rows:1fr auto;padding:0 var(--pad);transition:background .5s}
 .hd::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line);opacity:0;transition:opacity .6s}
-.hd.is-solid{background:rgba(11,9,7,.92);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.hd.is-solid{background:rgba(9,8,7,.95)}
 .hd.is-solid::after{opacity:1}
-.hd.is-hidden{transform:translateY(-100%)}
+.hd__row{display:flex;align-items:center;gap:36px;min-width:0}
 .hd__logo{display:block;padding:6px 0;margin-right:auto}
-.hd__logo img{height:36px;width:auto}
-.hd__nav{display:flex;gap:4px}
-.hd__nav a{position:relative;padding:14px 14px 12px;font:500 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--mute);transition:color .25s}
-.hd__nav a::after{content:"";position:absolute;left:14px;right:14px;bottom:6px;height:1px;background:var(--red);transform:scaleX(0);transform-origin:0 50%;transition:transform .45s var(--ease)}
+.hd__logo img{height:34px;width:auto}
+.hd__nav{display:flex;gap:2px}
+.hd__nav a{position:relative;padding:14px 14px 12px;font:500 13px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;text-decoration:none;color:var(--mute);transition:color .25s}
+.hd__nav a::after{content:"";position:absolute;left:14px;right:14px;bottom:6px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .45s var(--ease)}
 .hd__nav a:hover,.hd__nav a.is-cur{color:var(--paper)}
 .hd__nav a:hover::after,.hd__nav a.is-cur::after{transform:none}
 .hd__r{display:flex;align-items:center;gap:22px;padding-left:22px;border-left:1px solid var(--line)}
-.live{margin:0;display:flex;align-items:center;gap:10px;font:400 13.5px/1 var(--sans);letter-spacing:.02em;color:var(--mute);white-space:nowrap}
+.live{margin:0;display:flex;align-items:center;gap:10px;font:400 14.5px/1 var(--sans);color:var(--mute);white-space:nowrap}
 .live i{width:6px;height:6px;border-radius:50%;background:var(--dim)}
 .live.is-open{color:var(--paper)}
-.live.is-open i{background:var(--red);box-shadow:0 0 8px 1px rgba(207,58,47,.6)}
+.live.is-open i{background:var(--gold2);box-shadow:0 0 8px 1px var(--glow)}
 .lang{display:flex}
-.lang button{position:relative;min-width:32px;height:44px;font:500 12px/1 var(--sans);letter-spacing:.1em;color:var(--dim);transition:color .2s}
+.lang button{position:relative;min-width:32px;height:44px;font:500 12.5px/1 var(--sans);letter-spacing:.12em;color:var(--dim);transition:color .2s}
 .lang button[aria-pressed="true"]{color:var(--paper)}
 .lang button:hover{color:var(--paper)}
 .burger{display:none;position:relative;width:44px;height:44px}
@@ -87,27 +97,44 @@ body{transition:opacity .4s}
 .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
 .burger[aria-expanded="true"] span:nth-child(2){width:0}
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-@media (max-width:1180px){.hd__nav{display:none}.burger{display:block}}
-@media (max-width:640px){.live{display:none}.hd__logo img{height:30px}.hd__r{gap:6px;padding-left:0;border:0}:root{--hd:64px}}
 
-.sheet{position:fixed;inset:0;z-index:45;background:rgba(11,9,7,.98);display:flex;flex-direction:column;justify-content:flex-end;padding:calc(var(--hd) + 20px) var(--pad) 40px}
+/* az éjszaka csíkja: a kitöltés azt mutatja, hol tart az este az oldalon; a kis jel a valódi időt, ha épp nyitva vannak */
+.nt{position:relative;height:30px;margin:0 2px}
+.nt__ln{position:absolute;left:0;right:0;top:6px;height:1px;background:rgba(238,229,213,.22)}
+.nt__fill{position:absolute;left:0;right:0;top:6px;height:1px;background:var(--gold);transform-origin:0 50%;transform:scaleX(0);will-change:transform}
+.nt__tk{position:absolute;top:2px;width:1px;height:9px;background:rgba(238,229,213,.3)}
+.nt__h{position:absolute;top:11px;transform:translateX(-50%);padding:4px 6px;font:400 11.5px/1 var(--sans);letter-spacing:.06em;color:var(--dim);text-decoration:none;font-variant-numeric:tabular-nums;transition:color .3s}
+.nt__h:first-of-type{transform:none;padding-left:0}
+.nt__h:last-of-type{transform:translateX(-100%);padding-right:0}
+.nt__h:hover,.nt__h.on{color:var(--paper)}
+.nt__dot{position:absolute;left:0;top:2px;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--gold2);box-shadow:0 0 12px 2px var(--glow);will-change:transform}
+.nt__now{position:absolute;top:-1px;width:1px;height:15px;background:var(--gold);opacity:.8}
+.nt__now::after{content:attr(data-t);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:1px;font:500 9.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+@media (max-width:1180px){.hd__nav{display:none}.burger{display:block}}
+@media (max-width:640px){.live{display:none}.hd__logo img{height:28px}.hd__r{gap:6px;padding-left:0;border:0}:root{--hd:84px}.nt__h{font-size:11px;padding:4px 2px}.nt__now::after{display:none}}
+
+.sheet{position:fixed;inset:0;z-index:45;background:rgba(9,8,7,.98);display:flex;flex-direction:column;justify-content:flex-end;padding:calc(var(--hd) + 20px) var(--pad) 40px}
 .sheet__panel{width:100%}
 .sheet nav{display:grid;margin-bottom:28px;border-top:1px solid var(--line)}
-.sheet nav a{font:400 clamp(2rem,8vw,3rem)/1.1 var(--disp);text-decoration:none;padding:16px 0;color:var(--paper);border-bottom:1px solid var(--line)}
-.sheet nav a:active{color:var(--red)}
+.sheet nav a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;font:400 clamp(1.7rem,7vw,2.6rem)/1.15 var(--disp);text-decoration:none;padding:16px 0;color:var(--paper);border-bottom:1px solid var(--line)}
+.sheet nav a small{font:400 14px/1 var(--sans);color:var(--gold);font-variant-numeric:tabular-nums}
+.sheet nav a:active{color:var(--gold2)}
 .sheet__tel{font:500 15px/1 var(--sans);letter-spacing:.08em;color:var(--paper);text-decoration:none;display:inline-block;padding:14px 0}
 
-/* ------------------------------------------------ nyitás: sötét, a logó felirata pislákolva kigyullad, mint egy palacklámpa */
+/* ------------------------------------------------ nyitás: sötétben 17:59 áll, átfordul 18:00-ra, és kigyullad a logó felirata */
 .intro{position:fixed;inset:0;z-index:200;display:none;place-items:center;background:var(--ink);cursor:pointer}
 html.intro-on .intro{display:grid}
 html.intro-on body{overflow:hidden}
-.intro__in{position:relative;width:min(64vw,520px);will-change:transform,opacity}
-.intro__word{opacity:0;filter:drop-shadow(0 0 0 rgba(255,214,150,0))}
+.intro__in{position:relative;display:grid;justify-items:center;gap:clamp(26px,5vh,48px);width:min(76vw,560px);will-change:transform,opacity}
+.intro__clk{display:flex;font:400 clamp(2.4rem,7vw,4.6rem)/1 var(--disp);letter-spacing:.04em;color:var(--gold2);font-variant-numeric:tabular-nums}
+.intro__clk .rl{display:inline-block;height:1.08em;overflow:hidden}
+.intro__clk .rl span{display:block;height:1.08em;line-height:1.08em}
+.intro__word{width:100%;opacity:0;filter:drop-shadow(0 0 0 rgba(255,214,150,0))}
 .intro__word img{width:100%}
-.intro__skip{position:absolute;bottom:28px;left:0;right:0;text-align:center;margin:0;font:500 11.5px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--dim);opacity:0;transition:opacity 1s .8s}
+.intro__skip{position:absolute;bottom:28px;left:0;right:0;text-align:center;margin:0;font:500 11.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);opacity:0;transition:opacity 1s .8s}
 html.intro-run .intro__skip{opacity:1}
 
-/* ------------------------------------------------ nyitókép */
+/* ------------------------------------------------ nyitókép (18:00) */
 .hero{position:relative;height:100vh;height:100lvh;min-height:560px;overflow:hidden;background:#000}
 .hero__media{position:absolute;inset:0}
 .hero__img,.hero__gl{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 52%}
@@ -115,32 +142,37 @@ html.intro-run .intro__skip{opacity:1}
 .hero.gl-on .hero__gl{opacity:1}
 .hero.gl-on .hero__img{visibility:hidden}
 .hero.gl-wait .hero__img{opacity:.14}
-.hero__media::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(11,9,7,.92) 0%,rgba(11,9,7,.55) 28%,rgba(11,9,7,0) 55%),linear-gradient(90deg,rgba(11,9,7,.72) 0%,rgba(11,9,7,.4) 32%,rgba(11,9,7,0) 58%)}
-.hero__txt{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(48px,9vh,100px);z-index:2;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:30px 60px}
+.hero__media::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(11,9,7,.94) 0%,rgba(11,9,7,.55) 30%,rgba(11,9,7,0) 56%),linear-gradient(90deg,rgba(11,9,7,.74) 0%,rgba(11,9,7,.4) 34%,rgba(11,9,7,0) 60%)}
+.hero__txt{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(48px,9vh,100px);z-index:2;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:28px 60px}
 .hero__txt .h1{grid-column:1/-1}
-.hero__lead{max-width:30em;margin:0;color:#d9cfbd;font-size:clamp(16px,1.2vw,19px)}
-.hero__btns{display:flex;flex-wrap:wrap;gap:12px;grid-column:2;grid-row:2/span 2;align-self:end}
-.hero__tel{margin:-12px 0 0;font-size:14.5px;color:var(--mute)}
-.hero__tel a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(238,229,213,.3)}
-.hero__tel a:hover{border-color:var(--red)}
-.intro-wait .hero__txt>*{opacity:0}
-@media (max-width:900px){.hero__txt{grid-template-columns:minmax(0,1fr)}.hero__btns{grid-column:1;grid-row:auto}.hero__tel{margin:0}}
-@media (max-width:640px){.hero__media::after{background:linear-gradient(0deg,rgba(11,9,7,.95) 0%,rgba(11,9,7,.84) 40%,rgba(11,9,7,.2) 66%,rgba(11,9,7,0) 82%)}.hero__img{object-position:66% 50%}.hero__txt{bottom:40px;gap:20px}.btn{height:52px;padding:0 18px 0 20px;letter-spacing:.12em}}
+.hero__lead{max-width:31em;margin:0;color:#ddd3c1;font-size:clamp(17px,1.25vw,20px)}
+.hero__btns{display:flex;flex-wrap:wrap;gap:10px 18px;grid-column:2;grid-row:2/span 2;align-self:end}
+.hero__tel{margin:-12px 0 0;font-size:16px;color:var(--mute)}
+.hero__tel a{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--goldA)}
+.hero__tel a:hover{border-color:var(--gold)}
+@media (max-width:900px){.hero__txt{grid-template-columns:minmax(0,1fr)}.hero__btns{grid-column:1;grid-row:auto;margin-left:-12px}.hero__tel{margin:0}}
+@media (max-width:640px){.hero__media::after{background:linear-gradient(0deg,rgba(11,9,7,.95) 0%,rgba(11,9,7,.84) 42%,rgba(11,9,7,.2) 68%,rgba(11,9,7,0) 84%)}.hero__img{object-position:66% 50%}.hero__txt{bottom:36px;gap:18px}.btn{height:50px;padding:0 24px;letter-spacing:.14em}}
 
-/* ------------------------------------------------ fotók: sötéten érkeznek, aztán felkapcsol bennük a fény */
+/* ------------------------------------------------ fotók: odagörgetve fentről lefelé, lassan előjönnek */
 .ph{margin:0;position:relative}
 .ph__in{position:relative;overflow:hidden;background:#000}
 .ph__in img{width:100%;height:100%;object-fit:cover}
-.ph figcaption{margin-top:14px;font:400 14px/1.35 var(--sans);color:var(--dim)}
-.ph.rv .ph__in{clip-path:inset(100% 0 0 0);transition:clip-path 1.5s var(--ease)}
-.ph.rv .ph__in::after{content:"";position:absolute;inset:0;background:#060504;opacity:.82;pointer-events:none}
-.ph.rv .ph__in img{transform:scale(1.12);transition:transform 2.4s var(--ease)}
+.ph figcaption{margin-top:14px;font:400 15px/1.35 var(--sans);color:var(--dim)}
+.ph.rv .ph__in{clip-path:inset(0 0 100% 0);transition:clip-path 1.6s var(--wipe)}
+.ph.rv .ph__in img{transform:scale(1.12);transition:transform 2.2s var(--ease)}
 .ph.rv.is-in .ph__in{clip-path:inset(0 0 0 0)}
-.ph.rv.is-in .ph__in::after{animation:lampOn 1.6s .55s forwards}
-.ph.rv.is-in .ph__in img{transform:scale(1.04)}
-@keyframes lampOn{0%{opacity:.82}14%{opacity:.3}22%{opacity:.68}32%{opacity:.18}42%{opacity:.4}100%{opacity:0}}
-.rich .ph.is-in .ph__in img{transform:scale(1.1) translateY(var(--py,0px));transition:transform 2.4s var(--ease)}
-.ph.rv .ph__in::after{animation-fill-mode:forwards}
+.ph.rv.is-in .ph__in img{transform:none}
+.rich .ph.rv.is-in .ph__in img{transform:scale(1.08) translateY(var(--py,0px))}
+.ph.rv .ph__in::after{display:none}
+
+/* az este: minden szakasz egy óra, és ahogy telik az idő, egyre sötétebb */
+main>section{background:transparent}
+.pince{background:linear-gradient(180deg,#000 0,var(--n19) 40vh)!important}
+.ginek{background:linear-gradient(180deg,var(--n19) 0,var(--n20) 50vh)!important}
+.fenyek{background:linear-gradient(180deg,var(--n20) 0,var(--n21) 50vh)!important}
+.menu{background:linear-gradient(180deg,var(--n21) 0,var(--n22) 50vh)!important}
+.rev{background:linear-gradient(180deg,var(--n22) 0,var(--n23) 50vh)!important}
+.nyitva{background:linear-gradient(180deg,var(--n23) 0,var(--n00) 50vh)!important}
 
 /* ------------------------------------------------ a pince: aszimmetrikus, nagy képek, sok levegő */
 .pince{position:relative;padding:clamp(110px,18vh,200px) var(--pad) clamp(90px,15vh,170px);background:var(--ink)}
@@ -166,16 +198,16 @@ html.intro-run .intro__skip{opacity:1}
 }
 
 /* ------------------------------------------------ ginek: tipográfiai lista; egérrel a gin fotója követi a mutatót */
-.ginek{position:relative;padding:clamp(100px,16vh,180px) var(--pad);background:var(--ink2);border-top:1px solid var(--line)}
+.ginek{position:relative;padding:clamp(100px,16vh,180px) var(--pad);}
 .ginek__head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(16px,2vw,32px);align-items:end;margin-bottom:clamp(50px,8vh,90px)}
 .ginek__head .h2{grid-column:1/span 6}
 .ginek__head .txt{grid-column:8/span 5}
 .gl{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .gl li{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(16px,2vw,32px);align-items:baseline;padding:clamp(22px,3.2vh,34px) 0;border-bottom:1px solid var(--line)}
-.gl li::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--red);transform:scaleX(0);transform-origin:0 50%;transition:transform .7s var(--ease)}
-.gl__n{grid-column:1/span 5;font:400 clamp(1.7rem,3vw,2.9rem)/1.05 var(--disp);color:var(--paper);transition:transform .6s var(--ease),color .3s}
-.gl__d{grid-column:6/span 5;font:400 16.5px/1.45 var(--sans);color:var(--mute)}
-.gl__p{grid-column:11/span 2;justify-self:end;font:400 15px/1 var(--sans);color:var(--paper);white-space:nowrap;font-variant-numeric:tabular-nums}
+.gl li::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .7s var(--ease)}
+.gl__n{grid-column:1/span 5;font:400 clamp(1.45rem,2.5vw,2.45rem)/1.12 var(--disp);color:var(--paper);transition:transform .6s var(--ease),color .3s}
+.gl__d{grid-column:6/span 5;font:300 18px/1.45 var(--sans);color:var(--mute)}
+.gl__p{grid-column:11/span 2;justify-self:end;font:400 16.5px/1 var(--sans);color:var(--paper);white-space:nowrap;font-variant-numeric:tabular-nums}
 .gl__p small{font-size:13px;color:var(--dim);margin-left:6px}
 .gl__t{display:none}
 .gl li.rv{opacity:0;transform:translateY(16px);transition:opacity .9s var(--ease),transform 1.1s var(--ease);transition-delay:calc(var(--i)*.06s)}
@@ -217,7 +249,7 @@ html.intro-run .intro__skip{opacity:1}
 .menu__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:26px 40px;margin-bottom:clamp(36px,6vh,64px)}
 .tabs{display:flex;flex-wrap:wrap;gap:4px 2px}
 .tabs button{position:relative;height:48px;padding:4px 18px 0;font:500 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--dim);transition:color .25s}
-.tabs button::after{content:"";position:absolute;left:18px;right:18px;bottom:6px;background:var(--red);height:1px;transform:scaleX(0);transition:transform .5s var(--ease)}
+.tabs button::after{content:"";position:absolute;left:18px;right:18px;bottom:6px;background:var(--gold);height:1px;transform:scaleX(0);transition:transform .5s var(--ease)}
 .tabs button:hover{color:var(--paper)}
 .tabs button[aria-selected="true"]{color:var(--paper)}
 .tabs button[aria-selected="true"]::after{transform:none}
@@ -270,7 +302,7 @@ html.intro-run .intro__skip{opacity:1}
 .q{margin:0;max-width:30em}
 .q:nth-child(2){margin-left:auto}
 .q:nth-child(3){margin-left:8%}
-.q p{margin:0;font:400 clamp(1.5rem,2.5vw,2.3rem)/1.22 var(--disp);color:var(--paper)}
+.q p{margin:0;font:300 italic clamp(1.6rem,2.6vw,2.5rem)/1.3 var(--sans);color:var(--paper)}
 .q .w{opacity:.22;transition:opacity .5s}
 .q .w.on{opacity:1}
 .q footer{margin-top:16px;font:400 14px/1 var(--sans);color:var(--dim)}
@@ -286,10 +318,10 @@ html.intro-run .intro__skip{opacity:1}
 .panel .h2{font-size:clamp(2rem,3vw,3rem);max-width:100%}
 .hours{border-collapse:collapse;margin:30px 0 34px;width:100%}
 .hours tr{border-bottom:1px solid var(--line)}
-.hours th{text-align:left;font:400 16px/1 var(--sans);color:var(--mute);padding:15px 0}
-.hours td{text-align:right;font:400 16px/1 var(--sans);color:var(--paper);font-variant-numeric:tabular-nums}
+.hours th{text-align:left;font:400 17px/1 var(--sans);color:var(--mute);padding:15px 0}
+.hours td{text-align:right;font:400 17px/1 var(--sans);color:var(--paper);font-variant-numeric:tabular-nums}
 .hours tr.is-today th,.hours tr.is-today td{color:var(--paper)}
-.hours tr.is-today th::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--red);margin:0 10px 2px 0}
+.hours tr.is-today th::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold2);box-shadow:0 0 8px 1px var(--glow);margin:0 10px 2px 0}
 .hours tr.is-today th::after{content:" · " attr(data-t)}
 .hours tr.closed td{color:var(--dim)}
 .panel__info{display:grid;gap:14px;width:100%;margin-top:auto;padding-top:6px}
@@ -307,24 +339,27 @@ html.intro-run .intro__skip{opacity:1}
 @media (max-width:700px){.nyitva{grid-template-columns:minmax(0,1fr)}.nyitva__pic{width:78%}.nyitva__pic img{aspect-ratio:3/4}}
 
 /* ------------------------------------------------ lábléc függönyként marad ott alul */
-main{position:relative;z-index:1;background:var(--ink);box-shadow:0 30px 60px rgba(0,0,0,.6)}
-.ft{position:relative;z-index:0;background:#0a0807}
+main{position:relative;z-index:1;background:var(--n00);box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.ft{position:relative;z-index:0;background:var(--n02)}
 .rich .ft{position:sticky;bottom:0}
 .ft__in{padding:clamp(70px,12vh,120px) var(--pad) 50px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
 .ft__logo{width:min(300px,70vw);margin-bottom:18px}
-.ft__addr{margin:0;color:var(--paper);font-size:16px}
+.ft__addr{margin:0;color:var(--paper);font-size:17px}
+.ft__last{margin:0 0 6px;font:400 clamp(1.3rem,2.2vw,1.8rem)/1.2 var(--disp);color:var(--gold2)}
 .ft__addr a{color:inherit;text-decoration:none}
 .ft__small{margin:0;font:300 13.5px/1.6 var(--sans);color:var(--dim)}
 .ft__small a{color:var(--mute);text-decoration:none;border-bottom:1px solid var(--line);display:inline-block;padding:8px 0 1px}
 
-/* ------------------------------------------------ kurzor: arany rombusz a logóból */
+/* ------------------------------------------------ kurzor: kis világos pont, linken nagy, áttetsző körré nő */
 .cur{display:none}
-.rich .cur{display:block;position:fixed;left:0;top:0;z-index:150;pointer-events:none;opacity:0;transition:opacity .3s}
-.cur i{position:absolute;left:0;top:0;transform-origin:50% 50%}
-.cur__d{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--gold2)}
-.cur__r{width:30px;height:30px;margin:-15px 0 0 -15px;border:1px solid rgba(228,198,130,.55);transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease),border-color .3s,opacity .3s}
-.cur.on-link .cur__r{width:46px;height:46px;margin:-23px 0 0 -23px;border-color:var(--gold2)}
+.rich .cur{display:block;position:fixed;left:0;top:0;z-index:150;pointer-events:none;opacity:0;transition:opacity .3s;will-change:transform}
+.cur__d{position:absolute;left:0;top:0;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--paper);border:1px solid transparent;transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease),background-color .3s,border-color .3s}
+.cur.on-link .cur__d{width:56px;height:56px;margin:-28px 0 0 -28px;background:rgba(238,229,213,.1);border-color:var(--paper)}
+.cur.down .cur__d{width:6px;height:6px;margin:-3px 0 0 -3px}
 .rich,.rich a,.rich button{cursor:none}
 
 /* ------------------------------------------------ csökkentett mozgás */
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+@media (max-width:760px){.nt__m{display:none}}
+.panel .h2{font-size:clamp(1.5rem,min(3vw,7.2vw),3rem)}
+@media (max-width:900px){.gl__n{font-size:clamp(1.12rem,4.9vw,1.6rem);overflow-wrap:anywhere}.gl__p{font-size:15px}}
