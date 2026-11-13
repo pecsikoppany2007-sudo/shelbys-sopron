@@ -1,6 +1,7 @@
 /* Shelby's Gin Bar – bemutató oldal, v5: egy éjszaka 18:00-tól 02:00-ig.
    GSAP + ScrollTrigger. Egérrel Lenis (lassabb, puhább görgetés), érintőn natív görgetés: ott semmi nem követi az ujjat,
-   csak egyszeri, időzített mozgások vannak. A fejléc csíkján halad az este, ahogy lefelé görget; a címek betűnként gyúlnak ki, a nyitóképen felkapcsolnak a fények (WebGL). */
+   csak egyszeri, időzített mozgások vannak. A fejléc csíkján halad az este, ahogy lefelé görget; v6: gyertyafény és régi film (címkártya, írisz, szemcse),
+   a címek szavanként jönnek elő a sötétből, gyertyafény-foltok lobognak a címek mögött, az egér is visz egy kis fényt. */
 (function () {
   'use strict';
   var html = document.documentElement;
@@ -159,12 +160,12 @@
   function pic(n, sizes) {
     var big = { kalitka2: 1600, fulke: 1600, buborek: 1300, tal: 1300, gt2: 1300, koktel2: 1300, monkey: 1100, opihr2: 1100, ginmare2: 1100, brock: 1100, amuerte2: 1100 }[n] || 1300;
     var small = { 1600: 800, 1300: 700, 1100: 600 }[big];
-    return '<img data-k="' + n + '" src="img/' + n + '-' + big + '.webp?v=6" srcset="img/' + n + '-' + small + '.webp?v=6 ' + small + 'w, img/' + n + '-' + big + '.webp?v=6 ' + big + 'w" sizes="' + sizes + '" alt="' + esc(PICS[n] || '') + '" decoding="async">';
+    return '<img data-k="' + n + '" src="img/' + n + '-' + big + '.webp?v=7" srcset="img/' + n + '-' + small + '.webp?v=7 ' + small + 'w, img/' + n + '-' + big + '.webp?v=7 ' + big + 'w" sizes="' + sizes + '" alt="' + esc(PICS[n] || '') + '" decoding="async">';
   }
   function renderGins() {
     $('#ginList').innerHTML = GINS.map(function (g, i) {
       var sm = { 1600: 800, 1300: 700, 1100: 600 }[{ fulke: 1600, kalitka2: 1600 }[g[3]] || 1100];
-      return '<li class="' + (reduced ? '' : 'rv') + '" style="--i:' + i + '" data-i="' + i + '"><img class="gl__t" src="img/' + g[3] + '-' + sm + '.webp?v=6" alt="" loading="lazy" decoding="async"><span class="gl__n">' + esc(g[0]) + '</span><span class="gl__d">' + esc(L(g[1])) + '</span><span class="gl__p">' + price(g[2]) + '<small>4 cl</small></span></li>';
+      return '<li class="' + (reduced ? '' : 'rv') + '" style="--i:' + i + '" data-i="' + i + '"><img class="gl__t" src="img/' + g[3] + '-' + sm + '.webp?v=7" alt="" loading="lazy" decoding="async"><span class="gl__n">' + esc(g[0]) + '</span><span class="gl__d">' + esc(L(g[1])) + '</span><span class="gl__p">' + price(g[2]) + '<small>4 cl</small></span></li>';
     }).join('');
   }
   function swapPic(frame, n, sizes, instant) {
@@ -194,19 +195,22 @@
     swapPic($('#menuFrame'), g.pic, '(min-width: 1000px) 40vw, 90vw', instant);
   }
 
-  /* ------------------------------------------------------------------ címek: a betűk véletlen sorrendben gyúlnak ki, mint a palacklámpák */
+  /* ------------------------------------------------------------------ címek: szavanként, lassan jönnek elő a sötétből */
   function splitBl() {
     $$('.bl').forEach(function (h) {
       var tx = h.getAttribute('data-txt') || h.textContent; h.setAttribute('data-txt', tx); h.setAttribute('aria-label', tx);
-      var ws = tx.split(/[ \n\t]+/).filter(Boolean), n = 0;
-      ws.forEach(function (w) { n += Array.from(w).length; });
-      var ord = []; for (var i = 0; i < n; i++) ord.push(i);
-      for (i = n - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), x = ord[i]; ord[i] = ord[j]; ord[j] = x; }
-      var step = Math.min(.075, 1.25 / Math.max(n, 1)), k = 0;
-      h.innerHTML = ws.map(function (w) {
-        return '<span class="wd" aria-hidden="true">' + Array.from(w).map(function (c) { return '<span class="ch" style="--d:' + (ord[k++] * step).toFixed(3) + 's">' + esc(c) + '</span>'; }).join('') + '</span>';
-      }).join(' ');
+      h.innerHTML = tx.split(/[ \n\t]+/).filter(Boolean).map(function (w, i) { return '<span class="wd" aria-hidden="true" style="--i:' + i + '">' + esc(w) + '</span>'; }).join(' ');
     });
+  }
+  /* gyertyafény-foltok a címek mögött; csak akkor lobognak, amikor látszanak */
+  function initCandles() {
+    var vs = ['', ' cdl--b', ' cdl--c'];
+    var els = $$('.pince__txt,.ginek__head,.fenyek__head,.menu__head,.rev,.panel').map(function (c, i) {
+      c.insertAdjacentHTML('afterbegin', '<i class="cdl' + vs[i % 3] + '" aria-hidden="true"></i>'); return c.firstElementChild;
+    });
+    if (reduced) return;
+    var o = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle('on', e.isIntersecting); }); }) : null;
+    els.forEach(function (e) { if (o) o.observe(e); else e.classList.add('on'); });
   }
   function splitQuotes() {
     $$('.q p').forEach(function (p) {
@@ -375,7 +379,9 @@
     hPos.push([Math.max(document.documentElement.scrollHeight - innerHeight, hPos[hPos.length - 1][0] + 1), 8]);
     ntW = nt.clientWidth;
   }
+  var calmT = 0;
   function onScroll(y) {
+    if (!reduced) { html.classList.remove('calm'); clearTimeout(calmT); calmT = setTimeout(function () { html.classList.add('calm'); }, 350); }
     hd.classList.toggle('is-solid', y > innerHeight * 0.8);
     if (!hPos.length) return;
     var p = y + innerHeight * .35, h = 0;
@@ -399,9 +405,19 @@
   ScrollTrigger.addEventListener('refresh', function () { measureNight(); onScroll(lenis ? lenis.scroll : scrollY); });
 
   /* ------------------------------------------------------------------ kurzor: kis világos pont, linken nagy áttetsző körré nő */
-  var cur = $('#cur');
+  var cur = $('#cur'), cg = $('#cglow'), gx = innerWidth / 2, gy = innerHeight / 2, tgx = gx, tgy = gy, gRun = false;
+  function gTick() {
+    gx += (tgx - gx) * .07; gy += (tgy - gy) * .07;
+    cg.style.transform = 'translate3d(' + gx.toFixed(1) + 'px,' + gy.toFixed(1) + 'px,0)';
+    if (Math.abs(tgx - gx) < .3 && Math.abs(tgy - gy) < .3) { gRun = false; gsap.ticker.remove(gTick); }
+  }
   if (rich) {
-    addEventListener('mousemove', function (e) { cur.style.transform = 'translate3d(' + e.clientX + 'px,' + e.clientY + 'px,0)'; cur.style.opacity = 1; }, { passive: true });
+    addEventListener('mousemove', function (e) {
+      cur.style.transform = 'translate3d(' + e.clientX + 'px,' + e.clientY + 'px,0)'; cur.style.opacity = 1;
+      tgx = e.clientX; tgy = e.clientY; if (!cg.classList.contains('on')) { gx = tgx; gy = tgy; cg.classList.add('on'); }
+      if (!gRun) { gRun = true; gsap.ticker.add(gTick); }
+    }, { passive: true });
+    document.addEventListener('mouseleave', function () { cg.classList.remove('on'); });
     document.addEventListener('mouseover', function (e) { var on = !!e.target.closest('a,button,[role="tab"],.gl li'); if (on !== cur.classList.contains('on-link')) cur.classList.toggle('on-link', on); });
     addEventListener('mousedown', function () { cur.classList.add('down'); });
     addEventListener('mouseup', function () { cur.classList.remove('down'); });
@@ -549,20 +565,23 @@
   function runIntro() {
     if (!html.classList.contains('intro-on')) { heroIn(); return; }
     html.classList.add('intro-run');
-    var inn = $('.intro__in'), wd = $('.intro__word'), clk = $('.intro__clk');
+    var inn = $('.intro__in'), wd = $('.intro__word'), clk = $('.intro__clk'), pl = $('.intro__place'), gw = $('.intro__glow'), ir = { r: 0 };
+    var R = Math.hypot(innerWidth, innerHeight) / 2 + 20;
     var tl = gsap.timeline({ onComplete: done });
-    tl.fromTo(clk, { opacity: 0 }, { opacity: 1, duration: .5, ease: 'power1.out' }, .1)
-      .to($$('.intro__clk .rl span'), { yPercent: -100, duration: .75, ease: 'expo.inOut', stagger: .06 }, .95)
-      .fromTo(inn, { scale: .97 }, { scale: 1, duration: 3.2, ease: 'power2.out' }, 0)
-      // a felirat úgy gyullad ki, mint egy palacklámpa: felvillan, visszaesik, aztán ég
-      .to(wd, { keyframes: [{ opacity: .75, duration: .12 }, { opacity: .15, duration: .14 }, { opacity: .7, duration: .1 }, { opacity: .45, duration: .12 }, { opacity: 1, duration: .5 }], ease: 'none' }, 1.55)
-      .to(wd, { filter: 'drop-shadow(0 0 22px rgba(255,214,150,.35))', duration: .9, ease: 'power2.out' }, 2.05)
-      .to(inn, { opacity: 0, y: -14, duration: .7, ease: 'power2.in' }, 3.0)
-      .to(intro, { backgroundColor: 'rgba(11,9,7,0)', duration: .8, ease: 'power1.in' }, 3.3)
-      .add(heroIn, 3.3);
+    // sötétben áll a címkártya, 17:59; meggyullad a gyertya (a fény lentről, lassan nő és lobog), 18:00 lesz,
+    // a fény felhozza a logót; végül íriszként, körben kinyílik a nyitókép
+    tl.fromTo(inn, { opacity: 0 }, { opacity: 1, duration: .9, ease: 'power1.out' }, .1)
+      .fromTo([pl, clk], { opacity: 0 }, { opacity: 1, duration: 1, ease: 'power1.out', stagger: .25 }, .3)
+      .to(gw, { keyframes: [{ opacity: .55, scale: .32, duration: .14 }, { opacity: .3, scale: .3, duration: .18 }, { opacity: 1, scale: 1, duration: 1.6, ease: 'power2.out' }] }, 1.05)
+      .to($$('.intro__clk .rl span'), { yPercent: -100, duration: .8, ease: 'expo.inOut', stagger: .06 }, 1.5)
+      .fromTo(inn, { scale: .975 }, { scale: 1, duration: 3.8, ease: 'power2.out' }, 0)
+      .to(wd, { opacity: 1, duration: 1.5, ease: 'power1.inOut' }, 1.9)
+      .to(wd, { filter: 'drop-shadow(0 0 26px rgba(255,170,86,.35))', duration: 1.2, ease: 'power2.out' }, 2.3)
+      .to(ir, { r: R, duration: 1.25, ease: 'power2.inOut', onUpdate: function () { intro.style.setProperty('--ir', ir.r.toFixed(1) + 'px'); } }, 3.7)
+      .add(heroIn, 3.75);
     function skip() { if (tl.progress() < .7) tl.timeScale(5); }
     intro.addEventListener('click', skip); addEventListener('keydown', skip, { once: true }); addEventListener('wheel', skip, { once: true, passive: true }); addEventListener('touchstart', skip, { once: true, passive: true });
-    function done() { html.classList.remove('intro-on', 'intro-run'); try { sessionStorage.setItem('sg-intro', '1'); } catch (e) {} if (lenis) lenis.start(); ScrollTrigger.refresh(); }
+    function done() { intro.style.removeProperty('--ir'); html.classList.remove('intro-on', 'intro-run'); try { sessionStorage.setItem('sg-intro', '1'); } catch (e) {} if (lenis) lenis.start(); ScrollTrigger.refresh(); }
     if (lenis) lenis.stop();
   }
 
@@ -578,7 +597,7 @@
   setInterval(renderLive, 60000);
   splitQuotes();
   document.fonts.ready.then(function () {
-    ready = true;
+    ready = true; initCandles();
     observeBl(); initReveal(); initQuotes(); initBottles(); initParallax();
     runIntro();
     ScrollTrigger.refresh();

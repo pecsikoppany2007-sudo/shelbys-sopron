@@ -330,7 +330,7 @@ main>section{background:transparent}
 .panel__info a{text-decoration:none;color:var(--paper);font-size:17px;padding:4px 0}
 .panel__info a:hover{color:var(--gold2)}
 .panel__note{margin:22px 0 0;font:300 14.5px/1.5 var(--sans);color:var(--mute);max-width:24em}
-.map{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:16px;padding:24px;background:var(--ink3) url(../img/fulke-800.webp) center/cover;min-height:380px}
+.map{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:16px;padding:24px;background:var(--ink3) url(../img/fulke-800.webp?v=7) center/cover;min-height:380px}
 .map::before{content:"";position:absolute;inset:0;background:rgba(14,12,10,.78)}
 .map>*{position:relative}
 .map p{margin:0;font:300 14px/1.5 var(--sans);color:var(--mute)}
@@ -363,3 +363,63 @@ main{position:relative;z-index:1;background:var(--n00);box-shadow:0 30px 60px rg
 @media (max-width:760px){.nt__m{display:none}}
 .panel .h2{font-size:clamp(1.5rem,min(3vw,7.2vw),3rem)}
 @media (max-width:900px){.gl__n{font-size:clamp(1.12rem,4.9vw,1.6rem);overflow-wrap:anywhere}.gl__p{font-size:15px}}
+
+/* ================================================= v6: gyertyafény, régimódi hangulat ================================================= */
+:root{--candle:rgba(255,168,84,.16);--candle2:rgba(255,138,58,.06);--warm:#f2e4c6}
+
+/* címek: villogás helyett szavanként, lassan jönnek elő a sötétből, mint amikor odaér a gyertya fénye */
+.h1,.h2{color:var(--warm);text-shadow:0 0 22px rgba(255,170,80,.14)}
+.bl .wd{display:inline-block;white-space:nowrap;opacity:0;transform:translateY(.14em);transition:opacity 1.9s cubic-bezier(.3,.1,.3,1),transform 2.2s var(--ease);transition-delay:calc(var(--i)*.11s)}
+.bl.is-in .wd,.bl.lit .wd,.no-anim .bl .wd{opacity:1;transform:none}
+.bl.lit .wd{transition:none}
+
+/* gombok: régi nyomdai címke, kettős vonal behajló sarkokkal; hoverre gyertyafény gyúl benne */
+.btn{height:56px;padding:0 20px;border:14px solid transparent;border-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' fill='none'%3E%3Cpath d='M6 .5H42A5.5 5.5 0 0 0 47.5 6V42A5.5 5.5 0 0 0 42 47.5H6A5.5 5.5 0 0 0 .5 42V6A5.5 5.5 0 0 0 6 .5Z' stroke='%23d3c19e'/%3E%3Cpath d='M10 4H38A6 6 0 0 0 44 10V38A6 6 0 0 0 38 44H10A6 6 0 0 0 4 38V10A6 6 0 0 0 10 4Z' stroke='%23d3c19e' stroke-opacity='.45' stroke-width='.8'/%3E%3C/svg%3E") 14 / 14px stretch;letter-spacing:.2em;font-size:13px;isolation:isolate;transition:color .5s}
+.btn::after{content:none}
+.btn::before{content:"";position:absolute;inset:-8px;border:0;width:auto;top:-8px;bottom:-8px;left:-8px;transform:none;z-index:-1;background:radial-gradient(ellipse 60% 90% at 50% 100%,rgba(255,176,90,.34),rgba(255,140,60,.1) 55%,transparent 80%);opacity:0;transition:opacity .9s cubic-bezier(.3,.1,.3,1)}
+.btn:hover::before,.btn:focus-visible::before{transform:none;opacity:1;animation:cdl 4.6s infinite}
+.btn:hover,.btn:focus-visible{color:#fff4dc}
+.btn--gold{color:var(--gold2)}
+@media (max-width:640px){.btn{height:52px;padding:0 14px;letter-spacing:.15em}}
+
+/* gyertyafény-foltok a címek mögött: lassan, szabálytalanul lobognak */
+.pince__txt,.ginek__head,.fenyek__head,.menu__head,.panel,.rev{position:relative;isolation:isolate}
+.cdl{position:absolute;left:-12vw;top:55%;width:min(96vmin,940px);aspect-ratio:1;margin-top:calc(min(96vmin,940px)/-2);z-index:-1;pointer-events:none;background:radial-gradient(closest-side,var(--candle),var(--candle2) 46%,transparent 74%);opacity:.9}
+/* a lobogás csak akkor fut, amikor nem görget (görgetés közben sokba kerülne, és úgyis csak állva látszik) */
+.calm .cdl.on{animation:cdl 7.3s infinite}
+.calm .cdl--b.on{animation-duration:6.1s;animation-delay:-2.3s}
+.calm .cdl--c.on{animation-duration:8.2s;animation-delay:-4.1s}
+@keyframes cdl{0%{opacity:.86}6%{opacity:.97}9%{opacity:.8}15%{opacity:.93}22%{opacity:.88}27%{opacity:1}33%{opacity:.84}41%{opacity:.92}48%{opacity:.79}53%{opacity:.95}61%{opacity:.87}68%{opacity:.99}74%{opacity:.83}82%{opacity:.94}89%{opacity:.86}95%{opacity:.97}100%{opacity:.86}}
+
+/* fotók: régi fotópapír, a széleken sötétebb, az egyik sarokból gyertya világítja meg */
+.ph__in::after,.nyitva__pic::after{content:"";position:absolute;inset:0;pointer-events:none;display:block!important;background:radial-gradient(ellipse 70% 60% at 18% 100%,rgba(255,150,64,.17),transparent 70%);box-shadow:inset 0 0 90px rgba(10,6,3,.55)}
+.nyitva__pic{position:relative}
+.nyitva__pic::after{bottom:auto;aspect-ratio:2/3}
+@media (max-width:700px){.nyitva__pic::after{aspect-ratio:3/4}}
+
+/* az egér gyertyát visz: puha, meleg fényfolt követi, lassan */
+.cglow{display:none}
+.rich .cglow{position:fixed;left:0;top:0;z-index:5;width:760px;height:760px;margin:-380px 0 0 -380px;pointer-events:none;background:radial-gradient(closest-side,rgba(255,170,86,.085),rgba(255,140,60,.035) 50%,transparent 78%);display:none;will-change:transform}
+.rich .cglow.on{display:block;animation:cgIn .8s both}
+@keyframes cgIn{from{opacity:0}}
+.rich .cglow i{position:absolute;inset:0;background:inherit}
+.calm.rich .cglow.on i{animation:cdl 5.2s infinite}
+
+/* régi fotópapír szemcséje: csak a fotókon és a nyitó címkártyán, állóképként (egy teljes képernyős, mozgó réteg sokba került görgetéskor) */
+.ph__in::before,.nyitva__pic::before,.menu__frame::before,.intro::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .45 0 0 0 0 .38 0 0 0 1.4 -.5'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.18}
+.ph__in::after,.nyitva__pic::after{z-index:1}
+.nyitva__pic::before{bottom:auto;aspect-ratio:2/3}
+@media (max-width:700px){.nyitva__pic::before{aspect-ratio:3/4}}
+.menu__frame::before{z-index:3}
+.rich .cur{z-index:230}
+main>section{overflow-x:clip}
+
+/* nyitás: régi filmes címkártya; sötétben gyertya gyullad, fénye felhozza a feliratot, aztán körben kinyílik a kép (írisz) */
+.intro{background:#080605}
+.intro__in{gap:clamp(18px,3.4vh,30px);padding:clamp(34px,6vh,56px) clamp(30px,5vw,60px);border:22px solid transparent;border-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' fill='none'%3E%3Cpath d='M9 .5H63A8.5 8.5 0 0 0 71.5 9V63A8.5 8.5 0 0 0 63 71.5H9A8.5 8.5 0 0 0 .5 63V9A8.5 8.5 0 0 0 9 .5Z' stroke='%23d3c19e' stroke-opacity='.7'/%3E%3Cpath d='M15 6H57A9 9 0 0 0 66 15V57A9 9 0 0 0 57 66H15A9 9 0 0 0 6 57V15A9 9 0 0 0 15 6Z' stroke='%23d3c19e' stroke-opacity='.35' stroke-width='.8'/%3E%3C/svg%3E") 22 / 22px stretch;width:min(84vw,600px)}
+.intro__card{position:relative;display:contents}
+.intro__place{margin:0;font:300 italic clamp(16px,1.6vw,20px)/1 var(--sans);letter-spacing:.04em;color:var(--mute)}
+.intro__glow{position:absolute;left:50%;top:62%;width:min(140vmin,1200px);aspect-ratio:1;transform:translate(-50%,-50%) scale(.2);border-radius:50%;background:radial-gradient(closest-side,rgba(255,170,84,.3),rgba(255,140,58,.1) 48%,transparent 76%);opacity:0;pointer-events:none;z-index:-1}
+.intro__glow i{position:absolute;inset:0;border-radius:50%;background:inherit;animation:cdl 4.2s infinite}
+.intro__word{filter:none}
+html.intro-on .intro{-webkit-mask-image:radial-gradient(circle at 50% 50%,transparent var(--ir,0px),#000 calc(var(--ir,0px) + 1px));mask-image:radial-gradient(circle at 50% 50%,transparent var(--ir,0px),#000 calc(var(--ir,0px) + 1px))}
