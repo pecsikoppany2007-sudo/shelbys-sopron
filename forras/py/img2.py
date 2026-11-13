@@ -3,7 +3,10 @@ import sys, glob, numpy as np, cv2
 from PIL import Image
 sys.path.insert(0,'/home/user/shelbys/forras/py')
 I='/home/user/shelbys/forras/insta/'; F='/home/user/shelbys/forras/fbnagy/'; OUT='/home/user/shelbys/site/img'
-def g(p): return glob.glob(p)[0]
+import os
+def g(p):
+    f=glob.glob(p)[0]; sp='/home/user/shelbys/forras/sr/'+os.path.basename(f)  # helyi AI-felskálázott változat, ha van
+    return sp if os.path.exists(sp) else f
 L = {
  'hero':     (I+'018_*',(0,0,1,1),(900,1600,2400),1.0),
  'herom':    (I+'018_*',(0.30,0,0.86,1),(800,1200),1.0),

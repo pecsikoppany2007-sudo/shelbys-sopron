@@ -1,6 +1,6 @@
 /* Shelby's Gin Bar – bemutató oldal.
    GSAP + ScrollTrigger. Egérrel Lenis (lassabb, puhább görgetés), érintőn natív görgetés: ott semmi nem követi az ujjat,
-   csak egyszeri, időzített mozgások vannak. A nyitóképen felkapcsolnak a fények (WebGL), az átjáróban a logó aranykeretein repülünk át (three.js), mindkettő csak valódi GPU-n. */
+   csak egyszeri, időzített mozgások vannak. A nyitóképen felkapcsolnak a fények (WebGL), a pince előtt a logó vékony kerete rajzolódik meg, benne felgyulladnak a lámpák. */
 (function () {
   'use strict';
   var html = document.documentElement;
@@ -177,8 +177,7 @@
   var DECO = {
     hero: function (w) { return w < 700 ? 30 : Math.min(52, Math.max(38, w * .032)); },
     panel: function (w) { return w < 500 ? 26 : 34; },
-    gin: function (w) { return w < 500 ? 24 : 30; },
-    tunnel: function () { return 54; }
+    gin: function (w) { return w < 500 ? 24 : 30; }
   };
   function drawDeco(svg) {
     var r = svg.getBoundingClientRect(), w = Math.round(r.width), h = Math.round(r.height);
@@ -193,7 +192,7 @@
   function pic(n, sizes) {
     var big = { kalitka2: 1600, fulke: 1600, buborek: 1300, tal: 1300, gt2: 1300, koktel2: 1300, monkey: 1100, opihr2: 1100, ginmare2: 1100, brock: 1100, amuerte2: 1100 }[n] || 1300;
     var small = { 1600: 800, 1300: 700, 1100: 600 }[big];
-    return '<img data-k="' + n + '" src="img/' + n + '-' + big + '.webp?v=2" srcset="img/' + n + '-' + small + '.webp?v=2 ' + small + 'w, img/' + n + '-' + big + '.webp?v=2 ' + big + 'w" sizes="' + sizes + '" alt="' + esc(PICS[n] || '') + '" decoding="async">';
+    return '<img data-k="' + n + '" src="img/' + n + '-' + big + '.webp?v=3" srcset="img/' + n + '-' + small + '.webp?v=3 ' + small + 'w, img/' + n + '-' + big + '.webp?v=3 ' + big + 'w" sizes="' + sizes + '" alt="' + esc(PICS[n] || '') + '" decoding="async">';
   }
   var ginI = -1;
   function renderGins() {
@@ -500,65 +499,46 @@
     new IntersectionObserver(function (es) { G.vis = es[0].isIntersecting; if (G.vis) G.kick(); }).observe(hero);
   })();
 
-  /* ------------------------------------------------------------------ átjáró: a logó aranykeretein repülünk át, a végén a felirat.
-     Valódi GPU-n egyetlen 3D jelenet (three.js, lustán töltve): asztali gépen a görgetés viszi, érintőn egyszer, időzítve fut le.
-     GPU nélkül asztali gépen ugyanez CSS 3D-ben, a keret SVG-jével; telefonon GPU nélkül kimarad. */
-  function init3d(stage) {
-    if (reduced || !hwGpu || window.__noGl || !('IntersectionObserver' in window)) return null;
-    var cv = document.createElement('canvas'), S = { p: 0, mx: 0, my: 0, dpr: rich ? 1.5 : 1.75 }, ready = false, vis = false, run = false, asked = false;
-    cv.className = 'tunnel__gl'; stage.appendChild(cv);
-    function tick() { if (!ready || !vis) { gsap.ticker.remove(tick); run = false; return; } S.frame(); }
-    S.kick = function () { if (ready && vis && !run) { run = true; gsap.ticker.add(tick); } };
+  /* ------------------------------------------------------------------ belépő: a logó vékony kerete körbe megrajzolódik (fentről, két irányba),
+     benne a sötét pincefotón felgyulladnak a lámpák, aztán a keret a képernyő széléig tágul és elhalványul. Nincs nyíló ajtó.
+     Asztali gépen a görgetés viszi (kitűzve), érintőn egyszer, időzítve fut le; csökkentett mozgásnál a kész, kivilágított keret áll. */
+  function initEnter() {
+    var ent = $('#ent'); if (!ent) return;
+    var ph = $('.ent__ph', ent), box = $('.ent__box', ent), fr = $('.ent__fr', ent), st = { p: 0 }, V = {};
+    function lamp(f) { return f <= 0 ? 0 : f < .14 ? f / .14 * .7 : f < .24 ? .7 - (f - .14) / .1 * .45 : f < .34 ? .25 + (f - .24) / .1 * .5 : Math.min(1, .75 + (f - .34) / .66 * .25); }
+    function sm(a, b, x) { x = Math.min(1, Math.max(0, (x - a) / (b - a))); return x * x * (3 - 2 * x); }
+    function size() {
+      var w = innerWidth, h = ent.querySelector('.ent__stage').clientHeight, ph_ = w < 700;
+      V.w = w; V.h = h;
+      V.bw = Math.round(ph_ ? w * .8 : Math.min(w * .56, h * .95));
+      V.bh = Math.round(ph_ ? Math.min(h * .56, w * 1.05) : Math.min(h * .6, w * .4));
+      V.fit = Math.max(w / V.bw, h / V.bh) * 1.12;
+      box.style.setProperty('--bw', V.bw + 'px'); box.style.setProperty('--bh', V.bh + 'px');
+      fr._w = 0; drawDeco(fr); upd();
+    }
+    function upd() {
+      var p = st.p;
+      var d = sm(0, .3, p), l = lamp(Math.min(1, Math.max(0, (p - .2) / .38))), e = sm(.58, 1, p);
+      var s = 1 + (V.fit - 1) * e, hx = Math.min(V.w / 2, V.bw / 2 * s), hy = Math.min(V.h / 2, V.bh / 2 * s);
+      fr.style.setProperty('--a', (d * 180.5).toFixed(2) + 'deg');
+      box.style.setProperty('--s', s.toFixed(4)); box.style.setProperty('--fo', (1 - sm(.3, .85, e)).toFixed(3));
+      var ix = (V.w / 2 - hx).toFixed(1) + 'px', iy = (V.h / 2 - hy).toFixed(1) + 'px';
+      ph.style.setProperty('--cl', ix); ph.style.setProperty('--cr', ix); ph.style.setProperty('--ct', iy); ph.style.setProperty('--cb', iy);
+      ph.style.setProperty('--dk', (.92 * (1 - l)).toFixed(3)); ph.style.setProperty('--z', (1.1 - .1 * p).toFixed(4));
+    }
+    window.__ent = { set: function (p) { st.p = p; upd(); } };
+    size(); addEventListener('resize', size);
+    if (reduced) { st.p = .58; upd(); return; }
+    if (rich) {
+      ScrollTrigger.create({ trigger: ent, start: 'top top', end: 'bottom bottom', scrub: .6, onUpdate: function (t) { st.p = t.progress; upd(); } });
+      return;
+    }
+    var played = false;
     new IntersectionObserver(function (es) {
-      if (es[es.length - 1].isIntersecting && !asked) {
-        asked = true;
-        import(new URL('js/tunnel3d.js?v=4', document.baseURI).href).then(function (m) { return m.init(cv, S); })
-          .then(function () { ready = true; cv.classList.add('on'); stage.classList.add('is-3d'); S.kick(); })
-          .catch(function () { cv.remove(); });
-      }
-    }, { rootMargin: '150% 0px' }).observe(stage);
-    new IntersectionObserver(function (es) { vis = es[es.length - 1].isIntersecting; S.kick(); }).observe(stage);
-    if (rich) addEventListener('mousemove', function (e) { S.mx = e.clientX / innerWidth * 2 - 1; S.my = e.clientY / innerHeight * 2 - 1; }, { passive: true });
-    return S;
-  }
-  function initTunnel() {
-    var tun = $('#tunnel'), st = $('#tunnelStage');
-    var GS = init3d(st); window.__tun = GS;
-    if (!rich) {
-      if (!GS) return;
-      tun.classList.add('is-mob');
-      var played = false;
-      new IntersectionObserver(function (es) {
-        if (played || !es[es.length - 1].isIntersecting) return;
-        played = true;
-        gsap.to(GS, { p: 1, duration: 7, ease: 'power1.inOut', delay: .2 });
-      }, { threshold: .6 }).observe(tun);
-      return;
-    }
-    if (GS) {
-      ScrollTrigger.create({ trigger: '#tunnel', start: 'top top', end: 'bottom bottom', scrub: .8, onUpdate: function (s) { GS.p = s.progress; } });
-      return;
-    }
-    // tartalék: CSS 3D keretek (GPU nélkül)
-    var N = 7, gap = 650, fr = [];
-    for (var i = 0; i < N; i++) {
-      var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      s.setAttribute('class', 'deco tunnel__fr'); s.setAttribute('data-deco', 'tunnel');
-      st.insertBefore(s, st.firstChild); fr.push(s);
-    }
-    drawAllDeco();
-    var end = $('.tunnel__end', st), D = N * gap + 700;
-    function upd(p) {
-      var z0 = p * D;
-      fr.forEach(function (s, i) {
-        var z = -(i + 1) * gap + z0;
-        var o = z > 700 ? 0 : z > 380 ? 1 - (z - 380) / 320 : z < -3600 ? 0 : z < -2600 ? (z + 3600) / 1000 : 1;
-        s.style.transform = 'translate3d(0,0,' + z.toFixed(1) + 'px)'; s.style.opacity = o.toFixed(3);
-      });
-      end.style.transform = 'translate3d(0,0,' + (-D + z0).toFixed(1) + 'px)';
-    }
-    upd(0);
-    ScrollTrigger.create({ trigger: '#tunnel', start: 'top bottom', end: 'bottom bottom', scrub: true, onUpdate: function (s) { upd(s.progress); } });
+      if (played || !es[es.length - 1].isIntersecting) return;
+      played = true;
+      gsap.to(st, { p: 1, duration: 4.6, ease: 'power1.inOut', delay: .15, onUpdate: upd });
+    }, { threshold: .6 }).observe(ent);
   }
 
   /* a pulton: a palackok sorban felkapcsolnak, mint egy valódi palacklámpa (felvillan, visszaesik, aztán ég).
@@ -647,7 +627,7 @@
   splitQuotes();
   document.fonts.ready.then(function () {
     splitBl(); ready = true;
-    observeBl(); initReveal(); initQuotes(); initTunnel(); initBottles(); initParallax();
+    observeBl(); initReveal(); initQuotes(); initEnter(); initBottles(); initParallax();
     runIntro();
     ScrollTrigger.refresh();
   });

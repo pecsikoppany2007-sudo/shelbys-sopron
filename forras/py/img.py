@@ -52,7 +52,8 @@ def grade(a, lift):
 names=(sys.argv[1:] or list(L)) if __name__=="__main__" else []
 for n in names:
     s,c,ws,lift=L[n]
-    im=Image.open(f'{SRC}/{s}.jpg').convert('RGB'); W,H=im.size
+    sp=f'/home/user/shelbys/forras/sr/{s}.jpg'  # helyi AI-felskálázott változat, ha van
+    im=Image.open(sp if os.path.exists(sp) else f'{SRC}/{s}.jpg').convert('RGB'); W,H=im.size
     im=im.crop((int(c[0]*W),int(c[1]*H),int(c[2]*W),int(c[3]*H)))
     a=np.asarray(im)
     a=cv2.fastNlMeansDenoisingColored(a[...,::-1],None,3,5,7,21)[...,::-1]

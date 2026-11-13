@@ -135,18 +135,16 @@ html.intro-run .intro__skip{opacity:1}
 .intro-wait .hero__txt>*{opacity:0}
 @media (max-width:640px){.hero__media::after{background:linear-gradient(0deg,rgba(10,8,6,.94) 0%,rgba(10,8,6,.82) 38%,rgba(10,8,6,.25) 64%,rgba(10,8,6,0) 80%)}.hero__lead{margin:16px 0 24px}.hero__frame{inset:calc(var(--hd) + 2px) 10px 10px;width:calc(100% - 20px);height:calc(100% - var(--hd) - 12px)}.hero__img{object-position:66% 50%}.hero__txt{bottom:48px}.btn{height:50px;padding:0 20px 0 22px;letter-spacing:.16em}}
 
-/* ------------------------------------------------ átjáró a keretek között (csak asztali gépen) */
-.tunnel{display:none}
-.rich .tunnel{display:block;position:relative;height:420vh;background:var(--ink)}
-.tunnel__stage{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;perspective:900px;perspective-origin:50% 50%;background:var(--ink)}
-.tunnel__fr{position:absolute;left:50%;top:50%;width:min(80vh,72vw);height:min(80vh,72vw);margin:calc(min(80vh,72vw)/-2) 0 0 calc(min(80vh,72vw)/-2);will-change:transform,opacity;color:var(--gold)}
-.tunnel__end{position:absolute;left:50%;top:50%;width:min(70vh,64vw);height:min(70vh,64vw);margin:calc(min(70vh,64vw)/-2) 0 0 calc(min(70vh,64vw)/-2);will-change:transform}
-.tunnel__end img{width:100%;height:100%}
-.tunnel__gl{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;opacity:0;transition:opacity 1.2s ease;z-index:2}
-.tunnel__gl.on{opacity:1}
-.tunnel__stage.is-3d .tunnel__end{display:none}
-.tunnel.is-mob{display:block;position:relative;height:100svh;background:var(--ink)}
-.tunnel.is-mob .tunnel__stage{position:relative;height:100%}
+/* ------------------------------------------------ belépő: vékony logókeret, benne felgyullad a pince, aztán a keret kitágul */
+.ent{position:relative;height:100vh;height:100svh;background:var(--ink)}
+.rich .ent{height:300vh}
+.ent__stage{position:relative;height:100%;overflow:hidden;background:var(--ink)}
+.rich .ent__stage{position:sticky;top:0;height:100vh;height:100lvh}
+.ent__ph{position:absolute;inset:0;clip-path:inset(var(--ct,30%) var(--cr,30%) var(--cb,30%) var(--cl,30%));will-change:clip-path}
+.ent__ph img{width:100%;height:100%;object-fit:cover;transform:scale(var(--z,1.1));will-change:transform}
+.ent__dark{position:absolute;inset:0;background:#070605;opacity:var(--dk,.9)}
+.ent__box{position:absolute;left:50%;top:50%;width:var(--bw,60vw);height:var(--bh,56vh);transform:translate(-50%,-50%) scale(var(--s,1));opacity:var(--fo,1);will-change:transform,opacity}
+.ent__fr{--a:0deg;-webkit-mask:conic-gradient(from 0deg,#000 var(--a),transparent var(--a),transparent calc(360deg - var(--a)),#000 calc(360deg - var(--a)));mask:conic-gradient(from 0deg,#000 var(--a),transparent var(--a),transparent calc(360deg - var(--a)),#000 calc(360deg - var(--a)))}
 
 /* ------------------------------------------------ a pince */
 .pince{position:relative;padding:clamp(90px,16vh,180px) var(--pad) clamp(80px,14vh,160px);background:var(--ink)}

@@ -16,9 +16,9 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preload" href="fonts/aboreto-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/josefin-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="img/hero3-1600.webp?v=4" imagesrcset="img/hero3-900.webp?v=4 900w, img/hero3-1600.webp?v=4 1600w, img/hero3-1840.webp?v=4 1840w" imagesizes="100vw" media="(min-width: 641px)">
-<link rel="preload" as="image" href="img/hero3m-800.webp?v=4" imagesrcset="img/hero3m-800.webp?v=4 800w, img/hero3m-960.webp?v=4 960w" imagesizes="100vw" media="(max-width: 640px)">
-<link rel="stylesheet" href="css/style.css?v=4">
+<link rel="preload" as="image" href="img/hero3-1600.webp?v=5" imagesrcset="img/hero3-900.webp?v=5 900w, img/hero3-1600.webp?v=5 1600w, img/hero3-2400.webp?v=5 2400w" imagesizes="100vw" media="(min-width: 641px)">
+<link rel="preload" as="image" href="img/hero3m-800.webp?v=5" imagesrcset="img/hero3m-800.webp?v=5 800w, img/hero3m-1200.webp?v=5 1200w" imagesizes="100vw" media="(max-width: 640px)">
+<link rel="stylesheet" href="css/style.css?v=5">
 <script>
 (function(){var h=document.documentElement;try{if(sessionStorage.getItem('sg-intro'))h.classList.remove('intro-on')}catch(e){}
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.remove('intro-on');
@@ -76,7 +76,7 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
 <main>
 <section class="hero" id="top" aria-labelledby="heroTitle">
   <div class="hero__media" id="heroMedia">
-    <picture><source media="(max-width: 640px)" srcset="img/hero3m-800.webp?v=4 800w, img/hero3m-960.webp?v=4 960w" sizes="100vw"><img class="hero__img" id="heroImg" src="img/hero3-1600.webp?v=4" srcset="img/hero3-900.webp?v=4 900w, img/hero3-1600.webp?v=4 1600w, img/hero3-1840.webp?v=4 1840w" sizes="100vw" alt="A Shelby's pultja: vörösen világító hátsó polc ginesüvegekkel, fölötte fejjel lefelé lógó poharak, balra mécses egy lámpásban" fetchpriority="high" decoding="async"></picture>
+    <picture><source media="(max-width: 640px)" srcset="img/hero3m-800.webp?v=5 800w, img/hero3m-1200.webp?v=5 1200w" sizes="100vw"><img class="hero__img" id="heroImg" src="img/hero3-1600.webp?v=5" srcset="img/hero3-900.webp?v=5 900w, img/hero3-1600.webp?v=5 1600w, img/hero3-2400.webp?v=5 2400w" sizes="100vw" alt="A Shelby's pultja: vörösen világító hátsó polc ginesüvegekkel, fölötte fejjel lefelé lógó poharak, balra mécses egy lámpásban" fetchpriority="high" decoding="async"></picture>
     <canvas class="hero__gl" id="heroGl" aria-hidden="true"></canvas>
   </div>
   <svg class="deco hero__frame" data-deco="hero" aria-hidden="true"></svg>
@@ -91,10 +91,11 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
   </div>
 </section>
 
-<!-- átjáró: a logó kerete sokszor egymás mögött, mint a boltívek; asztali gépen görgetésre átrepülünk rajta -->
-<div class="tunnel" id="tunnel" aria-hidden="true">
-  <div class="tunnel__stage" id="tunnelStage">
-    <div class="tunnel__end"><img src="img/logo-full.svg?v=3" alt=""></div>
+<!-- belépő: a logó vékony kerete megrajzolódik, benne a sötét pincében felgyulladnak a lámpák, aztán a keret a képernyő széléig tágul -->
+<div class="ent" id="ent" aria-hidden="true">
+  <div class="ent__stage">
+    <div class="ent__ph"><img src="img/boltiv-1600.webp?v=3" srcset="img/boltiv-900.webp?v=3 900w, img/boltiv-1600.webp?v=3 1600w, img/boltiv-2400.webp?v=3 2400w" sizes="100vw" alt="" loading="lazy" decoding="async"><i class="ent__dark"></i></div>
+    <div class="ent__box"><svg class="deco ent__fr" data-deco="panel"></svg></div>
   </div>
 </div>
 
@@ -104,12 +105,12 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
     <p class="txt" data-i18n="pinceTxt">Az utcai ajtóból lépcső visz le a boltíves pincébe. A falak kőből és téglából vannak, a pult mögött vörös fény ég, a fülkékben gyertya és gin. Nyáron is hűvös marad.</p>
   </div>
   <div class="pince__grid">
-    <figure class="ph ph--pano"><div class="ph__in"><img src="img/boltiv-2400.webp?v=2" srcset="img/boltiv-900.webp?v=2 900w, img/boltiv-1600.webp?v=2 1600w, img/boltiv-2400.webp?v=2 2400w" sizes="100vw" alt="A téglaboltív alatt hosszú pult, rajta ginek és fűszernövények, fölötte kovácsoltvas csillár" loading="lazy" decoding="async"></div><figcaption data-i18n="capPince">A téglaboltív alatt</figcaption></figure>
+    <figure class="ph ph--pano"><div class="ph__in"><img src="img/boltiv-2400.webp?v=3" srcset="img/boltiv-900.webp?v=3 900w, img/boltiv-1600.webp?v=3 1600w, img/boltiv-2400.webp?v=3 2400w" sizes="100vw" alt="A téglaboltív alatt hosszú pult, rajta ginek és fűszernövények, fölötte kovácsoltvas csillár" loading="lazy" decoding="async"></div><figcaption data-i18n="capPince">A téglaboltív alatt</figcaption></figure>
     <div class="pince__arches">
     <figure class="ph ph--arch"><div class="ph__in"><img src="img/lepcso2-1100.webp?v=2" srcset="img/lepcso2-600.webp?v=2 600w, img/lepcso2-1100.webp?v=2 1100w" sizes="(min-width: 900px) 23vw, 46vw" alt="Kovácsoltvas korlátos lépcső, alul vörösen világít a pult" loading="lazy" decoding="async"></div><figcaption data-i18n="capLepcso">Lépcső az utcáról</figcaption></figure>
     <figure class="ph ph--arch"><div class="ph__in"><img src="img/fulke2-1100.webp?v=2" srcset="img/fulke2-600.webp?v=2 600w, img/fulke2-1100.webp?v=2 1100w" sizes="(min-width: 900px) 23vw, 46vw" alt="Mécses lámpás, ginesüveg és gin-tonik egy kőfülkében" loading="lazy" decoding="async"></div><figcaption data-i18n="capFulke">Gyertya és gin a fülkében</figcaption></figure>
-    <figure class="ph ph--arch"><div class="ph__in"><img src="img/kandallo-1100.webp?v=2" srcset="img/kandallo-600.webp?v=2 600w, img/kandallo-1100.webp?v=2 1100w" sizes="(min-width: 900px) 23vw, 46vw" alt="Gin-tonik citromhéjjal copa pohárban, mögötte ég a kandalló" loading="lazy" decoding="async"></div><figcaption data-i18n="capKand">Gin-tonik citrommal, mögötte a kandalló</figcaption></figure>
-    <figure class="ph ph--arch"><div class="ph__in"><img src="img/kalitka4-900.webp?v=2" srcset="img/kalitka4-600.webp?v=2 600w, img/kalitka4-900.webp?v=2 900w" sizes="(min-width: 900px) 23vw, 46vw" alt="Madárkalitka és mécsesek a pulton, előtte gin-tonik mentával" loading="lazy" decoding="async"></div><figcaption data-i18n="capKalitka">Kalitka és mécsesek a pulton</figcaption></figure>
+    <figure class="ph ph--arch"><div class="ph__in"><img src="img/kandallo-1100.webp?v=3" srcset="img/kandallo-600.webp?v=3 600w, img/kandallo-1100.webp?v=3 1100w" sizes="(min-width: 900px) 23vw, 46vw" alt="Gin-tonik citromhéjjal copa pohárban, mögötte ég a kandalló" loading="lazy" decoding="async"></div><figcaption data-i18n="capKand">Gin-tonik citrommal, mögötte a kandalló</figcaption></figure>
+    <figure class="ph ph--arch"><div class="ph__in"><img src="img/kalitka4-900.webp?v=3" srcset="img/kalitka4-600.webp?v=3 600w, img/kalitka4-900.webp?v=3 900w" sizes="(min-width: 900px) 23vw, 46vw" alt="Madárkalitka és mécsesek a pulton, előtte gin-tonik mentával" loading="lazy" decoding="async"></div><figcaption data-i18n="capKalitka">Kalitka és mécsesek a pulton</figcaption></figure>
     </div>
   </div>
 </section>
@@ -215,6 +216,6 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
 <script src="js/gsap.min.js?v=2" defer></script>
 <script src="js/ScrollTrigger.min.js?v=2" defer></script>
 <script src="js/lenis.min.js?v=2" defer></script>
-<script src="js/main.js?v=4" defer></script>
+<script src="js/main.js?v=5" defer></script>
 </body>
 </html>
