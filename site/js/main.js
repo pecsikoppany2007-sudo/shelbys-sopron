@@ -1,6 +1,6 @@
 /* Shelby's Gin Bar – bemutató oldal.
    GSAP + ScrollTrigger. Egérrel Lenis (lassabb, puhább görgetés), érintőn natív görgetés: ott semmi nem követi az ujjat,
-   csak egyszeri, időzített mozgások vannak. A nyitóképen felkapcsolnak a fények (WebGL), a pince előtt a logó vékony kerete rajzolódik meg, benne felgyulladnak a lámpák. */
+   csak egyszeri, időzített mozgások vannak. A nyitóképen felkapcsolnak a fények (WebGL), a fotók sötéten érkeznek és felkapcsol bennük a fény. */
 (function () {
   'use strict';
   var html = document.documentElement;
@@ -75,7 +75,7 @@
       heroLead: 'Über 50 Gins, dazu Tonics und Cocktails. Dienstag bis Donnerstag bis Mitternacht, Freitag und Samstag bis 2 Uhr früh geöffnet.',
       book: 'Tisch reservieren', seeMenu: 'Getränkekarte', byPhone: 'Reservierung telefonisch:',
       pinceTitle: 'Der Keller', pinceTxt: 'Von der Straßentür führt eine Treppe hinunter in den Gewölbekeller. Wände aus Stein und Ziegel, hinter der Bar rotes Licht, in den Nischen Kerzen und Gin. Auch im Sommer bleibt es kühl.',
-      capPince: 'Unter dem Ziegelgewölbe', capLepcso: 'Die Treppe von der Straße', capFulke: 'Kerze und Gin in der Nische', capKalitka: 'Vogelkäfig und Kerzen auf der Bar', capKand: 'Gin Tonic mit Zitrone, dahinter der Kamin', capTabla: 'Die Tafel über der Bar',
+      capPince: 'Die Bar, dahinter die Flaschen', capLepcso: 'Die Treppe von der Straße', capFulke: 'Kerze und Gin in der Nische', capKalitka: 'Vogelkäfig und Kerzen auf der Bar', capKand: 'Gin Tonic mit Zitrone, dahinter der Kamin', capTabla: 'Die Tafel über der Bar',
       polcTitle: 'Auf der Bar', polcTxt: 'In den Ginflaschen auf der Bar leuchten Lichterketten. Die Flaschen stammen von den eigenen Fotos der Bar.',
       ginTitle: 'Empfehlung des Hauses', ginTxt: 'Aus über 50 Gins empfehlen wir diese sieben, je 4 cl. Das Tonic wählen Sie an der Bar: Fever-Tree, Thomas Henry, Schweppes oder Kinley.',
       menuTitle: 'Getränkekarte', menuNote: 'Preise in Forint, nach der Karte in der Bar, Änderungen vorbehalten. An der Bar bekommen Sie immer die aktuelle Karte. Kein Alkohol unter 18 Jahren.',
@@ -91,7 +91,7 @@
       heroLead: 'More than 50 gins, with tonics and cocktails. Open until midnight Tuesday to Thursday, and until 2 am on Friday and Saturday.',
       book: 'Book a table', seeMenu: 'Drinks menu', byPhone: 'Book by phone:',
       pinceTitle: 'The cellar', pinceTxt: 'From the street door a staircase leads down into the vaulted cellar. Stone and brick walls, red light behind the bar, candles and gin in the niches. It stays cool even in summer.',
-      capPince: 'Under the brick vault', capLepcso: 'The stairs from the street', capFulke: 'Candle and gin in a niche', capKalitka: 'Birdcage and candles on the bar', capKand: 'Gin and tonic with lemon, the fireplace behind', capTabla: 'The sign above the bar',
+      capPince: 'The bar, with the bottles behind it', capLepcso: 'The stairs from the street', capFulke: 'Candle and gin in a niche', capKalitka: 'Birdcage and candles on the bar', capKand: 'Gin and tonic with lemon, the fireplace behind', capTabla: 'The sign above the bar',
       polcTitle: 'On the bar', polcTxt: 'Fairy lights glow inside the gin bottles on the bar. The bottles come from the bar\u2019s own photos.',
       ginTitle: 'House selection', ginTxt: 'Out of more than 50 gins, these are the seven we recommend, served as 4 cl. Pick the tonic at the bar: Fever-Tree, Thomas Henry, Schweppes or Kinley.',
       menuTitle: 'Drinks', menuNote: 'Prices in forints, from the menu we use at the bar, and they may change. At the bar you always get the current menu. No alcohol under 18.',
@@ -192,12 +192,12 @@
   function pic(n, sizes) {
     var big = { kalitka2: 1600, fulke: 1600, buborek: 1300, tal: 1300, gt2: 1300, koktel2: 1300, monkey: 1100, opihr2: 1100, ginmare2: 1100, brock: 1100, amuerte2: 1100 }[n] || 1300;
     var small = { 1600: 800, 1300: 700, 1100: 600 }[big];
-    return '<img data-k="' + n + '" src="img/' + n + '-' + big + '.webp?v=3" srcset="img/' + n + '-' + small + '.webp?v=3 ' + small + 'w, img/' + n + '-' + big + '.webp?v=3 ' + big + 'w" sizes="' + sizes + '" alt="' + esc(PICS[n] || '') + '" decoding="async">';
+    return '<img data-k="' + n + '" src="img/' + n + '-' + big + '.webp?v=6" srcset="img/' + n + '-' + small + '.webp?v=6 ' + small + 'w, img/' + n + '-' + big + '.webp?v=6 ' + big + 'w" sizes="' + sizes + '" alt="' + esc(PICS[n] || '') + '" decoding="async">';
   }
-  var ginI = -1;
   function renderGins() {
     $('#ginList').innerHTML = GINS.map(function (g, i) {
-      return '<li class="' + (reduced ? '' : 'rv') + (i === ginI ? ' is-on' : '') + '" style="--i:' + i + '"><button type="button" data-i="' + i + '" aria-pressed="' + (i === ginI) + '"><b>' + esc(g[0]) + '</b><em>' + price(g[2]) + ' · 4 cl</em><span>' + esc(L(g[1])) + '</span></button></li>';
+      var sm = { 1600: 800, 1300: 700, 1100: 600 }[{ fulke: 1600, kalitka2: 1600 }[g[3]] || 1100];
+      return '<li class="' + (reduced ? '' : 'rv') + '" style="--i:' + i + '" data-i="' + i + '"><img class="gl__t" src="img/' + g[3] + '-' + sm + '.webp?v=6" alt="" loading="lazy" decoding="async"><span class="gl__n">' + esc(g[0]) + '</span><span class="gl__d">' + esc(L(g[1])) + '</span><span class="gl__p">' + price(g[2]) + '<small>4 cl</small></span></li>';
     }).join('');
   }
   function swapPic(frame, n, sizes, instant) {
@@ -211,13 +211,6 @@
     var go = function () { requestAnimationFrame(function () { requestAnimationFrame(function () { im.classList.add('is-on'); }); }); };
     if (im.complete) go(); else { im.onload = go; im.onerror = go; }
   }
-  function selGin(i) {
-    if (i === ginI) return;
-    ginI = i;
-    $$('#ginList li').forEach(function (li, k) { li.classList.toggle('is-on', k === i); $('button', li).setAttribute('aria-pressed', k === i); });
-    swapPic($('#ginFrame'), i < 0 ? 'kalitka2' : GINS[i][3], '(min-width: 900px) 40vw, 90vw');
-  }
-
   var tabI = 0;
   function renderTabs() {
     $('#tabs').innerHTML = MENU.map(function (g, i) { return '<button type="button" role="tab" id="tab' + i + '" aria-controls="menuList" aria-selected="' + (i === tabI) + '" tabindex="' + (i === tabI ? 0 : -1) + '">' + esc(L(g.k)) + '</button>'; }).join('');
@@ -309,13 +302,30 @@
     if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
     setTab((tabI + (e.key === 'ArrowRight' ? 1 : MENU.length - 1)) % MENU.length, true); e.preventDefault();
   });
-  var gl = $('#ginList');
-  gl.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) selGin(+b.getAttribute('data-i')); });
-  if (canHover) {
-    gl.addEventListener('mouseover', function (e) { var b = e.target.closest('button'); if (b) selGin(+b.getAttribute('data-i')); });
-    gl.addEventListener('mouseleave', function () { selGin(-1); });
-  }
-  gl.addEventListener('focusin', function (e) { var b = e.target.closest('button'); if (b) selGin(+b.getAttribute('data-i')); });
+  /* ginek: egérrel a gin fotója kis késéssel követi a mutatót, a mozgás irányába alig dől */
+  (function () {
+    if (!rich) return;
+    var gl = $('#ginList'), pv = $('#gpv'), px = 0, py = 0, tx = 0, ty = 0, vx = 0, run = false, cur = -1;
+    function show(i) {
+      if (i === cur) return; cur = i;
+      if (i < 0) { pv.classList.toggle('on', false); return; }
+      var n = GINS[i][3], im = $('img[data-k="' + n + '"]', pv);
+      if (!im) { pv.insertAdjacentHTML('beforeend', pic(n, '320px')); im = pv.lastElementChild; }
+      $$('img', pv).forEach(function (x) { x.classList.toggle('is-on', x === im); });
+      pv.classList.add('on');
+    }
+    function tick() {
+      var dx = tx - px; px += dx * .14; py += (ty - py) * .14; vx += (dx * .02 - vx) * .2;
+      pv.style.transform = 'translate3d(' + px.toFixed(1) + 'px,' + py.toFixed(1) + 'px,0) rotate(' + Math.max(-6, Math.min(6, vx)).toFixed(2) + 'deg)';
+      if (Math.abs(dx) < .2 && Math.abs(ty - py) < .2 && cur < 0) { run = false; gsap.ticker.remove(tick); }
+    }
+    gl.addEventListener('mousemove', function (e) {
+      tx = e.clientX + 36; ty = e.clientY - pv.offsetHeight * .62;
+      if (!run) { if (cur < 0) { px = tx; py = ty; } run = true; gsap.ticker.add(tick); }
+      var li = e.target.closest('li'); show(li ? +li.getAttribute('data-i') : -1);
+    });
+    gl.addEventListener('mouseleave', function () { show(-1); });
+  })();
 
   /* térkép csak kattintásra */
   $('#mapBtn').addEventListener('click', function () {
@@ -399,7 +409,7 @@
   if (rich) {
     var cd = $('.cur__d', cur), cr = $('.cur__r', cur), rot = 45;
     gsap.set([cd, cr], { rotation: 45 });
-    addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; gsap.set(cd, { x: mx, y: my }); if (!curRun) { curRun = true; gsap.ticker.add(curTick); } }, { passive: true });
+    addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; gsap.set(cd, { x: mx, y: my }); cur.style.opacity = 1; if (!curRun) { curRun = true; gsap.ticker.add(curTick); } }, { passive: true });
     var curTick = function () {
       cx += (mx - cx) * 0.2; cy += (my - cy) * 0.2;
       gsap.set(cr, { x: cx, y: cy });
@@ -499,48 +509,6 @@
     new IntersectionObserver(function (es) { G.vis = es[0].isIntersecting; if (G.vis) G.kick(); }).observe(hero);
   })();
 
-  /* ------------------------------------------------------------------ belépő: a logó vékony kerete körbe megrajzolódik (fentről, két irányba),
-     benne a sötét pincefotón felgyulladnak a lámpák, aztán a keret a képernyő széléig tágul és elhalványul. Nincs nyíló ajtó.
-     Asztali gépen a görgetés viszi (kitűzve), érintőn egyszer, időzítve fut le; csökkentett mozgásnál a kész, kivilágított keret áll. */
-  function initEnter() {
-    var ent = $('#ent'); if (!ent) return;
-    var ph = $('.ent__ph', ent), box = $('.ent__box', ent), fr = $('.ent__fr', ent), st = { p: 0 }, V = {};
-    function lamp(f) { return f <= 0 ? 0 : f < .14 ? f / .14 * .7 : f < .24 ? .7 - (f - .14) / .1 * .45 : f < .34 ? .25 + (f - .24) / .1 * .5 : Math.min(1, .75 + (f - .34) / .66 * .25); }
-    function sm(a, b, x) { x = Math.min(1, Math.max(0, (x - a) / (b - a))); return x * x * (3 - 2 * x); }
-    function size() {
-      var w = innerWidth, h = ent.querySelector('.ent__stage').clientHeight, ph_ = w < 700;
-      V.w = w; V.h = h;
-      V.bw = Math.round(ph_ ? w * .8 : Math.min(w * .56, h * .95));
-      V.bh = Math.round(ph_ ? Math.min(h * .56, w * 1.05) : Math.min(h * .6, w * .4));
-      V.fit = Math.max(w / V.bw, h / V.bh) * 1.12;
-      box.style.setProperty('--bw', V.bw + 'px'); box.style.setProperty('--bh', V.bh + 'px');
-      fr._w = 0; drawDeco(fr); upd();
-    }
-    function upd() {
-      var p = st.p;
-      var d = sm(0, .3, p), l = lamp(Math.min(1, Math.max(0, (p - .2) / .38))), e = sm(.58, 1, p);
-      var s = 1 + (V.fit - 1) * e, hx = Math.min(V.w / 2, V.bw / 2 * s), hy = Math.min(V.h / 2, V.bh / 2 * s);
-      fr.style.setProperty('--a', (d * 180.5).toFixed(2) + 'deg');
-      box.style.setProperty('--s', s.toFixed(4)); box.style.setProperty('--fo', (1 - sm(.3, .85, e)).toFixed(3));
-      var ix = (V.w / 2 - hx).toFixed(1) + 'px', iy = (V.h / 2 - hy).toFixed(1) + 'px';
-      ph.style.setProperty('--cl', ix); ph.style.setProperty('--cr', ix); ph.style.setProperty('--ct', iy); ph.style.setProperty('--cb', iy);
-      ph.style.setProperty('--dk', (.92 * (1 - l)).toFixed(3)); ph.style.setProperty('--z', (1.1 - .1 * p).toFixed(4));
-    }
-    window.__ent = { set: function (p) { st.p = p; upd(); } };
-    size(); addEventListener('resize', size);
-    if (reduced) { st.p = .58; upd(); return; }
-    if (rich) {
-      ScrollTrigger.create({ trigger: ent, start: 'top top', end: 'bottom bottom', scrub: .6, onUpdate: function (t) { st.p = t.progress; upd(); } });
-      return;
-    }
-    var played = false;
-    new IntersectionObserver(function (es) {
-      if (played || !es[es.length - 1].isIntersecting) return;
-      played = true;
-      gsap.to(st, { p: 1, duration: 4.6, ease: 'power1.inOut', delay: .15, onUpdate: upd });
-    }, { threshold: .6 }).observe(ent);
-  }
-
   /* a pulton: a palackok sorban felkapcsolnak, mint egy valódi palacklámpa (felvillan, visszaesik, aztán ég).
      Asztali gépen a görgetés viszi (kitűzve), és az egérre a sor alig fordul; érintőn egyszer, időzítve fut le. */
   function initBottles() {
@@ -588,7 +556,6 @@
     if (!reduced) {
       gsap.from('.hero__lead,.hero__btns,.hero__tel', { opacity: 0, y: 18, duration: 1.2, ease: 'expo.out', stagger: .12, delay: .35, clearProps: 'all' });
       gsap.fromTo('#heroMedia', { scale: 1.08 }, { scale: 1, duration: 2.6, ease: 'expo.out', clearProps: 'transform' });
-      gsap.fromTo('.hero__frame', { opacity: 0 }, { opacity: 1, duration: 1.6, delay: .3, ease: 'power2.out' });
     }
     if (G.lightUp) G.lightUp();
     else if (!reduced) gsap.fromTo(heroImg, { opacity: .25 }, { opacity: 1, duration: 2.4, ease: 'power2.inOut', clearProps: 'opacity' });
@@ -596,16 +563,15 @@
   function runIntro() {
     if (!html.classList.contains('intro-on')) { heroIn(); return; }
     html.classList.add('intro-run');
-    var inn = $('.intro__in'), fr = $('.intro__frame'), wd = $('.intro__word');
+    var inn = $('.intro__in'), wd = $('.intro__word');
     var tl = gsap.timeline({ onComplete: done });
-    var cl = { v: 50 };
-    tl.to(cl, { v: 0, duration: 1.25, ease: 'expo.inOut', onUpdate: function () { fr.style.clipPath = 'inset(' + cl.v.toFixed(2) + '% -2% ' + cl.v.toFixed(2) + '% -2%)'; } }, .15)
-      .fromTo(inn, { scale: .94 }, { scale: 1, duration: 2.4, ease: 'power2.out' }, 0)
-      .to(wd, { opacity: 1, duration: .25 }, .85)
-      .fromTo(wd, { maskPosition: '100% 0', webkitMaskPosition: '100% 0' }, { maskPosition: '0% 0', webkitMaskPosition: '0% 0', duration: 1.25, ease: 'power2.inOut' }, .85)
-      .to(inn, { scale: 7, opacity: 0, duration: 1.05, ease: 'power3.in' }, 2.55)
-      .to(intro, { backgroundColor: 'rgba(14,12,10,0)', duration: .7, ease: 'power1.in' }, 2.95)
-      .add(heroIn, 3.0);
+    // a felirat úgy gyullad ki, mint egy palacklámpa: felvillan, visszaesik, aztán ég
+    tl.fromTo(inn, { scale: .97 }, { scale: 1, duration: 2.6, ease: 'power2.out' }, 0)
+      .to(wd, { keyframes: [{ opacity: .75, duration: .12 }, { opacity: .15, duration: .14 }, { opacity: .7, duration: .1 }, { opacity: .45, duration: .12 }, { opacity: 1, duration: .5 }], ease: 'none' }, .35)
+      .to(wd, { filter: 'drop-shadow(0 0 22px rgba(255,214,150,.35))', duration: .9, ease: 'power2.out' }, .9)
+      .to(inn, { opacity: 0, y: -14, duration: .7, ease: 'power2.in' }, 2.1)
+      .to(intro, { backgroundColor: 'rgba(11,9,7,0)', duration: .8, ease: 'power1.in' }, 2.4)
+      .add(heroIn, 2.4);
     function skip() { if (tl.progress() < .7) tl.timeScale(5); }
     intro.addEventListener('click', skip); addEventListener('keydown', skip, { once: true }); addEventListener('wheel', skip, { once: true, passive: true }); addEventListener('touchstart', skip, { once: true, passive: true });
     function done() { html.classList.remove('intro-on', 'intro-run'); try { sessionStorage.setItem('sg-intro', '1'); } catch (e) {} if (lenis) lenis.start(); ScrollTrigger.refresh(); }
@@ -627,7 +593,7 @@
   splitQuotes();
   document.fonts.ready.then(function () {
     splitBl(); ready = true;
-    observeBl(); initReveal(); initQuotes(); initEnter(); initBottles(); initParallax();
+    observeBl(); initReveal(); initQuotes(); initBottles(); initParallax();
     runIntro();
     ScrollTrigger.refresh();
   });
