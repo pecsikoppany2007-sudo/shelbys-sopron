@@ -1,6 +1,6 @@
 /* Shelby's Gin Bar – bemutató oldal.
    GSAP + ScrollTrigger. Egérrel Lenis (lassabb, puhább görgetés), érintőn natív görgetés: ott semmi nem követi az ujjat,
-   csak egyszeri, időzített mozgások vannak. A nyitóképen felkapcsolnak a fények (WebGL), az átjáróban egy 3D copa pohár telik meg, mindkettő csak valódi GPU-n. */
+   csak egyszeri, időzített mozgások vannak. A nyitóképen felkapcsolnak a fények (WebGL), az átjáróban a logó aranykeretein repülünk át (three.js), mindkettő csak valódi GPU-n. */
 (function () {
   'use strict';
   var html = document.documentElement;
@@ -76,14 +76,14 @@
       book: 'Tisch reservieren', seeMenu: 'Getränkekarte', byPhone: 'Reservierung telefonisch:',
       pinceTitle: 'Der Keller', pinceTxt: 'Von der Straßentür führt eine Treppe hinunter in den Gewölbekeller. Wände aus Stein und Ziegel, hinter der Bar rotes Licht, in den Nischen Kerzen und Gin. Auch im Sommer bleibt es kühl.',
       capPince: 'Unter dem Ziegelgewölbe', capLepcso: 'Die Treppe von der Straße', capFulke: 'Kerze und Gin in der Nische', capKalitka: 'Vogelkäfig und Kerzen auf der Bar', capKand: 'Gin Tonic mit Zitrone, dahinter der Kamin', capTabla: 'Die Tafel über der Bar',
-      polcTitle: 'Hinter der Bar', polcTxt: 'In den Flaschen leuchten Lichterketten, die Cocktails werden an der Bar gemixt. Die Fotos stammen von der Instagram- und Facebook-Seite der Bar.', sk2: 'Grüner Cocktail mit Basilikum', sk3: 'Roter Cocktail mit Orangenschale', sk4: 'Cocktail neben der Karte', sk5: 'Cocktail mit Schaum',
+      polcTitle: 'Auf der Bar', polcTxt: 'In den Ginflaschen auf der Bar leuchten Lichterketten. Die Flaschen stammen von den eigenen Fotos der Bar.',
       ginTitle: 'Empfehlung des Hauses', ginTxt: 'Aus über 50 Gins empfehlen wir diese sieben, je 4 cl. Das Tonic wählen Sie an der Bar: Fever-Tree, Thomas Henry, Schweppes oder Kinley.',
       menuTitle: 'Getränkekarte', menuNote: 'Preise in Forint, nach der Karte in der Bar, Änderungen vorbehalten. An der Bar bekommen Sie immer die aktuelle Karte. Kein Alkohol unter 18 Jahren.',
       igTxt: 'Das Wochenendangebot, etwa das Black Gin Weekend oder das Tiki Cocktail Weekend, steht auf Instagram:',
       revTitle: 'Bewertungen', revScore: 'bei Google, aus 211 Bewertungen', revLang: 'Die Zitate stehen im ungarischen Original.',
       hoursTitle: 'Öffnungszeiten', addrLbl: 'Adresse', telLbl: 'Telefon', doorNote: 'Die Tür liegt an der Várkerület, die Bar ist unten an der Treppe.',
       mapBtn: 'Karte laden', mapNote: 'Die Karte ist ein Dienst von Google und wird erst nach dem Klick geladen.', capAjto: 'Der Eingang an der Várkerület',
-      legal: 'Impressum und Datenschutz', credit: 'Die Fotos stammen von der Instagram- und Facebook-Seite der Bar sowie aus Google-Uploads von Gästen, farblich bearbeitet. 3D-Modelle: Helindu, Adamante, Arkify (CC BY 4.0). Website: kettő.'
+      legal: 'Impressum und Datenschutz', credit: 'Die Fotos stammen von der Instagram- und Facebook-Seite der Bar sowie aus Google-Uploads von Gästen, farblich bearbeitet. Website: kettő.'
     },
     en: {
       skip: 'Skip to content', introSkip: 'Click to continue', navPince: 'The cellar', navGin: 'Gins', navMenu: 'Drinks', navHours: 'Opening hours', menuBtn: 'Menu',
@@ -92,14 +92,14 @@
       book: 'Book a table', seeMenu: 'Drinks menu', byPhone: 'Book by phone:',
       pinceTitle: 'The cellar', pinceTxt: 'From the street door a staircase leads down into the vaulted cellar. Stone and brick walls, red light behind the bar, candles and gin in the niches. It stays cool even in summer.',
       capPince: 'Under the brick vault', capLepcso: 'The stairs from the street', capFulke: 'Candle and gin in a niche', capKalitka: 'Birdcage and candles on the bar', capKand: 'Gin and tonic with lemon, the fireplace behind', capTabla: 'The sign above the bar',
-      polcTitle: 'Behind the bar', polcTxt: 'Fairy lights glow inside the bottles, and the cocktails are mixed at the bar. The photos come from the bar\u2019s Instagram and Facebook pages.', sk2: 'Green cocktail with basil', sk3: 'Red cocktail with orange peel', sk4: 'Cocktail by the menu', sk5: 'Cocktail with foam',
+      polcTitle: 'On the bar', polcTxt: 'Fairy lights glow inside the gin bottles on the bar. The bottles come from the bar\u2019s own photos.',
       ginTitle: 'House selection', ginTxt: 'Out of more than 50 gins, these are the seven we recommend, served as 4 cl. Pick the tonic at the bar: Fever-Tree, Thomas Henry, Schweppes or Kinley.',
       menuTitle: 'Drinks', menuNote: 'Prices in forints, from the menu we use at the bar, and they may change. At the bar you always get the current menu. No alcohol under 18.',
       igTxt: 'We post the weekend offer, such as Black Gin Weekend or Tiki Cocktail Weekend, on Instagram:',
       revTitle: 'Reviews', revScore: 'on Google, from 211 reviews', revLang: 'The quotes are in the original Hungarian.',
       hoursTitle: 'Opening hours', addrLbl: 'Address', telLbl: 'Phone', doorNote: 'The door opens from Várkerület, the bar is at the bottom of the stairs.',
       mapBtn: 'Load map', mapNote: 'The map is a Google service and only loads after you click.', capAjto: 'The entrance on Várkerület',
-      legal: 'Legal notice and privacy', credit: 'Photos come from the bar’s Instagram and Facebook pages and from guests’ Google uploads, colour corrected. 3D models: Helindu, Adamante, Arkify (CC BY 4.0). Website: kettő.'
+      legal: 'Legal notice and privacy', credit: 'Photos come from the bar’s Instagram and Facebook pages and from guests’ Google uploads, colour corrected. Website: kettő.'
     }
   };
   var LI = { hu: 0, de: 1, en: 2 }, lang = 'hu', huText = {};
@@ -151,49 +151,41 @@
     }).join('');
   }
 
-  /* ------------------------------------------------------------------ art deco keret (a logó keretének vonalai, mindig 1 px) */
-  function decoPath(w, h, o) {
-    var k = o.k || 1, s = 12 * k, a = 4 * k, b = 9 * k, c = 26 * k, ch = 7 * k, d = [];
-    function seg(x1, y1, x2, y2) { d.push('M' + x1.toFixed(1) + ' ' + y1.toFixed(1) + 'L' + x2.toFixed(1) + ' ' + y2.toFixed(1)); }
-    function poly(p) { d.push('M' + p.map(function (q) { return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join('L') + 'Z'); }
-    function corner(fx, fy) {
-      var X = function (x) { return fx ? w - x : x; }, Y = function (y) { return fy ? h - y : y; };
-      poly([[X(0), Y(0)], [X(s), Y(0)], [X(s), Y(s)], [X(0), Y(s)]]);
-      poly([[X(b + ch), Y(b)], [X(c), Y(b)], [X(c), Y(c)], [X(b), Y(c)], [X(b), Y(b + ch)]]);
-      seg(X(c), Y(c), X(b + ch / 2), Y(b + ch / 2));
-      seg(X(c), Y(c), X(b + ch + (c - b - ch) * .45), Y(b));
-      seg(X(c), Y(c), X(b), Y(b + ch + (c - b - ch) * .45));
-    }
-    corner(0, 0); corner(1, 0); corner(0, 1); corner(1, 1);
-    // két külső vonal
-    seg(s, a, w - s, a); seg(s, h - a, w - s, h - a); seg(a, s, a, h - s); seg(w - a, s, w - a, h - s);
-    seg(c, b, w - c, b); seg(c, h - b, w - c, h - b); seg(b, c, b, h - c); seg(w - b, c, w - b, h - c);
-    // belső vonal, középen V-bemélyedés rombusszal (fent és lent), oldalt rombusz
-    var mx = w / 2, v = 22 * k, vd = 13 * k;
-    if (o.mid) {
-      seg(c, c, mx - v, c); seg(mx - v, c, mx, c + vd); seg(mx, c + vd, mx + v, c); seg(mx + v, c, w - c, c);
-      seg(c, h - c, mx - v, h - c); seg(mx - v, h - c, mx, h - c - vd); seg(mx, h - c - vd, mx + v, h - c); seg(mx + v, h - c, w - c, h - c);
-      var r = 3.6 * k;
-      poly([[mx, c - r * .2 - r], [mx + r, c - r * .2], [mx, c - r * .2 + r], [mx - r, c - r * .2]]);
-      poly([[mx, h - c + r * .2 - r], [mx + r, h - c + r * .2], [mx, h - c + r * .2 + r], [mx - r, h - c + r * .2]]);
-    } else { seg(c, c, w - c, c); seg(c, h - c, w - c, h - c); }
-    if (o.side) {
-      var my = h / 2, r2 = 5 * k, x0 = (b + c) / 2;
-      seg(c, c, c, my - 3 * r2); seg(c, my + 3 * r2, c, h - c); seg(w - c, c, w - c, my - 3 * r2); seg(w - c, my + 3 * r2, w - c, h - c);
-      poly([[x0, my - r2 * 2], [x0 + r2 * 1.4, my], [x0, my + r2 * 2], [x0 - r2 * 1.4, my]]);
-      poly([[w - x0, my - r2 * 2], [w - x0 + r2 * 1.4, my], [w - x0, my + r2 * 2], [w - x0 - r2 * 1.4, my]]);
-      seg(c, my - 3 * r2, x0 + r2 * 1.4, my); seg(c, my + 3 * r2, x0 + r2 * 1.4, my);
-      seg(w - c, my - 3 * r2, w - x0 - r2 * 1.4, my); seg(w - c, my + 3 * r2, w - x0 - r2 * 1.4, my);
-    } else { seg(c, c, c, h - c); seg(w - c, c, w - c, h - c); }
-    return d.join('');
+  /* ------------------------------------------------------------------ art deco keret: a Shelby's logó saját kerete, vektorba átrajzolva.
+     A sarkok és a középdíszek torzítás nélkül, a köztük futó egyenes vonalak nyújtva, így bármilyen méretű dobozra 1:1 ugyanaz a keret kerül. */
+  var KF = { W: 4308, H: 4296, B: 420, X0: 1350, X1: 2958, Y0: 1935, Y1: 2361 };
+  function kfPiece(x, y, w, h, vx, vy, vw, vh) {
+    return '<svg x="' + x.toFixed(2) + '" y="' + y.toFixed(2) + '" width="' + w.toFixed(2) + '" height="' + h.toFixed(2) + '" viewBox="' + vx + ' ' + vy + ' ' + vw + ' ' + vh + '" preserveAspectRatio="none" overflow="hidden"><use href="#kf"/></svg>';
   }
-  var DECO = { hero: { k: 1.25, mid: true, side: true }, panel: { k: 1, mid: true, side: true }, gin: { k: 1, mid: false, side: false }, tunnel: { k: 1.6, mid: true, side: true } };
+  function kfFrame(w, h, t) {
+    var k = t / KF.B, B = KF.B, mw = KF.X1 - KF.X0, mh = KF.Y1 - KF.Y0;
+    k = Math.min(k, w / (2 * B + mw + 40), h / (2 * B + mh + 40));
+    var b = B * k, tw = mw * k, th = mh * k, rx = (w - 2 * b - tw) / 2, ry = (h - 2 * b - th) / 2, W = KF.W, H = KF.H, o = [];
+    // sarkok
+    o.push(kfPiece(0, 0, b, b, 0, 0, B, B), kfPiece(w - b, 0, b, b, W - B, 0, B, B), kfPiece(0, h - b, b, b, 0, H - B, B, B), kfPiece(w - b, h - b, b, b, W - B, H - B, B, B));
+    // fent és lent: nyújtott vonal, középdísz, nyújtott vonal
+    [[0, 0], [h - b, H - B]].forEach(function (r) {
+      o.push(kfPiece(b, r[0], rx + .6, b, B, r[1], KF.X0 - B, B), kfPiece(b + rx, r[0], tw, b, KF.X0, r[1], mw, B), kfPiece(b + rx + tw - .6, r[0], rx + .6, b, KF.X1, r[1], W - B - KF.X1, B));
+    });
+    // két oldal
+    [[0, 0], [w - b, W - B]].forEach(function (c) {
+      o.push(kfPiece(c[0], b, b, ry + .6, c[1], B, B, KF.Y0 - B), kfPiece(c[0], b + ry, b, th, c[1], KF.Y0, B, mh), kfPiece(c[0], b + ry + th - .6, b, ry + .6, c[1], KF.Y1, B, H - B - KF.Y1));
+    });
+    return o.join('');
+  }
+  // sávszélesség (px) dobozonként
+  var DECO = {
+    hero: function (w) { return w < 700 ? 30 : Math.min(52, Math.max(38, w * .032)); },
+    panel: function (w) { return w < 500 ? 26 : 34; },
+    gin: function (w) { return w < 500 ? 24 : 30; },
+    tunnel: function () { return 54; }
+  };
   function drawDeco(svg) {
     var r = svg.getBoundingClientRect(), w = Math.round(r.width), h = Math.round(r.height);
     if (!w || !h || svg._w === w && svg._h === h) return;
     svg._w = w; svg._h = h;
     svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
-    svg.innerHTML = '<path d="' + decoPath(w, h, DECO[svg.getAttribute('data-deco')] || {}) + '"/>';
+    svg.innerHTML = kfFrame(w, h, (DECO[svg.getAttribute('data-deco')] || DECO.panel)(w, h));
   }
   function drawAllDeco() { $$('svg.deco').forEach(drawDeco); }
 
@@ -508,44 +500,46 @@
     new IntersectionObserver(function (es) { G.vis = es[0].isIntersecting; if (G.vis) G.kick(); }).observe(hero);
   })();
 
-  /* ------------------------------------------------------------------ 3D copa pohár (three.js modul, csak valódi GPU-n, lustán töltve) */
-  function initGlass(stage) {
+  /* ------------------------------------------------------------------ átjáró: a logó aranykeretein repülünk át, a végén a felirat.
+     Valódi GPU-n egyetlen 3D jelenet (three.js, lustán töltve): asztali gépen a görgetés viszi, érintőn egyszer, időzítve fut le.
+     GPU nélkül asztali gépen ugyanez CSS 3D-ben, a keret SVG-jével; telefonon GPU nélkül kimarad. */
+  function init3d(stage) {
     if (reduced || !hwGpu || window.__noGl || !('IntersectionObserver' in window)) return null;
-    var cv = document.createElement('canvas'), S = { p: 0, mx: 0, my: 0, dpr: rich ? 1.5 : 2 }, ready = false, vis = false, run = false, asked = false;
+    var cv = document.createElement('canvas'), S = { p: 0, mx: 0, my: 0, dpr: rich ? 1.5 : 1.75 }, ready = false, vis = false, run = false, asked = false;
     cv.className = 'tunnel__gl'; stage.appendChild(cv);
     function tick() { if (!ready || !vis) { gsap.ticker.remove(tick); run = false; return; } S.frame(); }
     S.kick = function () { if (ready && vis && !run) { run = true; gsap.ticker.add(tick); } };
     new IntersectionObserver(function (es) {
-      var e = es[es.length - 1];
-      if (e.isIntersecting && !asked) {
+      if (es[es.length - 1].isIntersecting && !asked) {
         asked = true;
-        import(new URL('js/glass.js?v=2', document.baseURI).href).then(function (m) { return m.init(cv, S); })
-          .then(function () { ready = true; cv.classList.add('on'); S.kick(); })
+        import(new URL('js/tunnel3d.js?v=3', document.baseURI).href).then(function (m) { return m.init(cv, S); })
+          .then(function () { ready = true; cv.classList.add('on'); stage.classList.add('is-3d'); S.kick(); })
           .catch(function () { cv.remove(); });
       }
-    }, { rootMargin: '120% 0px' }).observe(stage);
+    }, { rootMargin: '150% 0px' }).observe(stage);
     new IntersectionObserver(function (es) { vis = es[es.length - 1].isIntersecting; S.kick(); }).observe(stage);
     if (rich) addEventListener('mousemove', function (e) { S.mx = e.clientX / innerWidth * 2 - 1; S.my = e.clientY / innerHeight * 2 - 1; }, { passive: true });
-    S.cv = cv;
     return S;
   }
-
-  /* ------------------------------------------------------------------ átjáró: keretek egymás mögött, mint a boltívek; középen a pohár megtelik */
   function initTunnel() {
     var tun = $('#tunnel'), st = $('#tunnelStage');
+    var GS = init3d(st);
     if (!rich) {
-      // érintőn és kis képernyőn: egy képernyőnyi jelenet, a pohár egyszer, időzítve megtelik
-      var M = initGlass(st);
-      if (!M) return;
+      if (!GS) return;
       tun.classList.add('is-mob');
       var played = false;
       new IntersectionObserver(function (es) {
         if (played || !es[es.length - 1].isIntersecting) return;
         played = true;
-        gsap.to(M, { p: .84, duration: 7.5, ease: 'none', delay: .3, onUpdate: function () { M.kick && M.kick(); } });
-      }, { threshold: .55 }).observe(tun);
+        gsap.to(GS, { p: 1, duration: 7, ease: 'power1.inOut', delay: .2 });
+      }, { threshold: .6 }).observe(tun);
       return;
     }
+    if (GS) {
+      ScrollTrigger.create({ trigger: '#tunnel', start: 'top top', end: 'bottom bottom', scrub: .8, onUpdate: function (s) { GS.p = s.progress; } });
+      return;
+    }
+    // tartalék: CSS 3D keretek (GPU nélkül)
     var N = 7, gap = 650, fr = [];
     for (var i = 0; i < N; i++) {
       var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -553,41 +547,48 @@
       st.insertBefore(s, st.firstChild); fr.push(s);
     }
     drawAllDeco();
-    var end = $('.tunnel__end', st), D = N * gap + 700, GS = initGlass(st);
-    function sm(a, b, x) { var t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); }
+    var end = $('.tunnel__end', st), D = N * gap + 700;
     function upd(p) {
       var z0 = p * D;
       fr.forEach(function (s, i) {
         var z = -(i + 1) * gap + z0;
         var o = z > 700 ? 0 : z > 380 ? 1 - (z - 380) / 320 : z < -3600 ? 0 : z < -2600 ? (z + 3600) / 1000 : 1;
-        s.style.transform = 'translate3d(0,0,' + z.toFixed(1) + 'px)'; s.style.opacity = (o * (GS ? .75 : 1)).toFixed(3);
+        s.style.transform = 'translate3d(0,0,' + z.toFixed(1) + 'px)'; s.style.opacity = o.toFixed(3);
       });
-      var ze = -D + z0;
-      end.style.transform = 'translate3d(0,0,' + ze.toFixed(1) + 'px)';
-      end.style.setProperty('--d', (1 - Math.min(1, Math.max(0, (p - .72) / .26)) * .85).toFixed(3));
-      if (GS) { GS.p = p; GS.cv.style.opacity = (sm(.0, .07, p) * (1 - sm(.86, .95, p))).toFixed(3); }
+      end.style.transform = 'translate3d(0,0,' + (-D + z0).toFixed(1) + 'px)';
     }
     upd(0);
     ScrollTrigger.create({ trigger: '#tunnel', start: 'top bottom', end: 'bottom bottom', scrub: true, onUpdate: function (s) { upd(s.progress); } });
   }
 
-  /* a pult mögül: balról jobbra végigfut a polc alatti vörös LED, és ahol elhalad, ott kigyullad a kép.
-     Asztali gépen a görgetés viszi, érintőn egyszer, időzítve fut le. */
-  function initShelf() {
+  /* a pulton: a palackok sorban felkapcsolnak, mint egy valódi palacklámpa (felvillan, visszaesik, aztán ég).
+     Asztali gépen a görgetés viszi (kitűzve), és az egérre a sor alig fordul; érintőn egyszer, időzítve fut le. */
+  function initBottles() {
     if (reduced) return;
-    $$('[data-shelf]').forEach(function (sh) {
-      var it = $$('.sh', sh), N = it.length, st = { w: 0 };
-      function upd() {
-        var w = st.w * N;
-        it.forEach(function (el, i) {
-          var s = Math.min(1, Math.max(0, w - i)), l = Math.min(1, Math.max(0, (w - i - .15) / .7));
-          el.style.setProperty('--s', s.toFixed(3)); el.style.setProperty('--l', (l * l * (3 - 2 * l)).toFixed(3));
+    var pal = $('#pal'), it = $$('.pal__it', pal), N = it.length, st = { w: 0 };
+    function flick(f) { return f <= 0 ? 0 : f < .12 ? f / .12 * .75 : f < .22 ? .75 - (f - .12) / .1 * .55 : f < .3 ? .2 + (f - .22) / .08 * .5 : f < .4 ? .7 - (f - .3) / .1 * .15 : Math.min(1, .55 + (f - .4) / .6 * .45); }
+    function upd() {
+      var w = st.w * (N + .6);
+      it.forEach(function (el, i) { el.style.setProperty('--on', flick(Math.min(1, Math.max(0, (w - i) / 1.6))).toFixed(3)); });
+    }
+    upd();
+    if (rich) {
+      ScrollTrigger.create({ trigger: '#pult', start: 'top top', end: 'bottom bottom', scrub: .5, onUpdate: function (x) { st.w = Math.min(1, x.progress / .85); upd(); } });
+      var rx = 0, ry = 0, tx = 0, ty = 0, on = false;
+      function tilt() { rx += (tx - rx) * .06; ry += (ty - ry) * .06; pal.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)'; if (Math.abs(tx - rx) < .01 && Math.abs(ty - ry) < .01) { on = false; gsap.ticker.remove(tilt); } }
+      $('#pult').addEventListener('mousemove', function (e) { ty = (e.clientX / innerWidth - .5) * 7; tx = -(e.clientY / innerHeight - .5) * 3; if (!on) { on = true; gsap.ticker.add(tilt); } });
+    } else if (pal.scrollWidth > pal.clientWidth + 8) {
+      // vízszintes sor: amelyik palack beúszik középre, az kapcsol fel
+      it.forEach(function (el) { el.style.setProperty('--on', 0); });
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting || e.target._lit) return;
+          var o = { f: 0 }, el = e.target; el._lit = true;
+          gsap.to(o, { f: 1, duration: 1.5, ease: 'none', delay: .15, onUpdate: function () { el.style.setProperty('--on', flick(o.f).toFixed(3)); } });
         });
-      }
-      upd();
-      if (rich) ScrollTrigger.create({ trigger: sh, start: 'top 85%', end: 'bottom 55%', scrub: .6, onUpdate: function (x) { st.w = x.progress * 1.04; upd(); } });
-      else ScrollTrigger.create({ trigger: sh, start: 'top 75%', once: true, onEnter: function () { gsap.to(st, { w: 1.04, duration: 2.2, ease: 'power1.inOut', onUpdate: upd }); } });
-    });
+      }, { threshold: .8 });
+      it.forEach(function (el) { io.observe(el); });
+    } else ScrollTrigger.create({ trigger: pal, start: 'top 70%', once: true, onEnter: function () { gsap.to(st, { w: 1, duration: 3.6, ease: 'none', onUpdate: upd }); } });
   }
 
   /* pince fotói: asztali gépen belső parallaxis */
@@ -646,7 +647,7 @@
   splitQuotes();
   document.fonts.ready.then(function () {
     splitBl(); ready = true;
-    observeBl(); initReveal(); initQuotes(); initTunnel(); initShelf(); initParallax();
+    observeBl(); initReveal(); initQuotes(); initTunnel(); initBottles(); initParallax();
     runIntro();
     ScrollTrigger.refresh();
   });
