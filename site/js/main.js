@@ -415,8 +415,8 @@
   }
 
   /* ------------------------------------------------------------------ nyitókép: felkapcsolnak a fények (WebGL, csak valódi GPU-n)
-     Sötét pultnál indulunk: előbb a két mécses gyullad meg pislákolva, aztán balról jobbra kigyullad a vörös hátsó pult,
-     végül feljön a fény. Utána a mécsesek finoman pislákolnak, egérre a kép alig mozdul, lefelé görgetve a pult elsötétül. */
+     Sötét pultnál indulunk: előbb a lámpásban a mécses gyullad meg pislákolva, aztán balról jobbra kigyullad a vörös pult,
+     végül feljön a fény. Utána a mécses finoman pislákol, egérre a kép alig mozdul, lefelé görgetve a pult elsötétül. */
   var hero = $('#top'), heroImg = $('#heroImg'), G = { ok: false };
   if (!reduced && hwGpu && !window.__noGl) (function () {
     var cv = $('#heroGl'), gl = cv.getContext('webgl', { antialias: false, alpha: false, premultipliedAlpha: false, powerPreference: 'high-performance' });
@@ -431,17 +431,17 @@
       ' vec2 o=vec2(uCr.x+uv.x*uCr.y,uv.y);',                       // az eredeti (teljes) fotó koordinátái
       ' float f1=1.+.07*sin(uT*11.)*sin(uT*4.3+1.)+.03*sin(uT*23.7);',
       ' float f2=1.+.07*sin(uT*9.2+2.)*sin(uT*5.1)+.03*sin(uT*19.3+1.);',
-      ' float m1=el(o,vec2(.383,.535),vec2(.075,.1))+.8*el(o,vec2(.39,.76),vec2(.035,.16));',
-      ' float m2=el(o,vec2(.778,.56),vec2(.085,.11))+.8*el(o,vec2(.79,.8),vec2(.04,.17));',
+      ' float m1=el(o,vec2(.068,.736),vec2(.035,.05))+.6*el(o,vec2(.068,.72),vec2(.07,.1));',
+      ' float m2=0.;',
       ' float red=smoothstep(.06,.32,c.r-max(c.g,c.b));',
-      ' float reg=smoothstep(.31,.4,o.x)*smoothstep(.62,.5,o.y);',
+      ' float reg=smoothstep(.34,.46,o.y);',
       ' float sweep=smoothstep(uBar,uBar-.22,o.x);',
       ' float bar=reg*sweep*(.45+.75*red);',
       ' float lit=uAmb+(1.-uAmb)*clamp(m1*uC1*f1+m2*uC2*f2+bar,0.,1.15);',
       ' lit=mix(lit,lit*f1*.5+lit*f2*.5,(m1+m2)*.6*uAmb);',
       ' lit*=1.-uDim*(.5-.42*clamp(m1+m2,0.,1.));',
       ' vec3 col=c*lit;',
-      ' col+=vec3(1.,.55,.22)*(.10*uC1*f1*el(o,vec2(.383,.53),vec2(.11,.14))+.10*uC2*f2*el(o,vec2(.778,.55),vec2(.12,.15)))*(1.-.6*uAmb);',
+      ' col+=vec3(1.,.55,.22)*(.10*uC1*f1*el(o,vec2(.068,.72),vec2(.09,.12)))*(1.-.6*uAmb);',
       ' col+=vec3(.9,.08,.04)*.06*bar*(1.-uAmb);',
       ' gl_FragColor=vec4(col,1.);}'
     ].join('\n');
@@ -455,7 +455,7 @@
     var loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     var U = {}; ['uI', 'uRes', 'uIs', 'uM', 'uCr', 'uT', 'uAmb', 'uC1', 'uC2', 'uBar', 'uDim', 'uK'].forEach(function (n) { U[n] = gl.getUniformLocation(pr, n); });
     // ugyanazt a fájlt töltjük, amelyet a böngésző a <picture>-ből választott
-    var src = heroImg.currentSrc || heroImg.src, mob = /herom-/.test(src);
+    var src = heroImg.currentSrc || heroImg.src, mob = /hero3m-/.test(src);
     var img = new Image(); img.src = src; hero.classList.add('gl-wait');
     G.L = { amb: .12, c1: 0, c2: 0, bar: -.25, dim: 0 }; G.m = [0, 0]; G.t = [0, 0]; G.vis = true; G.run = false; G.on = false;
     function size() {
@@ -469,7 +469,7 @@
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
       gl.uniform1i(U.uI, 0); gl.uniform2f(U.uIs, img.naturalWidth, img.naturalHeight);
-      gl.uniform2f(U.uCr, mob ? .30 : 0, mob ? .56 : 1); gl.uniform1f(U.uK, canHover ? 1.03 : 1);
+      gl.uniform2f(U.uCr, mob ? .239 : 0, mob ? .522 : 1); gl.uniform1f(U.uK, canHover ? 1.03 : 1);
       size(); G.ok = true; frame(); hero.classList.add('gl-on'); hero.classList.remove('gl-wait'); G.kick();
     }).catch(function () { hero.classList.remove('gl-wait'); });
     var t0 = performance.now();
@@ -512,7 +512,7 @@
     new IntersectionObserver(function (es) {
       if (es[es.length - 1].isIntersecting && !asked) {
         asked = true;
-        import(new URL('js/tunnel3d.js?v=3', document.baseURI).href).then(function (m) { return m.init(cv, S); })
+        import(new URL('js/tunnel3d.js?v=4', document.baseURI).href).then(function (m) { return m.init(cv, S); })
           .then(function () { ready = true; cv.classList.add('on'); stage.classList.add('is-3d'); S.kick(); })
           .catch(function () { cv.remove(); });
       }
@@ -523,7 +523,7 @@
   }
   function initTunnel() {
     var tun = $('#tunnel'), st = $('#tunnelStage');
-    var GS = init3d(st);
+    var GS = init3d(st); window.__tun = GS;
     if (!rich) {
       if (!GS) return;
       tun.classList.add('is-mob');
