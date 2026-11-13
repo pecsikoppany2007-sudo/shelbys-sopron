@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0e0c0a">
 <meta property="og:title" content="Shelby's Gin Bar, Sopron">
 <meta property="og:description" content="Gin bár a Várkerület 22. pincéjében. Több mint 50 féle gin, tonikok, koktélok.">
-<meta property="og:image" content="img/bar-1600.webp">
+<meta property="og:image" content="img/hero-1600.webp">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="img/favicon-96.png" sizes="96x96" type="image/png">
@@ -16,15 +16,15 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preload" href="fonts/aboreto-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/josefin-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="img/bar-1600.webp?v=1" as="image" media="(min-width: 700px)">
-<link rel="stylesheet" href="css/style.css?v=1">
+<link rel="preload" as="image" href="img/hero-1600.webp?v=2" imagesrcset="img/hero-900.webp?v=2 900w, img/hero-1600.webp?v=2 1600w, img/hero-2400.webp?v=2 2400w" imagesizes="100vw" media="(min-width: 641px)">
+<link rel="stylesheet" href="css/style.css?v=2">
 <script>
 (function(){var h=document.documentElement;try{if(sessionStorage.getItem('sg-intro'))h.classList.remove('intro-on')}catch(e){}
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.remove('intro-on');
 setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BarOrPub","name":"Shelby's Gin Bar","image":"img/bar-1600.webp","address":{"@type":"PostalAddress","streetAddress":"Várkerület 22.","addressLocality":"Sopron","postalCode":"9400","addressCountry":"HU"},"geo":{"@type":"GeoCoordinates","latitude":47.6872467,"longitude":16.5916089},"telephone":"+36709053604","priceRange":"4000–6000 Ft","servesCuisine":"Gin, koktélok","sameAs":["https://www.instagram.com/shelbysginbar/"],
+{"@context":"https://schema.org","@type":"BarOrPub","name":"Shelby's Gin Bar","image":"img/hero-1600.webp","address":{"@type":"PostalAddress","streetAddress":"Várkerület 22.","addressLocality":"Sopron","postalCode":"9400","addressCountry":"HU"},"geo":{"@type":"GeoCoordinates","latitude":47.6872467,"longitude":16.5916089},"telephone":"+36709053604","priceRange":"4000–6000 Ft","servesCuisine":"Gin, koktélok","sameAs":["https://www.instagram.com/shelbysginbar/"],
 "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"18:00","closes":"23:59"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"18:00","closes":"02:00"}]}
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Shelby's Gin Bar"}</script>
@@ -35,14 +35,14 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
 <!-- nyitás: a logó kerete, a felirat fénycsíkkal, aztán átrepülünk a kereten -->
 <div class="intro" id="intro" aria-hidden="true">
   <div class="intro__in">
-    <img class="intro__frame" src="img/logo-frame.svg?v=1" alt="">
-    <div class="intro__word"><img src="img/logo-word.svg?v=1" alt=""></div>
+    <img class="intro__frame" src="img/logo-frame.svg?v=2" alt="">
+    <div class="intro__word"><img src="img/logo-word.svg?v=2" alt=""></div>
   </div>
   <p class="intro__skip" data-i18n="introSkip">Kattintson a továbblépéshez</p>
 </div>
 
 <header class="hd" id="hd">
-  <a class="hd__logo" href="#top" aria-label="Shelby's Gin Bar, vissza az oldal tetejére"><img src="img/logo-word.svg?v=1" alt=""></a>
+  <a class="hd__logo" href="#top" aria-label="Shelby's Gin Bar, vissza az oldal tetejére"><img src="img/logo-word.svg?v=2" alt=""></a>
   <nav class="hd__nav" aria-label="Fő menü">
     <a href="#pince" data-i18n="navPince">A pince</a>
     <a href="#ginek" data-i18n="navGin">Ginek</a>
@@ -74,7 +74,7 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
 <main>
 <section class="hero" id="top" aria-labelledby="heroTitle">
   <div class="hero__media" id="heroMedia">
-    <img class="hero__img" id="heroImg" src="img/bar-1600.webp?v=1" srcset="img/bar-900.webp?v=1 900w, img/bar-1600.webp?v=1 1600w, img/bar-2400.webp?v=1 2400w" sizes="100vw" alt="A Shelby's pultja a téglaboltív alatt, mögötte vörösen világított polcokon a ginek, felettük lógó poharak" fetchpriority="high">
+    <picture><source media="(max-width: 640px)" srcset="img/herom-800.webp?v=2 800w, img/herom-1200.webp?v=2 1200w" sizes="100vw"><img class="hero__img" id="heroImg" src="img/hero-1600.webp?v=2" srcset="img/hero-900.webp?v=2 900w, img/hero-1600.webp?v=2 1600w, img/hero-2400.webp?v=2 2400w" sizes="100vw" alt="Gin-tonik copa pohárban a Shelby's pultján, mellette az itallap és két mécses, mögötte a vörösen világító hátsó pult" fetchpriority="high" decoding="async"></picture>
     <canvas class="hero__gl" id="heroGl" aria-hidden="true"></canvas>
   </div>
   <svg class="deco hero__frame" data-deco="hero" aria-hidden="true"></svg>
@@ -92,7 +92,7 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
 <!-- átjáró: a logó kerete sokszor egymás mögött, mint a boltívek; asztali gépen görgetésre átrepülünk rajta -->
 <div class="tunnel" id="tunnel" aria-hidden="true">
   <div class="tunnel__stage" id="tunnelStage">
-    <div class="tunnel__end"><img src="img/pult-1600.webp?v=1" alt=""></div>
+    <div class="tunnel__end"><img src="img/veg-1600.webp?v=2" srcset="img/veg-900.webp?v=2 900w, img/veg-1600.webp?v=2 1600w, img/veg-2048.webp?v=2 2048w" sizes="100vw" alt="" loading="lazy" decoding="async"></div>
   </div>
 </div>
 
@@ -102,18 +102,20 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
     <p class="txt" data-i18n="pinceTxt">Az utcai ajtóból lépcső visz le a boltíves pincébe. A falak kőből és téglából vannak, a pult mögött vörös fény ég, a fülkékben gyertya és gin. Nyáron is hűvös marad.</p>
   </div>
   <div class="pince__grid">
-    <figure class="ph ph--a"><div class="ph__in"><img src="img/pince-1600.webp?v=1" srcset="img/pince-800.webp?v=1 800w, img/pince-1600.webp?v=1 1600w" sizes="(min-width: 900px) 58vw, 100vw" alt="A boltíves pince a lépcső aljáról, jobbra a pult" loading="lazy"></div><figcaption data-i18n="capPince">A pince a lépcső aljáról</figcaption></figure>
-    <figure class="ph ph--b"><div class="ph__in"><img src="img/lepcso-1300.webp?v=1" srcset="img/lepcso-700.webp?v=1 700w, img/lepcso-1300.webp?v=1 1300w" sizes="(min-width: 900px) 30vw, 60vw" alt="Kovácsoltvas korlátos lépcső vörös fényben" loading="lazy"></div><figcaption data-i18n="capLepcso">Lépcső az utcáról</figcaption></figure>
-    <figure class="ph ph--c"><div class="ph__in"><img src="img/fulke-1600.webp?v=1" srcset="img/fulke-800.webp?v=1 800w, img/fulke-1600.webp?v=1 1600w" sizes="(min-width: 900px) 40vw, 100vw" alt="Gyertya és ginesüvegek egy kőfülkében" loading="lazy"></div><figcaption data-i18n="capFulke">Gyertya és gin a fülkében</figcaption></figure>
-    <figure class="ph ph--d"><div class="ph__in"><img src="img/kalitka-1300.webp?v=1" srcset="img/kalitka-700.webp?v=1 700w, img/kalitka-1300.webp?v=1 1300w" sizes="(min-width: 900px) 26vw, 60vw" alt="Opihr gin egy fekete madárkalitkában, előtte gin-tonik chilivel" loading="lazy"></div><figcaption data-i18n="capKalitka">Opihr a kalitkában</figcaption></figure>
-    <figure class="ph ph--e"><div class="ph__in"><img src="img/tabla-1100.webp?v=1" srcset="img/tabla-600.webp?v=1 600w, img/tabla-1100.webp?v=1 1100w" sizes="(min-width: 900px) 22vw, 50vw" alt="Krétatábla a téglafalon ezzel a felirattal: Alcohol, because no great story ever started with someone eating salad" loading="lazy"></div><figcaption data-i18n="capTabla">A tábla a pult fölött</figcaption></figure>
+    <figure class="ph ph--pano"><div class="ph__in"><img src="img/boltiv-2400.webp?v=2" srcset="img/boltiv-900.webp?v=2 900w, img/boltiv-1600.webp?v=2 1600w, img/boltiv-2400.webp?v=2 2400w" sizes="100vw" alt="A téglaboltív alatt hosszú pult, rajta ginek és fűszernövények, fölötte kovácsoltvas csillár" loading="lazy" decoding="async"></div><figcaption data-i18n="capPince">A téglaboltív alatt</figcaption></figure>
+    <div class="pince__arches">
+    <figure class="ph ph--arch"><div class="ph__in"><img src="img/lepcso2-1100.webp?v=2" srcset="img/lepcso2-600.webp?v=2 600w, img/lepcso2-1100.webp?v=2 1100w" sizes="(min-width: 900px) 23vw, 46vw" alt="Kovácsoltvas korlátos lépcső, alul vörösen világít a pult" loading="lazy" decoding="async"></div><figcaption data-i18n="capLepcso">Lépcső az utcáról</figcaption></figure>
+    <figure class="ph ph--arch"><div class="ph__in"><img src="img/fulke2-1100.webp?v=2" srcset="img/fulke2-600.webp?v=2 600w, img/fulke2-1100.webp?v=2 1100w" sizes="(min-width: 900px) 23vw, 46vw" alt="Mécses lámpás, ginesüveg és gin-tonik egy kőfülkében" loading="lazy" decoding="async"></div><figcaption data-i18n="capFulke">Gyertya és gin a fülkében</figcaption></figure>
+    <figure class="ph ph--arch"><div class="ph__in"><img src="img/kandallo-1100.webp?v=2" srcset="img/kandallo-600.webp?v=2 600w, img/kandallo-1100.webp?v=2 1100w" sizes="(min-width: 900px) 23vw, 46vw" alt="Gin-tonik citromhéjjal copa pohárban, mögötte ég a kandalló" loading="lazy" decoding="async"></div><figcaption data-i18n="capKand">Gin-tonik citrommal, mögötte a kandalló</figcaption></figure>
+    <figure class="ph ph--arch"><div class="ph__in"><img src="img/kalitka4-900.webp?v=2" srcset="img/kalitka4-600.webp?v=2 600w, img/kalitka4-900.webp?v=2 900w" sizes="(min-width: 900px) 23vw, 46vw" alt="Madárkalitka és mécsesek a pulton, előtte gin-tonik mentával" loading="lazy" decoding="async"></div><figcaption data-i18n="capKalitka">Kalitka és mécsesek a pulton</figcaption></figure>
+    </div>
   </div>
 </section>
 
 <section class="ginek" id="ginek" aria-labelledby="ginTitle">
   <div class="ginek__pic" aria-hidden="true">
     <div class="ginek__frame" id="ginFrame">
-      <img class="is-on" data-k="kalitka2" src="img/kalitka2-1600.webp?v=1" alt="">
+      <img class="is-on" data-k="kalitka2" src="img/kalitka2-1600.webp?v=2" alt="">
     </div>
     <svg class="deco ginek__fr" data-deco="gin"></svg>
   </div>
@@ -124,24 +126,25 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
   </div>
 </section>
 
-<section class="hz" id="pult" aria-labelledby="hzTitle">
-  <div class="hz__pin">
-    <div class="hz__head">
-      <h2 class="h2 bl" id="hzTitle" data-i18n="hzTitle">A pultról</h2>
-      <p class="txt" data-i18n="hzTxt">Vendégek fotói arról, ami a pultról az asztalukra került. Hétvégente külön ajánlat is van, például a Ginito, ami gin és mojito egyben.</p>
-    </div>
-    <div class="hz__track" id="hzTrack">
-      <figure class="hz__it" style="--ar:1.016"><div class="hz__ph"><img src="img/levendula-1300.webp?v=1" srcset="img/levendula-700.webp?v=1 700w, img/levendula-1300.webp?v=1 1300w" sizes="(min-width: 900px) 40vw, 70vw" alt="Levendulás gin-tonik szárított narancskarikával" loading="lazy"></div><figcaption data-i18n="capLev">Levendulás gin-tonik</figcaption></figure>
-      <figure class="hz__it" style="--ar:0.750"><div class="hz__ph"><img src="img/rozmaring-1300.webp?v=1" srcset="img/rozmaring-700.webp?v=1 700w, img/rozmaring-1300.webp?v=1 1300w" sizes="(min-width: 900px) 40vw, 70vw" alt="Gin-tonik rozmaringgal, mellette mécses" loading="lazy"></div><figcaption data-i18n="capRoz">Gin-tonik rozmaringgal</figcaption></figure>
-      <figure class="hz__it" style="--ar:1.000"><div class="hz__ph"><img src="img/sour-1300.webp?v=1" srcset="img/sour-700.webp?v=1 700w, img/sour-1300.webp?v=1 1300w" sizes="(min-width: 900px) 40vw, 70vw" alt="Két zöld koktél bazsalikomlevéllel" loading="lazy"></div><figcaption data-i18n="capSour">Zöld koktélok bazsalikommal</figcaption></figure>
-      <figure class="hz__it" style="--ar:0.750"><div class="hz__ph"><img src="img/pink-1300.webp?v=1" srcset="img/pink-700.webp?v=1 700w, img/pink-1300.webp?v=1 1300w" sizes="(min-width: 900px) 40vw, 70vw" alt="Rózsaszín gin-tonik bogyókkal, copa pohárban" loading="lazy"></div><figcaption data-i18n="capPink">Pink gin bogyókkal</figcaption></figure>
-      <figure class="hz__it" style="--ar:1.350"><div class="hz__ph"><img src="img/kristaly-1600.webp?v=1" srcset="img/kristaly-800.webp?v=1 800w, img/kristaly-1600.webp?v=1 1600w" sizes="(min-width: 900px) 40vw, 70vw" alt="Gines palack két metszett kristálypohár között" loading="lazy"></div><figcaption data-i18n="capKri">Kristálypoharak</figcaption></figure>
-      <figure class="hz__it" style="--ar:0.750"><div class="hz__ph"><img src="img/koktel-1300.webp?v=1" srcset="img/koktel-700.webp?v=1 700w, img/koktel-1300.webp?v=1 1300w" sizes="(min-width: 900px) 40vw, 70vw" alt="Három koktél a pulton" loading="lazy"></div><figcaption data-i18n="capKok">Koktélok a pulton</figcaption></figure>
-      <figure class="hz__it" style="--ar:0.600"><div class="hz__ph"><img src="img/narancs-1300.webp?v=1" srcset="img/narancs-700.webp?v=1 700w, img/narancs-1300.webp?v=1 1300w" sizes="(min-width: 900px) 40vw, 70vw" alt="Koktél szárított narancskarikával" loading="lazy"></div><figcaption data-i18n="capNar">Narancskarika, jég</figcaption></figure>
-      <figure class="hz__it" style="--ar:1.330"><div class="hz__ph"><img src="img/kalitka3-1600.webp?v=1" srcset="img/kalitka3-800.webp?v=1 800w, img/kalitka3-1600.webp?v=1 1600w" sizes="(min-width: 900px) 40vw, 70vw" alt="Madárkalitka két lámpás között, előtte gin-tonik" loading="lazy"></div><figcaption data-i18n="capKal3">Kalitka két lámpás között</figcaption></figure>
-      <figure class="hz__it" style="--ar:0.750"><div class="hz__ph"><img src="img/bogyo-1300.webp?v=1" srcset="img/bogyo-700.webp?v=1 700w, img/bogyo-1300.webp?v=1 1300w" sizes="(min-width: 900px) 40vw, 70vw" alt="Jég, eper és áfonya egy pohárban, felülről" loading="lazy"></div><figcaption data-i18n="capBog">Eper és áfonya jégen</figcaption></figure>
-      <figure class="hz__it" style="--ar:0.750"><div class="hz__ph"><img src="img/pohar-1300.webp?v=1" srcset="img/pohar-700.webp?v=1 700w, img/pohar-1300.webp?v=1 1300w" sizes="(min-width: 900px) 40vw, 70vw" alt="Gin citromhéjjal, mögötte a kandalló" loading="lazy"></div><figcaption data-i18n="capPoh">Citromhéj, kandalló</figcaption></figure>
-    </div>
+<section class="polc" id="pult" aria-labelledby="polcTitle">
+  <div class="polc__head">
+    <h2 class="h2 bl" id="polcTitle" data-i18n="polcTitle">A pult mögül</h2>
+    <p class="txt" data-i18n="polcTxt">A palackokban fényfüzér ég, a koktélokat a pultnál keverik. A képek a bár Instagram- és Facebook-oldaláról valók.</p>
+  </div>
+  <div class="polc__wall">
+    <ul class="shelf" data-shelf>
+      <li class="sh" style="--i:0"><div class="sh__ph"><img src="img/b1-900.webp?v=2" srcset="img/b1-500.webp?v=2 500w, img/b1-900.webp?v=2 900w" sizes="(min-width: 900px) 17vw, 30vw" alt="Gin Mare palack, belül fényfüzér világítja a pulton" loading="lazy" decoding="async"></div><div class="sh__pl" aria-hidden="true"><i></i></div><span class="sh__lb" aria-hidden="true">Gin Mare</span></li>
+      <li class="sh" style="--i:1"><div class="sh__ph"><img src="img/b2-900.webp?v=2" srcset="img/b2-500.webp?v=2 500w, img/b2-900.webp?v=2 900w" sizes="(min-width: 900px) 17vw, 30vw" alt="The Botanist palack fényfüzérrel a pulton" loading="lazy" decoding="async"></div><div class="sh__pl" aria-hidden="true"><i></i></div><span class="sh__lb" aria-hidden="true">The Botanist</span></li>
+      <li class="sh" style="--i:2"><div class="sh__ph"><img src="img/b3-900.webp?v=2" srcset="img/b3-500.webp?v=2 500w, img/b3-900.webp?v=2 900w" sizes="(min-width: 900px) 17vw, 30vw" alt="Zöld Tanqueray palack, belül fényfüzér" loading="lazy" decoding="async"></div><div class="sh__pl" aria-hidden="true"><i></i></div><span class="sh__lb" aria-hidden="true">Tanqueray</span></li>
+      <li class="sh" style="--i:3"><div class="sh__ph"><img src="img/b4-900.webp?v=2" srcset="img/b4-500.webp?v=2 500w, img/b4-900.webp?v=2 900w" sizes="(min-width: 900px) 17vw, 30vw" alt="Opihr palack belülről világítva" loading="lazy" decoding="async"></div><div class="sh__pl" aria-hidden="true"><i></i></div><span class="sh__lb" aria-hidden="true">Opihr</span></li>
+      <li class="sh" style="--i:4"><div class="sh__ph"><img src="img/b6-900.webp?v=2" srcset="img/b6-500.webp?v=2 500w, img/b6-900.webp?v=2 900w" sizes="(min-width: 900px) 17vw, 30vw" alt="Bobby's gin palack fényfüzérrel a pulton" loading="lazy" decoding="async"></div><div class="sh__pl" aria-hidden="true"><i></i></div><span class="sh__lb" aria-hidden="true">Bobby's</span></li>
+    </ul>
+    <ul class="shelf shelf--4" data-shelf>
+      <li class="sh" style="--i:0"><div class="sh__ph"><img src="img/k2-900.webp?v=2" srcset="img/k2-500.webp?v=2 500w, img/k2-900.webp?v=2 900w" sizes="(min-width: 900px) 17vw, 30vw" alt="Halványzöld koktél talpas pohárban, bazsalikomlevéllel" loading="lazy" decoding="async"></div><div class="sh__pl" aria-hidden="true"><i></i></div><span class="sh__lb" aria-hidden="true" data-i18n="sk2">Zöld koktél bazsalikommal</span></li>
+      <li class="sh" style="--i:1"><div class="sh__ph"><img src="img/k3-900.webp?v=2" srcset="img/k3-500.webp?v=2 500w, img/k3-900.webp?v=2 900w" sizes="(min-width: 900px) 17vw, 30vw" alt="Vörös koktél metszett pohárban, narancshéjjal" loading="lazy" decoding="async"></div><div class="sh__pl" aria-hidden="true"><i></i></div><span class="sh__lb" aria-hidden="true" data-i18n="sk3">Vörös koktél narancshéjjal</span></li>
+      <li class="sh" style="--i:2"><div class="sh__ph"><img src="img/k4-900.webp?v=2" srcset="img/k4-500.webp?v=2 500w, img/k4-900.webp?v=2 900w" sizes="(min-width: 900px) 17vw, 30vw" alt="Barackszínű koktél talpas pohárban a Shelby's itallapja előtt" loading="lazy" decoding="async"></div><div class="sh__pl" aria-hidden="true"><i></i></div><span class="sh__lb" aria-hidden="true" data-i18n="sk4">Koktél az itallap mellett</span></li>
+      <li class="sh" style="--i:3"><div class="sh__ph"><img src="img/k5-900.webp?v=2" srcset="img/k5-500.webp?v=2 500w, img/k5-900.webp?v=2 900w" sizes="(min-width: 900px) 17vw, 30vw" alt="Habos koktél talpas pohárban, a tetején szárított díszítéssel" loading="lazy" decoding="async"></div><div class="sh__pl" aria-hidden="true"><i></i></div><span class="sh__lb" aria-hidden="true" data-i18n="sk5">Habos koktél</span></li>
+    </ul>
   </div>
 </section>
 
@@ -150,9 +153,20 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
     <h2 class="h2 bl" id="menuTitle" data-i18n="menuTitle">Itallap</h2>
     <div class="tabs" id="tabs" role="tablist" aria-labelledby="menuTitle"></div>
   </div>
-  <div class="menu__grid">
-    <div class="menu__list" id="menuList" role="tabpanel" aria-live="polite"></div>
-    <div class="menu__pic" aria-hidden="true"><div class="menu__frame" id="menuFrame"></div></div>
+  <div class="book" id="book">
+    <div class="book__pg book__pg--l" id="pgL">
+      <svg class="deco pg__fr" data-deco="panel" aria-hidden="true"></svg>
+      <p class="pg__run" aria-hidden="true">Shelby’s Gin Bar</p>
+      <div class="menu__list" id="menuList" role="tabpanel" aria-live="polite"></div>
+      <p class="pg__no" aria-hidden="true" data-no="l">2</p>
+    </div>
+    <div class="book__pg book__pg--r" id="pgR" aria-hidden="true">
+      <svg class="deco pg__fr" data-deco="panel"></svg>
+      <p class="pg__run">Sopron, Várkerület 22.</p>
+      <p class="pg__cat" id="pgCat"></p>
+      <div class="menu__frame" id="menuFrame"></div>
+      <p class="pg__no" data-no="r">3</p>
+    </div>
   </div>
   <p class="menu__note" data-i18n="menuNote">Az árak forintban, a bárban használt itallap szerint, és változhatnak. A pultnál mindig az aktuális itallapot kapja. 18 éven aluliakat alkohollal nem szolgálunk ki.</p>
   <p class="menu__ig"><span data-i18n="igTxt">A hétvégi ajánlatot, például a Black Gin Weekendet vagy a Tiki Cocktail Weekendet, az Instagramon írjuk ki:</span> <a href="https://www.instagram.com/shelbysginbar/" target="_blank" rel="noopener">@shelbysginbar</a></p>
@@ -170,7 +184,7 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
 </section>
 
 <section class="nyitva" id="nyitva" aria-labelledby="hoursTitle">
-  <figure class="nyitva__pic"><img src="img/ajto-1300.webp?v=1" srcset="img/ajto-700.webp?v=1 700w, img/ajto-1300.webp?v=1 1300w" sizes="(min-width: 900px) 34vw, 80vw" alt="A Shelby's Gin Bar fekete-arany bejárata a Várkerületen, este" loading="lazy"><figcaption data-i18n="capAjto">A bejárat a Várkerületen</figcaption></figure>
+  <figure class="nyitva__pic"><img src="img/ajto-1300.webp?v=2" srcset="img/ajto-700.webp?v=2 700w, img/ajto-1300.webp?v=2 1300w" sizes="(min-width: 900px) 34vw, 80vw" alt="A Shelby's Gin Bar fekete-arany bejárata a Várkerületen, este" loading="lazy"><figcaption data-i18n="capAjto">A bejárat a Várkerületen</figcaption></figure>
   <div class="panel">
     <svg class="deco panel__fr" data-deco="panel" aria-hidden="true"></svg>
     <h2 class="h2 bl" id="hoursTitle" data-i18n="hoursTitle">Nyitvatartás</h2>
@@ -191,18 +205,18 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
 
 <footer class="ft" id="ft">
   <div class="ft__in">
-    <img class="ft__logo" src="img/logo-full.svg?v=1" alt="Shelby's Gin Bar">
+    <img class="ft__logo" src="img/logo-full.svg?v=2" alt="Shelby's Gin Bar">
     <p class="ft__addr">9400 Sopron, Várkerület 22. · <a href="tel:+36709053604">+36 70 905 3604</a></p>
     <p class="ft__small">© 2026 Shelby's Gin Bar · <a href="jogi.html" data-i18n="legal">Impresszum és adatkezelés</a></p>
-    <p class="ft__small" data-i18n="credit">A fotók vendégek Google-feltöltései, színkorrigálva. Weboldal: kettő.</p>
+    <p class="ft__small" data-i18n="credit">A fotók a bár Instagram- és Facebook-oldaláról, illetve vendégek Google-feltöltéseiből valók, színkorrigálva. 3D modellek: Helindu, Adamante, Arkify (CC BY 4.0). Weboldal: kettő.</p>
   </div>
 </footer>
 
 <div class="cur" id="cur" aria-hidden="true"><i class="cur__d"></i><i class="cur__r"></i></div>
 
-<script src="js/gsap.min.js?v=1" defer></script>
-<script src="js/ScrollTrigger.min.js?v=1" defer></script>
-<script src="js/lenis.min.js?v=1" defer></script>
-<script src="js/main.js?v=1" defer></script>
+<script src="js/gsap.min.js?v=2" defer></script>
+<script src="js/ScrollTrigger.min.js?v=2" defer></script>
+<script src="js/lenis.min.js?v=2" defer></script>
+<script src="js/main.js?v=2" defer></script>
 </body>
 </html>

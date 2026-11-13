@@ -49,7 +49,7 @@ def grade(a, lift):
     h,w=a.shape[:2]; y,x=np.ogrid[-1:1:h*1j,-1:1:w*1j]; v=1-0.26*np.clip((x*x+y*y)/2,0,1)**1.3
     a=a*v[...,None]
     return (np.clip(a,0,1)*255+0.5).astype(np.uint8)
-names=sys.argv[1:] or list(L)
+names=(sys.argv[1:] or list(L)) if __name__=="__main__" else []
 for n in names:
     s,c,ws,lift=L[n]
     im=Image.open(f'{SRC}/{s}.jpg').convert('RGB'); W,H=im.size

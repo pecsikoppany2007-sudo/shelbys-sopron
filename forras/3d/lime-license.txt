@@ -1,0 +1,11 @@
+Model Information:
+* title:	Lime Slice 3D Scan
+* source:	https://sketchfab.com/3d-models/lime-slice-3d-scan-9a1c7a00013745ab8b79be940e77f824
+* author:	Arkify (https://sketchfab.com/arkify)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Lime Slice 3D Scan" (https://sketchfab.com/3d-models/lime-slice-3d-scan-9a1c7a00013745ab8b79be940e77f824) by Arkify (https://sketchfab.com/arkify) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
