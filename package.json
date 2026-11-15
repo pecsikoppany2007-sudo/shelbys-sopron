@@ -1,0 +1,22 @@
+{
+  "name": "alapkeszlet",
+  "private": true,
+  "type": "module",
+  "description": "kettő stúdió alapkészlet: közös modulok, jogi oldal generátor, minőségkapu",
+  "scripts": {
+    "beallit": "python3 eszkozok/beallit.py",
+    "szerver": "node teszt/szerver.mjs",
+    "kapu": "node teszt/kapu.mjs",
+    "lighthouse": "node teszt/lighthouse.mjs",
+    "menu-tablazatbol": "node eszkozok/menu-tablazatbol.mjs",
+    "test": "node teszt/kapu.mjs && node teszt/lighthouse.mjs",
+    "betu": "node eszkozok/betu.mjs",
+    "kepek": "python3 eszkozok/kepek.py"
+  },
+  "devDependencies": {
+    "axe-core": "4.14.0",
+    "chrome-launcher": "1.2.2",
+    "lighthouse": "13.5.0",
+    "playwright": "1.63.0"
+  }
+}

@@ -1,34 +1,42 @@
 <!doctype html>
-<html lang="hu" class="intro-on lang-pending">
+<html lang="hu">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shelby's Gin Bar · Gin bár Sopronban, Várkerület 22.</title>
 <meta name="description" content="Gin bár a soproni Várkerület 22. boltíves pincéjében. Több mint 50 féle gin, tonikok, koktélok. Kedd–csütörtök 18:00–24:00, péntek–szombat 18:00–02:00.">
+<meta name="robots" content="noindex, nofollow">
+<!-- fej: a beallit.py írja az oldal.json-ból (ikonok, megosztási kép, Google-nek szóló cégadatok) -->
 <meta name="theme-color" content="#0e0c0a">
-<meta property="og:title" content="Shelby's Gin Bar, Sopron">
-<meta property="og:description" content="Gin bár a Várkerület 22. pincéjében. Több mint 50 féle gin, tonikok, koktélok.">
-<meta property="og:image" content="img/hero3-1600.webp">
-<link rel="icon" href="favicon.ico" sizes="48x48">
-<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="img/favicon-96.png" sizes="96x96" type="image/png">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shelby&#x27;s Gin Bar">
+<meta property="og:title" content="Shelby's Gin Bar · Gin bár Sopronban, Várkerület 22.">
+<meta property="og:description" content="Gin bár a soproni Várkerület 22. boltíves pincéjében. Több mint 50 féle gin, tonikok, koktélok. Kedd–csütörtök 18:00–24:00, péntek–szombat 18:00–02:00.">
+<meta property="og:image" content="https://shelbys-sopron.netlify.app/img/megosztas.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:locale" content="hu_HU">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BarOrPub","name":"Shelby's Gin Bar","url":"https://shelbys-sopron.netlify.app/","image":"https://shelbys-sopron.netlify.app/img/megosztas.jpg","address":{"@type":"PostalAddress","streetAddress":"Várkerület 22.","addressLocality":"Sopron","postalCode":"9400","addressCountry":"HU"},"telephone":"+36709053604","geo":{"@type":"GeoCoordinates","latitude":47.6872467,"longitude":16.5916089},"priceRange":"$$","sameAs":["https://www.instagram.com/shelbysginbar/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"18:00","closes":"00:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"18:00","closes":"02:00"}],"acceptsReservations":true}</script>
+<!-- /fej -->
 <link rel="preload" href="fonts/cinzel-decorative-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/spectral-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="img/hero3-1600.webp?v=7" imagesrcset="img/hero3-900.webp?v=7 900w, img/hero3-1600.webp?v=7 1600w, img/hero3-2400.webp?v=7 2400w" imagesizes="100vw" media="(min-width: 641px)">
 <link rel="preload" as="image" href="img/hero3m-800.webp?v=7" imagesrcset="img/hero3m-800.webp?v=7 800w, img/hero3m-1200.webp?v=7 1200w" imagesizes="100vw" media="(max-width: 640px)">
 <link rel="stylesheet" href="css/style.css?v=10">
+<!-- korai döntések villanás nélkül: nyelv és intro. A kulcsok a beallit.py-ból jönnek (rovid). -->
 <script>
-(function(){var h=document.documentElement;try{if(sessionStorage.getItem('sg-intro'))h.classList.remove('intro-on')}catch(e){}
-if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.remove('intro-on');
-setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
+(function(){var h=document.documentElement,r='shelbys',L=["hu", "de", "en"],I=1,l=null;
+try{l=localStorage.getItem(r+'-lang')}catch(e){}
+if(!l||L.indexOf(l)<0){var n=(navigator.languages||[navigator.language||'hu']).map(function(x){return String(x).slice(0,2)});l=n.filter(function(x){return L.indexOf(x)>-1})[0]||'en'}
+if(l!=='hu'){h.classList.add('lang-pending');setTimeout(function(){h.classList.remove('lang-pending')},3000)}
+var s=null;try{s=sessionStorage.getItem(r+'-intro')}catch(e){}
+if(I&&!s&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!/[?&]nointro/.test(location.search))h.classList.add('intro-on')})();
 </script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BarOrPub","name":"Shelby's Gin Bar","image":"img/hero-1600.webp","address":{"@type":"PostalAddress","streetAddress":"Várkerület 22.","addressLocality":"Sopron","postalCode":"9400","addressCountry":"HU"},"geo":{"@type":"GeoCoordinates","latitude":47.6872467,"longitude":16.5916089},"telephone":"+36709053604","priceRange":"4000–6000 Ft","servesCuisine":"Gin, koktélok","sameAs":["https://www.instagram.com/shelbysginbar/"],
-"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"18:00","closes":"23:59"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"18:00","closes":"02:00"}]}
-</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Shelby's Gin Bar"}</script>
 </head>
 <body>
 <a class="skip" href="#pince" data-i18n="skip">Ugrás a tartalomra</a>
@@ -221,9 +229,9 @@ setTimeout(function(){h.classList.remove('lang-pending')},1800);})();
 <div class="cglow" id="cglow" aria-hidden="true"><i></i></div>
 <div class="cur" id="cur" aria-hidden="true"><i class="cur__d"></i></div>
 
-<script src="js/gsap.min.js?v=2" defer></script>
-<script src="js/ScrollTrigger.min.js?v=2" defer></script>
-<script src="js/lenis.min.js?v=2" defer></script>
+<script src="js/vendor/gsap.min.js?v=2" defer></script>
+<script src="js/vendor/ScrollTrigger.min.js?v=2" defer></script>
+<script src="js/vendor/lenis.min.js?v=2" defer></script>
 <script src="js/main.js?v=10" defer></script>
 </body>
 </html>

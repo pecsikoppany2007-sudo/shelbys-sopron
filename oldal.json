@@ -1,0 +1,116 @@
+{
+  "_megjegyzes": "Minden új oldalnál ezt töltsd ki, aztán: python3 eszkozok/beallit.py. Üres mező = a jogi oldalon narancs [kitöltendő] jelölés, és az élesítő szkript megáll.",
+  "nev": "Shelby's Gin Bar",
+  "rovid": "shelbys",
+  "cim": "9400 Sopron, Várkerület 22.",
+  "schema_tipus": "BarOrPub",
+  "_schema_megjegyzes": "Google-nek: CafeOrCoffeeShop, Restaurant, BarOrPub, Winery, Bakery, LocalBusiness, HealthClub, Store...",
+  "koordinata": [
+    47.6872467,
+    16.5916089
+  ],
+  "arkategoria": "$$",
+  "profilok": [
+    "https://www.instagram.com/shelbysginbar/"
+  ],
+  "megosztas_kep": "img/megosztas.jpg",
+  "szin": "#0e0c0a",
+  "telefon": "+36 70 905 3604",
+  "email_publikus": "",
+  "netlify": "https://shelbys-sopron.netlify.app",
+  "domain": "",
+  "nyelvek": [
+    "hu",
+    "de",
+    "en"
+  ],
+  "uzemelteto": {
+    "nev": "",
+    "tipus": "egyeni",
+    "szekhely": "",
+    "nyilv": "",
+    "adoszam": "",
+    "email": ""
+  },
+  "funkciok": {
+    "telefonos_foglalas": true,
+    "email_kapcsolat": false,
+    "urlap": false,
+    "terkep_kattintasra": true,
+    "google_tablazat_menu": false,
+    "decap_cms": false,
+    "analitika": false,
+    "beagyazas_kattintasra": false
+  },
+  "kulso_linkek": [
+    "Google Térkép",
+    "Instagram"
+  ],
+  "fotok": {
+    "hu": "A fényképek a bár Instagram- és Facebook-oldaláról, illetve vendégek Google-feltöltéseiből valók, színkorrigálva.",
+    "de": "Die Fotos stammen von der Instagram- und Facebook-Seite der Bar sowie aus Google-Uploads von Gästen, farbkorrigiert.",
+    "en": "The photos come from the bar’s Instagram and Facebook pages and from guests’ Google uploads, colour-corrected."
+  },
+  "foglalas_megorzes": {
+    "hu": "a foglalás napját követő 30 napig",
+    "de": "bis 30 Tage nach dem Tag der Reservierung",
+    "en": "until 30 days after the day of the booking"
+  },
+  "hatalyos": [
+    "2026. november 15.",
+    "15. November 2026",
+    "15 November 2026"
+  ],
+  "nyitvatartas": [
+    [
+      "",
+      ""
+    ],
+    [
+      "",
+      ""
+    ],
+    [
+      "18:00",
+      "24:00"
+    ],
+    [
+      "18:00",
+      "24:00"
+    ],
+    [
+      "18:00",
+      "24:00"
+    ],
+    [
+      "18:00",
+      "26:00"
+    ],
+    [
+      "18:00",
+      "26:00"
+    ]
+  ],
+  "kivetelek": {},
+  "_kivetelek_megjegyzes": "ünnepnapok és rendkívüli nyitvatartás: dátum -> [nyit, zár]; üres = zárva",
+  "_nyitvatartas_megjegyzes": "vasárnap az első (JS getDay szerint), üres = zárva; éjfél után zárás: 25:30",
+  "intro": {
+    "be": true,
+    "sor1": "Sopron, Várkerület 22.",
+    "felirat": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "tablazat_csv": "",
+  "keszito": {
+    "szoveg": [
+      "Weboldal: kettő",
+      "Website: kettő",
+      "Website: kettő"
+    ],
+    "url": ""
+  },
+  "_keszito_megjegyzes": "lábléc-hivatkozás a stúdióra; üres url = nem jelenik meg"
+}

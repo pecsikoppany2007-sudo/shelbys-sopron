@@ -1,2 +1,4 @@
+# Netlify: a site/ mappa megy ki, build nincs (kredit: minden push egy deploy, ~15 kredit; köztes commitokba [skip netlify]).
 [build]
   publish = "site"
+  command = ""

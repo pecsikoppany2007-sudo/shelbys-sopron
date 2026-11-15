@@ -1,0 +1,40 @@
+# Minőségkapu: minden pushnál és pull requestnél lefut. Piros = nem mehet élesbe.
+# Tipp: GitHub → Settings → Branches → main védelme: "Require status checks" = minosegkapu, így a main csak zöld kóddal frissülhet.
+name: minosegkapu
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+concurrency:
+  group: kapu-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  kapu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Beállítás frissítése (oldal.json → oldal.js, kit.js, jogi.html)
+        run: |
+          python3 eszkozok/beallit.py
+          git diff --quiet -- site || { echo "::error::A beallit.py változást csinált: futtasd le helyben, és commitold az eredményt."; git diff --stat -- site; exit 1; }
+      - name: Playwright (konzolhiba, 320–1920 px, minden nyelv, intro, réteg, alt, fordítás)
+        run: npm run kapu
+      - name: Lighthouse mobil ≥ 90
+        if: always()
+        run: npm run lighthouse
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: minosegkapu-eredmeny
+          path: teszt/eredmeny/
+          retention-days: 14

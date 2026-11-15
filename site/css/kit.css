@@ -1,0 +1,101 @@
+/* Alapkészlet CSS: csak a közös, stílustól független rész. Az oldal saját kinézete a style.css-be megy.
+   Színek és betűk itt csak változók; minden oldal felülírja őket a saját hangulatához. */
+:root{
+  --hatter:#12110f;--szoveg:#efe9df;--halvany:#b9b1a4;--kiemelo:#d8aa3c;
+  --kurzor:var(--kiemelo);--kurzor-feny:216,170,60;--lampa:255,214,140;
+  --betu-cim:Georgia,'Times New Roman',serif;--betu-szoveg:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --fejlec:70px;--ease:cubic-bezier(.16,1,.3,1);
+  /* mozgás-tokenek (darkroom/Emil Kowalski szabályai alapján, MIT): be- és kilépés ease-out, mozgás a képernyőn ease-in-out, ease-in UI-n soha.
+     Időtartam: gombnyomás 100–160 ms, kis felugró 125–200, lenyíló 150–250, ablak/fiók 200–500; a ritka, nagy pillanat lehet hosszabb. */
+  --ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--ease-drawer:cubic-bezier(.32,.72,0,1);
+  --t-nyomas:140ms;--t-kicsi:180ms;--t-lenyilo:220ms;--t-ablak:400ms;
+  color-scheme:dark
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--hatter);color:var(--szoveg);font:400 1.0625rem/1.6 var(--betu-szoveg);-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+img,svg,video,canvas{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+/* gombnyomás visszajelzés (a tap-highlight helyett), és hover-mozgás csak valódi egérrel (érintőn a koppintás hamis hovert ad) */
+@media (prefers-reduced-motion:no-preference){
+  button,.gomb{transition:transform var(--t-nyomas) var(--ease-out)}
+  button:active,.gomb:active{transform:scale(.97)}
+}
+html{-webkit-tap-highlight-color:transparent}
+/* hosszú, képernyőn kívüli szakaszok rajzolása csak, ha odaérünk (gyorsabb első betöltés); a magasság becslését add meg szakaszonként */
+.lusta{content-visibility:auto;contain-intrinsic-size:auto 900px}
+/* a hidden attribútum mindig nyer (a láthatatlan teljes képernyős menü kattintás-blokkolás hibája ellen) */
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--kiemelo);outline-offset:3px}
+.skip{position:absolute;left:12px;top:-60px;z-index:200;padding:10px 14px;background:var(--szoveg);color:var(--hatter);text-decoration:none}
+.skip:focus{top:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+section[id],[id].cel{scroll-margin-top:var(--fejlec)}
+/* nyelv: ha nem magyarral indul, a szöveg csak a csere után látszik (nincs magyar villanás) */
+html.lang-pending body{visibility:hidden}
+
+/* ---------- címek soronként (40-cimek.js) ---------- */
+.bl .ln{display:block;overflow:clip;overflow-clip-margin:.18em;padding:.06em 0 .12em;margin:-.06em 0 -.12em}
+.bl .ln__i{display:block;transform:translateY(105%) rotate(2deg);transform-origin:0 100%}
+.bl.is-in .ln__i{transform:none;transition:transform 1.3s var(--ease);transition-delay:calc(var(--l,0)*.09s + var(--d,0s))}
+html.no-anim .bl .ln__i{transform:none;transition:none}
+
+/* ---------- kurzor (30-kurzor.js): pont, linken gyűrű, fotón nagy pötty ---------- */
+html.van-kurzor,html.van-kurzor a,html.van-kurzor button{cursor:none}
+html.van-kurzor input,html.van-kurzor textarea{cursor:text}
+.kurzor{position:fixed;left:0;top:0;z-index:300;width:0;height:0;pointer-events:none;opacity:0;transition:opacity .3s}
+.kurzor::before{content:"";position:absolute;left:-4px;top:-4px;width:8px;height:8px;border-radius:50%;background:var(--kurzor);transition:transform .35s var(--ease),background-color .3s,border-color .3s}
+.kurzor.is-on{opacity:1}
+.kurzor.is-link::before{transform:scale(4.4);background:transparent;border:1px solid var(--kurzor);border-width:.23px}
+.kurzor.is-photo::before{transform:scale(2.2);background:rgba(255,255,255,.9)}
+.kurzor.is-text::before{transform:scaleX(.25) scaleY(2.6)}
+.kurzor-feny{position:fixed;left:-260px;top:-260px;z-index:1;width:520px;height:520px;margin:0;border-radius:50%;pointer-events:none;opacity:0;transition:opacity .6s;background:radial-gradient(closest-side,rgba(var(--kurzor-feny),.09),rgba(var(--kurzor-feny),0))}
+.kurzor-feny.is-on{opacity:1}
+.kurzor-feny.is-light,.kurzor.is-light::before{opacity:.4}
+
+/* ---------- függőlámpa a címek fölött (50-lampak.js) ---------- */
+.lampas{position:relative;isolation:isolate}
+.lampa{position:absolute;left:.2em;bottom:calc(100% + 10px);width:50px;height:clamp(64px,11vh,120px);margin-left:-25px;pointer-events:none;font-size:1rem}
+.lampa::before{content:"";position:absolute;left:50%;top:0;bottom:16px;width:1px;background:linear-gradient(rgba(var(--lampa),0),rgba(var(--lampa),.5))}
+.lampa svg{position:absolute;left:0;bottom:0;width:50px;height:25px;overflow:visible}
+.lampa__bura{fill:var(--hatter);stroke:var(--kiemelo);stroke-width:1}
+.lampa__izzo{position:absolute;left:50%;bottom:-5px;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:#fff0c8;box-shadow:0 0 14px 5px rgba(var(--lampa),.55),0 0 60px 26px rgba(var(--lampa),.12);opacity:0}
+.lampa__kup{position:absolute;left:50%;top:calc(100% - 8px);width:min(92vw,720px);height:min(60vh,480px);margin-left:max(-46vw,-360px);z-index:-1;opacity:0;
+  background:conic-gradient(from 148deg at 50% 0,rgba(var(--lampa),0) 0deg,rgba(var(--lampa),.06) 14deg,rgba(var(--lampa),.13) 28deg,rgba(var(--lampa),.15) 32deg,rgba(var(--lampa),.13) 36deg,rgba(var(--lampa),.06) 50deg,rgba(var(--lampa),0) 64deg,rgba(var(--lampa),0) 360deg);
+  -webkit-mask-image:radial-gradient(ellipse 36% 100% at 50% 0,#000 0,rgba(0,0,0,.6) 40%,rgba(0,0,0,0) 100%);mask-image:radial-gradient(ellipse 36% 100% at 50% 0,#000 0,rgba(0,0,0,.6) 40%,rgba(0,0,0,0) 100%)}
+.lampa.is-lit .lampa__izzo,.lampa.is-lit .lampa__kup{animation:lampOn 1.3s linear both}
+.lampa.is-lit .lampa__kup{animation-delay:.05s}
+@keyframes lampOn{0%{opacity:0}7%{opacity:.85}11%{opacity:.08}19%{opacity:.7}23%{opacity:.15}36%{opacity:1}100%{opacity:1}}
+.lampa.is-on .lampa__izzo,.lampa.is-on .lampa__kup{animation:none;opacity:1}
+html.no-anim .lampa .lampa__izzo,html.no-anim .lampa .lampa__kup{opacity:1;animation:none}
+
+/* ---------- film-intro (80-intro.js) ---------- */
+.intro{display:none}
+html.intro-on .intro{display:block;position:fixed;inset:0;z-index:250;height:100lvh;pointer-events:auto}
+html.intro-on{overflow:hidden}
+.intro__csik{position:absolute;left:0;right:0;height:50.5%;background:#050505}
+.intro__csik--f{top:0}.intro__csik--a{bottom:0}
+.intro__sotet{position:absolute;inset:0;background:#050505}
+.intro__cap,.intro__sub{position:absolute;left:0;right:0;padding:0 16px;text-align:center;color:#efe9df}
+.intro__cap{top:50%;transform:translateY(-50%)}
+.intro__l1{display:block;font:400 clamp(1.25rem,4vw,2.2rem)/1.2 var(--betu-cim);letter-spacing:.02em}
+.intro__l1 b{font-weight:inherit;opacity:0}
+.intro__l2{display:block;margin-top:.6em;font-size:.95rem;color:#b9b1a4;opacity:0}
+.intro__sub{bottom:12%;font:italic 400 clamp(1rem,2.4vw,1.35rem)/1.4 var(--betu-cim);opacity:0}
+.intro__skip{position:absolute;right:16px;bottom:16px;font-size:.8rem;color:#8d867b;opacity:0;transition:opacity .6s}
+.intro.is-skip .intro__skip{opacity:1}
+@media (prefers-reduced-motion:reduce){html.intro-on .intro{display:none}html.intro-on{overflow:auto}}
+
+/* ---------- nyitvatartás, étlap, térkép ---------- */
+[data-nyitvatartas] table{border-collapse:collapse;width:100%;max-width:420px}
+[data-nyitvatartas] th,[data-nyitvatartas] td{padding:.35em 0;text-align:left;font-weight:400;border-bottom:1px solid rgba(255,255,255,.08)}
+[data-nyitvatartas] td{text-align:right;font-variant-numeric:tabular-nums}
+[data-nyitvatartas] tr.is-ma{color:var(--kiemelo)}
+.etlap__kat ul{list-style:none;margin:0 0 2em;padding:0}
+.etlap__kat li{display:grid;grid-template-columns:1fr auto;gap:.15em 1em;padding:.6em 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.etlap__ar{font-variant-numeric:tabular-nums;white-space:nowrap}
+.etlap__leiras{grid-column:1/-1;color:var(--halvany);font-size:.92em}
+[data-terkep],[data-beagyazas]{position:relative;aspect-ratio:16/10;max-width:100%;background:rgba(255,255,255,.04);display:grid;place-items:center;text-align:center;padding:16px}
+[data-terkep] iframe,[data-beagyazas] iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+[data-terkep] button,[data-beagyazas] button{margin-top:.8em;min-height:44px;padding:10px 18px;background:none;border:1px solid currentColor;cursor:pointer}

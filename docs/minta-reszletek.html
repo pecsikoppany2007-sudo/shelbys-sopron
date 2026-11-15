@@ -1,0 +1,36 @@
+<!-- Másolható részletek. Mindegyikhez az oldal.json megfelelő funkcióját is kapcsold be, aztán: python3 eszkozok/beallit.py -->
+
+<!-- 1) Kapcsolati űrlap (Netlify Forms). funkciok.urlap: true
+     Ingyenes keret: 100 beküldés / hó / csapat. A Netlify → Forms alatt kapcsold be az e-mail értesítést az ügyfél címére.
+     JS nélkül is működik (sima POST); JS-sel oldalváltás nélkül köszön (70-apro.js). -->
+<form name="kapcsolat" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" class="urlap">
+  <input type="hidden" name="form-name" value="kapcsolat">
+  <p hidden><label>Ne töltse ki: <input name="bot-field"></label></p>
+  <p><label for="u-nev" data-i18n="urlapNev">Név</label><input id="u-nev" name="nev" autocomplete="name" required></p>
+  <p><label for="u-email" data-i18n="urlapEmail">E-mail</label><input id="u-email" name="email" type="email" autocomplete="email" required></p>
+  <p><label for="u-uzenet" data-i18n="urlapUzenet">Üzenet</label><textarea id="u-uzenet" name="uzenet" rows="5" required></textarea></p>
+  <p><label><input type="checkbox" name="hozzajarulas" required>
+    <span data-i18n="urlapHozza">Elolvastam az <a href="jogi.html#adatkezeles">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a válaszhoz kezeljék az adataimat.</span></label></p>
+  <button type="submit" data-i18n="urlapKuld">Elküldöm</button>
+  <p data-urlap-uzenet hidden tabindex="-1" role="status"></p>
+</form>
+
+<!-- 2) Térkép kattintásra. funkciok.terkep_kattintasra: true -->
+<!-- kész példa: site/index.html, #elerhetoseg; a szövegek: terkepP, terkepGo -->
+
+<!-- 3) YouTube-videó vagy Instagram kattintásra. funkciok.beagyazas_kattintasra: true
+     YouTube: mindig youtube-nocookie.com/embed/ID. A borítóképet tedd a saját tárhelyre (img/), ne a YouTube-ról töltsd. -->
+<div data-beagyazas="https://www.youtube-nocookie.com/embed/VIDEO_ID?autoplay=1" style="aspect-ratio:16/9">
+  <p data-i18n="videoSzoveg">A videó a YouTube szerveréről töltődik be, ha a gombra kattint.</p>
+  <button type="button" data-cim="Videó" data-i18n="videoGomb">Videó lejátszása</button>
+</div>
+
+<!-- 4) Ha az 1–3. részlet szövegeit DE/EN nyelven is kéred, a site/js/szovegek.js de és en blokkjába:
+  urlapNev: 'Name', urlapEmail: 'E-Mail', urlapUzenet: 'Nachricht', urlapKuld: 'Senden',
+  urlapHozza: 'Ich habe die <a href="jogi.html#adatkezeles">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Daten für die Antwort einverstanden.',
+  videoSzoveg: 'Das Video lädt erst nach dem Klick von YouTube.', videoGomb: 'Video abspielen',
+  ---
+  urlapNev: 'Name', urlapEmail: 'Email', urlapUzenet: 'Message', urlapKuld: 'Send',
+  urlapHozza: 'I have read the <a href="jogi.html#adatkezeles">privacy notice</a> and agree that my data is used to reply.',
+  videoSzoveg: 'The video loads from YouTube only after you click.', videoGomb: 'Play video',
+-->

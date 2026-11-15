@@ -238,11 +238,11 @@
     splitBl();
     $$('.bl').forEach(function (h) { if (ready && h.getBoundingClientRect().top < innerHeight) h.classList.add('lit'); });
     if (ready) { $('#ginList').classList.add('is-in'); observeBl(); ScrollTrigger.refresh(); }
-    if (save) try { localStorage.setItem('sg-lang', lang); } catch (e) {}
+    if (save) try { localStorage.setItem('shelbys-lang', lang); } catch (e) {}
     html.classList.remove('lang-pending');
   }
   var startLang = null;
-  try { startLang = localStorage.getItem('sg-lang'); } catch (e) {}
+  try { startLang = localStorage.getItem('shelbys-lang'); } catch (e) {}
   if (!startLang) { var nl = (navigator.languages || [navigator.language || 'hu']).map(function (x) { return String(x).slice(0, 2); }); startLang = nl.filter(function (x) { return x === 'hu' || x === 'de' || x === 'en'; })[0] || 'en'; }
 
   $$('.lang button').forEach(function (b) { b.addEventListener('click', function () { applyLang(b.getAttribute('data-lang'), true); }); });
@@ -581,7 +581,7 @@
       .add(heroIn, 3.75);
     function skip() { if (tl.progress() < .7) tl.timeScale(5); }
     intro.addEventListener('click', skip); addEventListener('keydown', skip, { once: true }); addEventListener('wheel', skip, { once: true, passive: true }); addEventListener('touchstart', skip, { once: true, passive: true });
-    function done() { intro.style.removeProperty('--ir'); html.classList.remove('intro-on', 'intro-run'); try { sessionStorage.setItem('sg-intro', '1'); } catch (e) {} if (lenis) lenis.start(); ScrollTrigger.refresh(); }
+    function done() { intro.remove(); html.classList.remove('intro-on', 'intro-run'); try { sessionStorage.setItem('shelbys-intro', '1'); } catch (e) {} if (lenis) lenis.start(); ScrollTrigger.refresh(); }
     if (lenis) lenis.stop();
   }
 

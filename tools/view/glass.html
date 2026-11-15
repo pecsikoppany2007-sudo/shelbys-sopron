@@ -1,7 +1,0 @@
-<!doctype html><html><head><meta charset="utf-8"><title>g</title><style>body{margin:0;background:#0e0c0a;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}canvas{width:100%;height:var(--h,440px);display:block;background:radial-gradient(#2a1a12,#0e0c0a)}</style></head><body style="grid-template-columns:repeat(var(--c,4),1fr)">
-<script type="module">
-import {init} from '../js/glass.js';
-const Q=new URLSearchParams(location.search);if(Q.get('c'))document.body.style.setProperty('--c',Q.get('c'));if(Q.get('h'))document.body.style.setProperty('--h',Q.get('h')+'px');const ps=(new URLSearchParams(location.search).get('p')||'.08,.2,.3,.4,.5,.62,.74,.85').split(',').map(Number);
-for(const p of ps){const c=document.createElement('canvas');document.body.appendChild(c);const S={p,mx:0,my:0,dpr:1};await init(c,S);S.frame();}
-window.done=1;
-</script></body></html>
