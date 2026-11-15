@@ -3,8 +3,6 @@
    Címek: Cinzel Decorative. Szöveg: Spectral. Egyetlen kiemelő szín: a logó sárgaréz-aranya. */
 @font-face{font-family:'Cinzel Decorative';src:url(../fonts/cinzel-decorative-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Cinzel Decorative';src:url(../fonts/cinzel-decorative-latin-ext-400-normal.woff2) format('woff2');font-weight:400;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Cinzel Decorative';src:url(../fonts/cinzel-decorative-latin-700-normal.woff2) format('woff2');font-weight:700;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Cinzel Decorative';src:url(../fonts/cinzel-decorative-latin-ext-700-normal.woff2) format('woff2');font-weight:700;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:'Spectral';src:url(../fonts/spectral-latin-300-normal.woff2) format('woff2');font-weight:300;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Spectral';src:url(../fonts/spectral-latin-ext-300-normal.woff2) format('woff2');font-weight:300;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:'Spectral';src:url(../fonts/spectral-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -31,7 +29,7 @@ html{background:var(--ink);color:var(--paper);-webkit-text-size-adjust:100%;scro
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 body{margin:0;font:300 19px/1.62 var(--sans);font-feature-settings:"kern";-webkit-font-smoothing:antialiased;overflow-x:clip;-webkit-tap-highlight-color:transparent}
-img{display:block;max-width:100%}
+img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
 :focus{outline:none}
@@ -122,17 +120,6 @@ body{transition:opacity .4s}
 .sheet__tel{font:500 15px/1 var(--sans);letter-spacing:.08em;color:var(--paper);text-decoration:none;display:inline-block;padding:14px 0}
 
 /* ------------------------------------------------ nyitás: sötétben 17:59 áll, átfordul 18:00-ra, és kigyullad a logó felirata */
-.intro{position:fixed;inset:0;z-index:200;display:none;place-items:center;background:var(--ink);cursor:pointer}
-html.intro-on .intro{display:grid}
-html.intro-on body{overflow:hidden}
-.intro__in{position:relative;display:grid;justify-items:center;gap:clamp(26px,5vh,48px);width:min(76vw,560px);will-change:transform,opacity}
-.intro__clk{display:flex;font:400 clamp(2.4rem,7vw,4.6rem)/1 var(--disp);letter-spacing:.04em;color:var(--gold2);font-variant-numeric:tabular-nums}
-.intro__clk .rl{display:inline-block;height:1.08em;overflow:hidden}
-.intro__clk .rl span{display:block;height:1.08em;line-height:1.08em}
-.intro__word{width:100%;opacity:0;filter:drop-shadow(0 0 0 rgba(255,214,150,0))}
-.intro__word img{width:100%}
-.intro__skip{position:absolute;bottom:28px;left:0;right:0;text-align:center;margin:0;font:500 11.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);opacity:0;transition:opacity 1s .8s}
-html.intro-run .intro__skip{opacity:1}
 
 /* ------------------------------------------------ nyitókép (18:00) */
 .hero{position:relative;height:100vh;height:100lvh;min-height:560px;overflow:hidden;background:#000}
@@ -162,7 +149,7 @@ html.intro-run .intro__skip{opacity:1}
 .ph.rv .ph__in img{transform:scale(1.12);transition:transform 2.2s var(--ease)}
 .ph.rv.is-in .ph__in{clip-path:inset(0 0 0 0)}
 .ph.rv.is-in .ph__in img{transform:none}
-.rich .ph.rv.is-in .ph__in img{transform:scale(1.08) translateY(var(--py,0px))}
+.rich .ph.rv.is-in .ph__in img{transform:scale(1.11) translateY(var(--py,0px))}
 .ph.rv .ph__in::after{display:none}
 
 /* az este: minden szakasz egy óra, és ahogy telik az idő, egyre sötétebb */
@@ -406,7 +393,7 @@ main{position:relative;z-index:1;background:var(--n00);box-shadow:0 30px 60px rg
 .calm.rich .cglow.on i{animation:cdl 5.2s infinite}
 
 /* régi fotópapír szemcséje: csak a fotókon és a nyitó címkártyán, állóképként (egy teljes képernyős, mozgó réteg sokba került görgetéskor) */
-.ph__in::before,.nyitva__pic::before,.menu__frame::before,.intro::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .45 0 0 0 0 .38 0 0 0 1.4 -.5'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.18}
+.ph__in::before,.nyitva__pic::before,.menu__frame::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .45 0 0 0 0 .38 0 0 0 1.4 -.5'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.18}
 .ph__in::after,.nyitva__pic::after{z-index:1}
 .nyitva__pic::before{bottom:auto;aspect-ratio:2/3}
 @media (max-width:700px){.nyitva__pic::before{aspect-ratio:3/4}}
@@ -414,12 +401,54 @@ main{position:relative;z-index:1;background:var(--n00);box-shadow:0 30px 60px rg
 .rich .cur{z-index:230}
 main>section{overflow-x:clip}
 
-/* nyitás: régi filmes címkártya; sötétben gyertya gyullad, fénye felhozza a feliratot, aztán körben kinyílik a kép (írisz) */
-.intro{background:#080605}
-.intro__in{gap:clamp(18px,3.4vh,30px);padding:clamp(34px,6vh,56px) clamp(30px,5vw,60px);border:22px solid transparent;border-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' fill='none'%3E%3Cpath d='M9 .5H63A8.5 8.5 0 0 0 71.5 9V63A8.5 8.5 0 0 0 63 71.5H9A8.5 8.5 0 0 0 .5 63V9A8.5 8.5 0 0 0 9 .5Z' stroke='%23d3c19e' stroke-opacity='.7'/%3E%3Cpath d='M15 6H57A9 9 0 0 0 66 15V57A9 9 0 0 0 57 66H15A9 9 0 0 0 6 57V15A9 9 0 0 0 15 6Z' stroke='%23d3c19e' stroke-opacity='.35' stroke-width='.8'/%3E%3C/svg%3E") 22 / 22px stretch;width:min(84vw,600px)}
-.intro__card{position:relative;display:contents}
+
+/* ------------------------------------------------ nyitás: a logó tintával megrajzolódik, kitelik arannyal, aztán a sötétből előjön a pince */
+.intro{position:fixed;inset:0;z-index:200;display:none;place-items:center;background:#080605;cursor:pointer}
+html.intro-on .intro{display:grid}
+html.intro-on body{overflow:hidden}
+.intro__in{display:grid;justify-items:center;gap:clamp(18px,3.4vh,30px);width:min(78vw,600px)}
+.intro__ink{width:100%;height:auto;overflow:visible}
+.intro__ink path{fill:#d6b062;fill-opacity:0;stroke:#d6b062;stroke-width:5;stroke-dasharray:1 1;stroke-dashoffset:1;vector-effect:non-scaling-stroke}
+.intro__ink path{stroke-width:1.1px}
 .intro__place{margin:0;font:300 italic clamp(16px,1.6vw,20px)/1 var(--sans);letter-spacing:.04em;color:var(--mute)}
-.intro__glow{position:absolute;left:50%;top:62%;width:min(140vmin,1200px);aspect-ratio:1;transform:translate(-50%,-50%) scale(.2);border-radius:50%;background:radial-gradient(closest-side,rgba(255,170,84,.3),rgba(255,140,58,.1) 48%,transparent 76%);opacity:0;pointer-events:none;z-index:-1}
-.intro__glow i{position:absolute;inset:0;border-radius:50%;background:inherit;animation:cdl 4.2s infinite}
-.intro__word{filter:none}
-html.intro-on .intro{-webkit-mask-image:radial-gradient(circle at 50% 50%,transparent var(--ir,0px),#000 calc(var(--ir,0px) + 1px));mask-image:radial-gradient(circle at 50% 50%,transparent var(--ir,0px),#000 calc(var(--ir,0px) + 1px))}
+html.intro-on #heroTitle .wd{opacity:1;transform:none;transition:none}
+.intro__skip{position:absolute;bottom:28px;left:0;right:0;text-align:center;margin:0;font:500 11.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);opacity:0;transition:opacity .6s}
+html.intro-run .intro__skip{opacity:1}
+
+/* betöltés: vékony aranycsík fent, csak ha lassú a net (250 ms után jelenik meg) */
+.ldbar{position:fixed;left:0;top:0;right:0;height:2px;z-index:400;pointer-events:none;background:var(--gold);transform-origin:0 50%;opacity:0;animation:ldb 2.4s .25s cubic-bezier(.3,0,.2,1) infinite}
+@keyframes ldb{0%{opacity:1;transform:scaleX(0)}70%{opacity:1;transform:scaleX(.92)}100%{opacity:0;transform:scaleX(1)}}
+html.loaded .ldbar{display:none}
+
+/* menü: kettős aranyvonal húzódik ki a link alatt */
+.hd__nav a::before{content:"";position:absolute;left:14px;right:14px;bottom:3px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .45s var(--ease) .06s}
+.hd__nav a:hover::before,.hd__nav a.is-cur::before{transform:none}
+.hd__nav a::after{bottom:7px}
+
+/* a pince lámpással: sötét, ahova az egér (ujj) ér, ott meggyullad a fény, és ott is marad egy kicsit */
+.lamp{margin:0;position:relative}
+.lamp__in{position:relative;overflow:hidden;background:#000;aspect-ratio:1600/997}
+.lamp__in img{width:100%;height:100%;object-fit:cover}
+.lamp__dk{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;transition:opacity 1.6s}
+.lamp.lit .lamp__dk{opacity:0}
+.lamp figcaption{margin-top:14px;font:400 15px/1.35 var(--sans);color:var(--dim);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.lamp__on{border:0;background:none;padding:10px 0;min-height:44px;font:400 15px/1.35 var(--sans);color:var(--mute);border-bottom:1px solid var(--line);cursor:pointer}
+.lamp__on:hover{color:var(--paper)}
+.lamp__in{cursor:none}
+@media (hover:none){.lamp__in{cursor:auto}}
+
+/* záróra előtt: kérem a számlát */
+.bill{display:grid;justify-items:center;gap:18px;padding:clamp(60px,10vh,110px) var(--pad);text-align:center}
+.bill__btn{position:relative}
+.bill__rc{width:min(280px,82vw);background:#efe7d6;color:#2a2118;font:400 14px/1.55 "Courier New",ui-monospace,monospace;padding:18px 18px 26px;clip-path:inset(0 0 100% 0);-webkit-mask:radial-gradient(7px at 50% 100%,transparent 98%,#000) 0 0/14px 100% repeat-x;mask:radial-gradient(7px at 50% 100%,transparent 98%,#000) 0 0/14px 100% repeat-x;text-align:left}
+.bill__rc.go{animation:print 1.9s steps(14) forwards}
+.bill__rc p{margin:0}
+.bill__rc .c{text-align:center}
+.bill__rc .r{display:flex;justify-content:space-between;gap:12px}
+.bill__rc hr{border:0;border-top:1px dashed #6b5d4b;margin:8px 0}
+.bill__note{margin:0;font:300 13.5px/1.5 var(--sans);color:var(--dim);max-width:34em}
+@keyframes print{to{clip-path:inset(0 0 0 0)}}
+@media (prefers-reduced-motion:reduce){.bill__rc.go{animation:none;clip-path:none}}
+.ft__logo{width:min(560px,84vw)}
+/* amíg a nyitás fut, a lenti részek még nem töltenek képet (gyorsabb első betöltés telefonon) */
+html.intro-on main>section:not(.hero),html.intro-on .ft{display:none}

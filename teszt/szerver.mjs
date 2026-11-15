@@ -3,6 +3,7 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import zlib from 'node:zlib';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'site');
 const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml',
@@ -20,8 +21,12 @@ export function serve(port = 0) {
       else if (fs.existsSync(path.join(f, 'index.html'))) f = path.join(f, 'index.html');
       else { f = path.join(ROOT, '404.html'); code = 404; }
     }
-    res.writeHead(code, { 'Content-Type': TYPES[path.extname(f).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-cache' });
-    fs.createReadStream(f).pipe(res);
+    const type = TYPES[path.extname(f).toLowerCase()] || 'application/octet-stream';
+    // szöveges fájlok tömörítve, ahogy a Netlify is küldi (különben a mérés a valóságnál rosszabb)
+    const zip = /text|javascript|json|svg|xml|manifest/.test(type) && /\bgzip\b/.test(req.headers['accept-encoding'] || '');
+    res.writeHead(code, { 'Content-Type': type, 'Cache-Control': 'no-cache', ...(zip ? { 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding' } : {}) });
+    const st = fs.createReadStream(f);
+    if (zip) st.pipe(zlib.createGzip({ level: 6 })).pipe(res); else st.pipe(res);
   });
   return new Promise(r => srv.listen(port, '127.0.0.1', () => r({ srv, url: `http://127.0.0.1:${srv.address().port}` })));
 }

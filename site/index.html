@@ -27,7 +27,7 @@
 <link rel="preload" href="fonts/spectral-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="img/hero3-1600.webp?v=7" imagesrcset="img/hero3-900.webp?v=7 900w, img/hero3-1600.webp?v=7 1600w, img/hero3-2400.webp?v=7 2400w" imagesizes="100vw" media="(min-width: 641px)">
 <link rel="preload" as="image" href="img/hero3m-800.webp?v=7" imagesrcset="img/hero3m-800.webp?v=7 800w, img/hero3m-1200.webp?v=7 1200w" imagesizes="100vw" media="(max-width: 640px)">
-<link rel="stylesheet" href="css/style.css?v=10">
+<link rel="stylesheet" href="css/style.css?v=11">
 <!-- korai döntések villanás nélkül: nyelv és intro. A kulcsok a beallit.py-ból jönnek (rovid). -->
 <script>
 (function(){var h=document.documentElement,r='shelbys',L=["hu", "de", "en"],I=1,l=null;
@@ -39,22 +39,21 @@ if(I&&!s&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!/[?&]nointro
 </script>
 </head>
 <body>
+<div class="ldbar" aria-hidden="true"></div>
 <a class="skip" href="#pince" data-i18n="skip">Ugrás a tartalomra</a>
 
-<!-- nyitás: régi filmes címkártya; 17:59, gyertya gyullad, 18:00, a fény felhozza a logót, aztán íriszként kinyílik a kép -->
+<!-- nyitás: a logó tintával megrajzolódik, kitelik arannyal, aztán a sötétből előjön a pince (munkamenetenként egyszer, átugorható) -->
 <div class="intro" id="intro" aria-hidden="true">
   <div class="intro__in">
-    <span class="intro__glow"><i></i></span>
+    <svg class="intro__ink" id="introInk" viewBox="0 0 3387 1710"></svg>
     <p class="intro__place">Sopron, Várkerület 22.</p>
-    <p class="intro__clk"><span class="rl"><span>17</span><span>18</span></span>:<span class="rl"><span>59</span><span>00</span></span></p>
-    <div class="intro__word"><img src="img/logo-word.svg?v=2" alt=""></div>
   </div>
   <p class="intro__skip" data-i18n="introSkip">Kattintson a továbblépéshez</p>
 </div>
 
 <header class="hd" id="hd">
   <div class="hd__row">
-  <a class="hd__logo" href="#top" aria-label="Shelby's Gin Bar, vissza az oldal tetejére"><img src="img/logo-word.svg?v=2" alt=""></a>
+  <a class="hd__logo" href="#top" aria-label="Shelby's Gin Bar, vissza az oldal tetejére"><img width="600" height="303" src="img/logo-word.svg?v=2" alt=""></a>
   <nav class="hd__nav" aria-label="Fő menü">
     <a href="#pince" data-i18n="navPince">A pince</a>
     <a href="#ginek" data-i18n="navGin">Ginek</a>
@@ -108,7 +107,7 @@ if(I&&!s&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!/[?&]nointro
 <main>
 <section class="hero" id="top" aria-labelledby="heroTitle">
   <div class="hero__media" id="heroMedia">
-    <picture><source media="(max-width: 640px)" srcset="img/hero3m-800.webp?v=7 800w, img/hero3m-1200.webp?v=7 1200w" sizes="100vw"><img class="hero__img" id="heroImg" src="img/hero3-1600.webp?v=7" srcset="img/hero3-900.webp?v=7 900w, img/hero3-1600.webp?v=7 1600w, img/hero3-2400.webp?v=7 2400w" sizes="100vw" alt="A Shelby's pultja: vörösen világító hátsó polc ginesüvegekkel, fölötte fejjel lefelé lógó poharak, balra mécses egy lámpásban" fetchpriority="high" decoding="async"></picture>
+    <picture><source media="(max-width: 640px)" srcset="img/hero3m-800.webp?v=7 800w, img/hero3m-1200.webp?v=7 1200w" sizes="100vw"><img width="1600" height="1226" class="hero__img" id="heroImg" src="img/hero3-1600.webp?v=7" srcset="img/hero3-900.webp?v=7 900w, img/hero3-1600.webp?v=7 1600w, img/hero3-2400.webp?v=7 2400w" sizes="100vw" alt="A Shelby's pultja: vörösen világító hátsó polc ginesüvegekkel, fölötte fejjel lefelé lógó poharak, balra mécses egy lámpásban" fetchpriority="high" decoding="async"></picture>
     <canvas class="hero__gl" id="heroGl" aria-hidden="true"></canvas>
   </div>
   <div class="hero__txt">
@@ -128,12 +127,12 @@ if(I&&!s&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!/[?&]nointro
       <h2 class="h2 bl" id="pinceTitle" data-i18n="pinceTitle">A pince</h2>
       <p class="txt" data-i18n="pinceTxt">Az utcai ajtóból lépcső visz le a boltíves pincébe. A falak kőből és téglából vannak, a pult mögött vörös fény ég, a fülkékben gyertya és gin. Nyáron is hűvös marad.</p>
     </div>
-    <figure class="ph ph--tall"><div class="ph__in"><img src="img/lepcso2-1100.webp?v=7" srcset="img/lepcso2-600.webp?v=7 600w, img/lepcso2-1100.webp?v=7 1100w" sizes="(min-width: 900px) 34vw, 86vw" alt="Kovácsoltvas korlátos lépcső, alul vörösen világít a pult" loading="lazy" decoding="async"></div><figcaption data-i18n="capLepcso">Lépcső az utcáról</figcaption></figure>
+    <figure class="ph ph--tall"><div class="ph__in"><img width="1100" height="1459" src="img/lepcso2-1100.webp?v=7" srcset="img/lepcso2-600.webp?v=7 600w, img/lepcso2-1100.webp?v=7 1100w" sizes="(min-width: 900px) 34vw, 86vw" alt="Kovácsoltvas korlátos lépcső, alul vörösen világít a pult" loading="lazy" decoding="async"></div><figcaption data-i18n="capLepcso">Lépcső az utcáról</figcaption></figure>
   </div>
-  <figure class="ph ph--wide"><div class="ph__in"><img src="img/hero-2400.webp?v=7" srcset="img/hero-900.webp?v=7 900w, img/hero-1600.webp?v=7 1600w, img/hero-2400.webp?v=7 2400w" sizes="(min-width: 900px) 70vw, 100vw" alt="A pulton a Shelby’s itallapja, egy vörös gin-tonik és két mécses, mögöttük a vörösen világító polc" loading="lazy" decoding="async"></div><figcaption data-i18n="capPince">A pult, mögötte a palackok</figcaption></figure>
+  <figure class="lamp" id="lamp"><div class="lamp__in"><img src="img/boltiv-1600.webp?v=7" srcset="img/boltiv-900.webp?v=7 900w, img/boltiv-1600.webp?v=7 1600w, img/boltiv-2400.webp?v=7 2400w" sizes="(min-width: 900px) 70vw, 100vw" width="1600" height="997" alt="A boltíves pince a pulttal: két Opihr-palackból készült lámpa, köztük egy Opihr gin és két Fever-Tree tonik, fent kovácsoltvas csillár" loading="lazy" decoding="async"><canvas class="lamp__dk" id="lampDk" aria-hidden="true"></canvas></div><figcaption><span data-i18n="capLamp">Vigye végig az egeret a képen: ahova a lámpás ér, ott látszik a pince.</span><button type="button" class="lamp__on" id="lampOn" data-i18n="lampOn">Felkapcsolom a villanyt</button></figcaption></figure>
   <div class="pince__b">
-    <figure class="ph ph--a"><div class="ph__in"><img src="img/kalitka4-900.webp?v=7" srcset="img/kalitka4-600.webp?v=7 600w, img/kalitka4-900.webp?v=7 900w" sizes="(min-width: 900px) 30vw, 70vw" alt="Madárkalitka és mécsesek a pulton, előtte gin-tonik mentával" loading="lazy" decoding="async"></div><figcaption data-i18n="capKalitka">Kalitka és mécsesek a pulton</figcaption></figure>
-    <figure class="ph ph--b"><div class="ph__in"><img src="img/kandallo-1100.webp?v=7" srcset="img/kandallo-600.webp?v=7 600w, img/kandallo-1100.webp?v=7 1100w" sizes="(min-width: 900px) 26vw, 60vw" alt="Gin-tonik citromhéjjal, mögötte ég a kandalló" loading="lazy" decoding="async"></div><figcaption data-i18n="capKand">Gin-tonik citrommal, mögötte a kandalló</figcaption></figure>
+    <figure class="ph ph--a"><div class="ph__in"><img width="900" height="1159" src="img/kalitka4-900.webp?v=7" srcset="img/kalitka4-600.webp?v=7 600w, img/kalitka4-900.webp?v=7 900w" sizes="(min-width: 900px) 30vw, 70vw" alt="Madárkalitka és mécsesek a pulton, előtte gin-tonik mentával" loading="lazy" decoding="async"></div><figcaption data-i18n="capKalitka">Kalitka és mécsesek a pulton</figcaption></figure>
+    <figure class="ph ph--b"><div class="ph__in"><img width="1100" height="1375" src="img/kandallo-1100.webp?v=7" srcset="img/kandallo-600.webp?v=7 600w, img/kandallo-1100.webp?v=7 1100w" sizes="(min-width: 900px) 26vw, 60vw" alt="Gin-tonik citromhéjjal, mögötte ég a kandalló" loading="lazy" decoding="async"></div><figcaption data-i18n="capKand">Gin-tonik citrommal, mögötte a kandalló</figcaption></figure>
   </div>
 </section>
 
@@ -152,14 +151,14 @@ if(I&&!s&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!/[?&]nointro
       <h2 class="h2 bl" id="polcTitle" data-i18n="polcTitle">A pulton</h2>
       <p class="txt" data-i18n="polcTxt">A pulton álló ginesüvegekben fényfüzér ég. A palackok a bár saját fotóiról valók.</p>
     </div>
-    <ul class="pal" id="pal">
-      <li class="pal__it" style="--ar:.4059;--g:rgba(200,220,255,.42)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img class="pal__d" src="img/p-ginmare-sotet-900.webp?v=7" srcset="img/p-ginmare-sotet-520.webp?v=7 520w, img/p-ginmare-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img class="pal__l" src="img/p-ginmare-lit-900.webp?v=7" srcset="img/p-ginmare-lit-520.webp?v=7 520w, img/p-ginmare-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="Gin Mare palack, belül fényfüzér világít" loading="lazy" decoding="async"><img class="pal__r" src="img/p-ginmare-lit-900.webp?v=7" srcset="img/p-ginmare-lit-520.webp?v=7 520w, img/p-ginmare-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">Gin Mare</span></li>
-      <li class="pal__it" style="--ar:.3131;--g:rgba(255,236,205,.40)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img class="pal__d" src="img/p-botanist-sotet-900.webp?v=7" srcset="img/p-botanist-sotet-520.webp?v=7 520w, img/p-botanist-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img class="pal__l" src="img/p-botanist-lit-900.webp?v=7" srcset="img/p-botanist-lit-520.webp?v=7 520w, img/p-botanist-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="The Botanist palack fényfüzérrel" loading="lazy" decoding="async"><img class="pal__r" src="img/p-botanist-lit-900.webp?v=7" srcset="img/p-botanist-lit-520.webp?v=7 520w, img/p-botanist-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">The Botanist</span></li>
-      <li class="pal__it" style="--ar:.2593;--g:rgba(255,232,200,.38)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img class="pal__d" src="img/p-bobbys-sotet-900.webp?v=7" srcset="img/p-bobbys-sotet-520.webp?v=7 520w, img/p-bobbys-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img class="pal__l" src="img/p-bobbys-lit-900.webp?v=7" srcset="img/p-bobbys-lit-520.webp?v=7 520w, img/p-bobbys-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="Bobby’s gin palack fényfüzérrel" loading="lazy" decoding="async"><img class="pal__r" src="img/p-bobbys-lit-900.webp?v=7" srcset="img/p-bobbys-lit-520.webp?v=7 520w, img/p-bobbys-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">Bobby’s</span></li>
-      <li class="pal__it" style="--ar:.3732;--g:rgba(255,196,96,.46)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img class="pal__d" src="img/p-michler-sotet-900.webp?v=7" srcset="img/p-michler-sotet-520.webp?v=7 520w, img/p-michler-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img class="pal__l" src="img/p-michler-lit-900.webp?v=7" srcset="img/p-michler-lit-520.webp?v=7 520w, img/p-michler-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="Albert Michler Green Gin palack, belül meleg fényfüzér" loading="lazy" decoding="async"><img class="pal__r" src="img/p-michler-lit-900.webp?v=7" srcset="img/p-michler-lit-520.webp?v=7 520w, img/p-michler-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">Albert Michler</span></li>
-      <li class="pal__it" style="--ar:.3571;--g:rgba(120,255,130,.36)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img class="pal__d" src="img/p-tanqueray-sotet-900.webp?v=7" srcset="img/p-tanqueray-sotet-520.webp?v=7 520w, img/p-tanqueray-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img class="pal__l" src="img/p-tanqueray-lit-900.webp?v=7" srcset="img/p-tanqueray-lit-520.webp?v=7 520w, img/p-tanqueray-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="Zöld Tanqueray palack, belül fényfüzér" loading="lazy" decoding="async"><img class="pal__r" src="img/p-tanqueray-lit-900.webp?v=7" srcset="img/p-tanqueray-lit-520.webp?v=7 520w, img/p-tanqueray-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">Tanqueray</span></li>
-      <li class="pal__it" style="--ar:.4307;--g:rgba(255,160,90,.42)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img class="pal__d" src="img/p-opihr-sotet-900.webp?v=7" srcset="img/p-opihr-sotet-520.webp?v=7 520w, img/p-opihr-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img class="pal__l" src="img/p-opihr-lit-900.webp?v=7" srcset="img/p-opihr-lit-520.webp?v=7 520w, img/p-opihr-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="Opihr palack belülről világítva" loading="lazy" decoding="async"><img class="pal__r" src="img/p-opihr-lit-900.webp?v=7" srcset="img/p-opihr-lit-520.webp?v=7 520w, img/p-opihr-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">Opihr</span></li>
-      <li class="pal__it" style="--ar:.3526;--g:rgba(255,70,80,.44)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img class="pal__d" src="img/p-whitley-sotet-900.webp?v=7" srcset="img/p-whitley-sotet-520.webp?v=7 520w, img/p-whitley-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img class="pal__l" src="img/p-whitley-lit-900.webp?v=7" srcset="img/p-whitley-lit-520.webp?v=7 520w, img/p-whitley-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="Whitley Neill Raspberry Gin palack, pirosan világít" loading="lazy" decoding="async"><img class="pal__r" src="img/p-whitley-lit-900.webp?v=7" srcset="img/p-whitley-lit-520.webp?v=7 520w, img/p-whitley-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">Whitley Neill</span></li>
+    <ul class="pal" id="pal" tabindex="0" aria-label="Palackok a pulton" data-i18n-aria="palLbl">
+      <li class="pal__it" style="--ar:.4059;--g:rgba(200,220,255,.42)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img width="365" height="900" class="pal__d" src="img/p-ginmare-sotet-900.webp?v=7" srcset="img/p-ginmare-sotet-520.webp?v=7 520w, img/p-ginmare-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img width="365" height="900" class="pal__l" src="img/p-ginmare-lit-900.webp?v=7" srcset="img/p-ginmare-lit-520.webp?v=7 520w, img/p-ginmare-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="Gin Mare palack, belül fényfüzér világít" loading="lazy" decoding="async"><img width="365" height="900" class="pal__r" src="img/p-ginmare-lit-900.webp?v=7" srcset="img/p-ginmare-lit-520.webp?v=7 520w, img/p-ginmare-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">Gin Mare</span></li>
+      <li class="pal__it" style="--ar:.3131;--g:rgba(255,236,205,.40)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img width="282" height="900" class="pal__d" src="img/p-botanist-sotet-900.webp?v=7" srcset="img/p-botanist-sotet-520.webp?v=7 520w, img/p-botanist-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img width="282" height="900" class="pal__l" src="img/p-botanist-lit-900.webp?v=7" srcset="img/p-botanist-lit-520.webp?v=7 520w, img/p-botanist-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="The Botanist palack fényfüzérrel" loading="lazy" decoding="async"><img width="282" height="900" class="pal__r" src="img/p-botanist-lit-900.webp?v=7" srcset="img/p-botanist-lit-520.webp?v=7 520w, img/p-botanist-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">The Botanist</span></li>
+      <li class="pal__it" style="--ar:.2593;--g:rgba(255,232,200,.38)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img width="233" height="900" class="pal__d" src="img/p-bobbys-sotet-900.webp?v=7" srcset="img/p-bobbys-sotet-520.webp?v=7 520w, img/p-bobbys-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img width="233" height="900" class="pal__l" src="img/p-bobbys-lit-900.webp?v=7" srcset="img/p-bobbys-lit-520.webp?v=7 520w, img/p-bobbys-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="Bobby’s gin palack fényfüzérrel" loading="lazy" decoding="async"><img width="233" height="900" class="pal__r" src="img/p-bobbys-lit-900.webp?v=7" srcset="img/p-bobbys-lit-520.webp?v=7 520w, img/p-bobbys-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">Bobby’s</span></li>
+      <li class="pal__it" style="--ar:.3732;--g:rgba(255,196,96,.46)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img width="336" height="900" class="pal__d" src="img/p-michler-sotet-900.webp?v=7" srcset="img/p-michler-sotet-520.webp?v=7 520w, img/p-michler-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img width="336" height="900" class="pal__l" src="img/p-michler-lit-900.webp?v=7" srcset="img/p-michler-lit-520.webp?v=7 520w, img/p-michler-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="Albert Michler Green Gin palack, belül meleg fényfüzér" loading="lazy" decoding="async"><img width="336" height="900" class="pal__r" src="img/p-michler-lit-900.webp?v=7" srcset="img/p-michler-lit-520.webp?v=7 520w, img/p-michler-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">Albert Michler</span></li>
+      <li class="pal__it" style="--ar:.3571;--g:rgba(120,255,130,.36)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img width="321" height="900" class="pal__d" src="img/p-tanqueray-sotet-900.webp?v=7" srcset="img/p-tanqueray-sotet-520.webp?v=7 520w, img/p-tanqueray-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img width="321" height="900" class="pal__l" src="img/p-tanqueray-lit-900.webp?v=7" srcset="img/p-tanqueray-lit-520.webp?v=7 520w, img/p-tanqueray-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="Zöld Tanqueray palack, belül fényfüzér" loading="lazy" decoding="async"><img width="321" height="900" class="pal__r" src="img/p-tanqueray-lit-900.webp?v=7" srcset="img/p-tanqueray-lit-520.webp?v=7 520w, img/p-tanqueray-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">Tanqueray</span></li>
+      <li class="pal__it" style="--ar:.4307;--g:rgba(255,160,90,.42)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img width="388" height="900" class="pal__d" src="img/p-opihr-sotet-900.webp?v=7" srcset="img/p-opihr-sotet-520.webp?v=7 520w, img/p-opihr-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img width="388" height="900" class="pal__l" src="img/p-opihr-lit-900.webp?v=7" srcset="img/p-opihr-lit-520.webp?v=7 520w, img/p-opihr-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="Opihr palack belülről világítva" loading="lazy" decoding="async"><img width="388" height="900" class="pal__r" src="img/p-opihr-lit-900.webp?v=7" srcset="img/p-opihr-lit-520.webp?v=7 520w, img/p-opihr-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">Opihr</span></li>
+      <li class="pal__it" style="--ar:.3526;--g:rgba(255,70,80,.44)"><div class="pal__b"><i class="pal__glow" aria-hidden="true"></i><img width="317" height="900" class="pal__d" src="img/p-whitley-sotet-900.webp?v=7" srcset="img/p-whitley-sotet-520.webp?v=7 520w, img/p-whitley-sotet-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"><img width="317" height="900" class="pal__l" src="img/p-whitley-lit-900.webp?v=7" srcset="img/p-whitley-lit-520.webp?v=7 520w, img/p-whitley-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="Whitley Neill Raspberry Gin palack, pirosan világít" loading="lazy" decoding="async"><img width="317" height="900" class="pal__r" src="img/p-whitley-lit-900.webp?v=7" srcset="img/p-whitley-lit-520.webp?v=7 520w, img/p-whitley-lit-900.webp?v=7 900w" sizes="(min-width: 900px) 18vh, 22vw" alt="" loading="lazy" decoding="async"></div><span class="pal__n">Whitley Neill</span></li>
     </ul>
   </div>
 </section>
@@ -198,7 +197,7 @@ if(I&&!s&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!/[?&]nointro
 </section>
 
 <section class="nyitva" id="nyitva" aria-labelledby="hoursTitle">
-  <figure class="nyitva__pic"><img src="img/ajto-1300.webp?v=7" srcset="img/ajto-700.webp?v=7 700w, img/ajto-1300.webp?v=7 1300w" sizes="(min-width: 900px) 34vw, 80vw" alt="A Shelby's Gin Bar fekete-arany bejárata a Várkerületen, este" loading="lazy"><figcaption data-i18n="capAjto">A bejárat a Várkerületen</figcaption></figure>
+  <figure class="nyitva__pic"><img width="1300" height="2013" src="img/ajto-1300.webp?v=7" srcset="img/ajto-700.webp?v=7 700w, img/ajto-1300.webp?v=7 1300w" sizes="(min-width: 900px) 34vw, 80vw" alt="A Shelby's Gin Bar fekete-arany bejárata a Várkerületen, este" loading="lazy"><figcaption data-i18n="capAjto">A bejárat a Várkerületen</figcaption></figure>
   <div class="panel">
     <h2 class="h2 bl" id="hoursTitle" data-i18n="hoursTitle">Nyitvatartás</h2>
     <table class="hours" id="hours"><tbody></tbody></table>
@@ -214,12 +213,17 @@ if(I&&!s&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!/[?&]nointro
     <p data-i18n="mapNote">A térkép a Google szolgáltatása, és csak kattintásra töltődik be.</p>
   </div>
 </section>
+<section class="bill" id="szamla" aria-label="Kérem a számlát" data-i18n-aria="billBtn">
+  <button type="button" class="btn" id="billBtn"><span data-i18n="billBtn">Kérem a számlát</span></button>
+  <div class="bill__rc" id="billRc" aria-live="polite" hidden></div>
+  <p class="bill__note" id="billNote" data-i18n="billNote" hidden>Csak játék: a valódi számlát a pultnál kapja. Az árak az itallapról valók.</p>
+</section>
 </main>
 
 <footer class="ft" id="ft">
   <div class="ft__in">
     <p class="ft__last" data-i18n="lastCall">Pénteken és szombaton 02:00-kor zárunk</p>
-    <img class="ft__logo" src="img/logo-full.svg?v=2" alt="Shelby's Gin Bar">
+    <img class="ft__logo" src="img/logo-full.svg?v=2" width="560" height="558" alt="Shelby's Gin Bar" fetchpriority="low" decoding="async">
     <p class="ft__addr">9400 Sopron, Várkerület 22. · <a href="tel:+36709053604">+36 70 905 3604</a></p>
     <p class="ft__small">© 2026 Shelby's Gin Bar · <a href="jogi.html" data-i18n="legal">Impresszum és adatkezelés</a></p>
     <p class="ft__small" data-i18n="credit">A fotók a bár Instagram- és Facebook-oldaláról, illetve vendégek Google-feltöltéseiből valók, színkorrigálva. Weboldal: kettő.</p>
@@ -232,6 +236,6 @@ if(I&&!s&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!/[?&]nointro
 <script src="js/vendor/gsap.min.js?v=2" defer></script>
 <script src="js/vendor/ScrollTrigger.min.js?v=2" defer></script>
 <script src="js/vendor/lenis.min.js?v=2" defer></script>
-<script src="js/main.js?v=10" defer></script>
+<script src="js/main.js?v=11" defer></script>
 </body>
 </html>
